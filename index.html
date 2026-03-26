@@ -195,15 +195,10 @@ section { padding: 100px 40px; }
 .roupa-card:hover::before { opacity: 1; }
 
 .card-image {
-  height: 260px; background: linear-gradient(135deg, var(--bordeaux-dark), var(--gray));
+  height: 200px; background: linear-gradient(135deg, var(--bordeaux-dark), var(--gray));
   display: flex; align-items: center; justify-content: center; font-size: 5rem;
   position: relative; overflow: hidden;
 }
-.card-image img {
-  width: 100%; height: 100%; object-fit: cover; display: block;
-  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-.roupa-card:hover .card-image img { transform: scale(1.07); }
 .card-badge {
   position: absolute; top: 12px; right: 12px;
   background: var(--gold); color: var(--dark);
@@ -1322,39 +1317,21 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ==================== ROUPAS ====================
-// Imagens reais por tipo de traje (Unsplash - uso livre)
-const roupaImagens = {
-  terno_preto:  'https://images.unsplash.com/photo-1594938298603-c8148c4b4a25?w=600&q=85',
-  terno_cinza:  'https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?w=600&q=85',
-  terno_azul:   'https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=600&q=85',
-  terno:        'https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?w=600&q=85',
-  smoking:      'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&q=85',
-  costume:      'https://images.unsplash.com/photo-1610652492500-ded49ceeb378?w=600&q=85',
-  blazer:       'https://images.unsplash.com/photo-1499971856191-1a420a42b498?w=600&q=85',
-  conjunto:     'https://images.unsplash.com/photo-1621072156002-e2fccdc0b176?w=600&q=85',
-};
-
-function getRoupaImagem(r) {
-  if(r.imagem_url) return r.imagem_url;
-  // tenta combinar por tipo + cor
-  const tipo = (r.tipo || '').toLowerCase();
-  const cor = (r.cor || '').toLowerCase();
-  if(tipo === 'terno' && (cor.includes('pret') || cor.includes('black'))) return roupaImagens.terno_preto;
-  if(tipo === 'terno' && (cor.includes('cinz') || cor.includes('grey') || cor.includes('gray'))) return roupaImagens.terno_cinza;
-  if(tipo === 'terno' && (cor.includes('azul') || cor.includes('blue') || cor.includes('navy') || cor.includes('royal'))) return roupaImagens.terno_azul;
-  return roupaImagens[tipo] || roupaImagens.terno;
-}
+const roupaEmojis = { terno:'🤵', smoking:'🎩', costume:'👔', blazer:'🧥', conjunto:'👗' };
 
 async function loadRoupas() {
   const { data, error } = await db.from('roupas').select('*').order('tipo');
+  const grid = document.getElementById('catalog-grid');
+  const selector = document.getElementById('roupa-selector');
   if(error || !data || data.length === 0) {
+    // Fallback data
     allRoupas = [
-      {id:'1', nome:'Terno Slim Preto Premium',    tipo:'terno',   cor:'Preto',       tamanho:'P/M/G/GG', preco_diaria:150, descricao:'Terno slim fit premium em tecido italiano, perfeito para formaturas e casamentos', disponivel:true},
-      {id:'2', nome:'Smoking Branco Luxo',          tipo:'smoking', cor:'Branco',      tamanho:'P/M/G/GG', preco_diaria:200, descricao:'Smoking branco de grife, elegância máxima para noivos e eventos especiais', disponivel:true},
-      {id:'3', nome:'Terno Cinza Chumbo',           tipo:'terno',   cor:'Cinza Chumbo',tamanho:'P/M/G/GG', preco_diaria:140, descricao:'Terno executivo cinza chumbo, ideal para eventos corporativos e cerimônias', disponivel:true},
-      {id:'4', nome:'Costume Bordô Festivo',        tipo:'costume', cor:'Bordô',       tamanho:'P/M/G/GG', preco_diaria:130, descricao:'Costume bordô com detalhes exclusivos, destaque garantido em qualquer festa', disponivel:true},
-      {id:'5', nome:'Blazer Navy com Calça Bege',   tipo:'blazer',  cor:'Azul Navy',   tamanho:'P/M/G/GG', preco_diaria:110, descricao:'Look casual chic perfeito para eventos ao ar livre e confraternizações', disponivel:true},
-      {id:'6', nome:'Terno Azul Royal',             tipo:'terno',   cor:'Azul Royal',  tamanho:'P/M/G/GG', preco_diaria:155, descricao:'Terno azul royal moderno, sofisticado para casamentos e formaturas', disponivel:true},
+      {id:'1', nome:'Terno Slim Preto Premium', tipo:'terno', cor:'Preto', tamanho:'P/M/G/GG', preco_diaria:150, descricao:'Terno slim fit premium, tecido italiano', disponivel:true},
+      {id:'2', nome:'Smoking Branco Luxo', tipo:'smoking', cor:'Branco', tamanho:'P/M/G/GG', preco_diaria:200, descricao:'Smoking branco de grife, elegância máxima', disponivel:true},
+      {id:'3', nome:'Terno Cinza Chumbo', tipo:'terno', cor:'Cinza Chumbo', tamanho:'P/M/G/GG', preco_diaria:140, descricao:'Terno executivo cinza chumbo', disponivel:true},
+      {id:'4', nome:'Costume Bordô Festivo', tipo:'costume', cor:'Bordô', tamanho:'P/M/G/GG', preco_diaria:130, descricao:'Costume bordô com detalhes exclusivos', disponivel:true},
+      {id:'5', nome:'Blazer Navy com Calça Bege', tipo:'blazer', cor:'Azul Navy', tamanho:'P/M/G/GG', preco_diaria:110, descricao:'Look casual chic perfeito', disponivel:true},
+      {id:'6', nome:'Terno Azul Royal', tipo:'terno', cor:'Azul Royal', tamanho:'P/M/G/GG', preco_diaria:155, descricao:'Terno azul royal moderno', disponivel:true},
     ];
   } else {
     allRoupas = data;
@@ -1365,44 +1342,37 @@ async function loadRoupas() {
 
 function renderCatalog() {
   const grid = document.getElementById('catalog-grid');
-  grid.innerHTML = allRoupas.map(r => {
-    const img = getRoupaImagem(r);
-    return `
+  grid.innerHTML = allRoupas.map(r => `
     <div class="roupa-card ${!r.disponivel ? 'card-unavailable' : ''}" onclick="openAgendarComRoupa('${r.id}')">
-      <div class="card-image">
-        <img src="${img}" alt="${r.nome}" loading="lazy"
-          onerror="this.style.display='none';this.parentElement.querySelector('.card-emoji').style.display='flex'">
-        <div class="card-emoji" style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;font-size:5rem;background:linear-gradient(135deg,var(--bordeaux-dark),var(--gray))">
-          ${r.tipo==='terno'?'🤵':r.tipo==='smoking'?'🎩':r.tipo==='costume'?'👔':r.tipo==='blazer'?'🧥':'👗'}
-        </div>
+      <div class="card-image" style="${r.imagem_url ? 'padding:0;' : ''}">
+        ${r.imagem_url
+          ? `<img src="${r.imagem_url}" alt="${r.nome}" style="width:100%;height:100%;object-fit:cover;display:block">`
+          : `<span>${roupaEmojis[r.tipo] || '👔'}</span>`
+        }
         <span class="card-badge">${r.disponivel ? 'Disponível' : 'Indisponível'}</span>
       </div>
       <div class="card-body">
         <div class="card-tipo">${r.tipo.toUpperCase()} · ${r.cor || ''}</div>
         <div class="card-nome">${r.nome}</div>
         <div class="card-desc">${r.descricao || ''}</div>
-        <div class="card-footer" style="justify-content:center">
-          <button class="card-btn" style="width:100%;padding:12px">Agendar Agora</button>
+        <div class="card-footer">
+          <div class="card-price">R$ ${Number(r.preco_diaria).toFixed(0)}<span>/dia</span></div>
+          <button class="card-btn">Agendar</button>
         </div>
       </div>
-    </div>`;
-  }).join('');
+    </div>
+  `).join('');
 }
 
 function renderRoupaSelector() {
   const sel = document.getElementById('roupa-selector');
-  sel.innerHTML = allRoupas.filter(r => r.disponivel).map(r => {
-    const img = getRoupaImagem(r);
-    return `
+  sel.innerHTML = allRoupas.filter(r => r.disponivel).map(r => `
     <div class="roupa-option select-card ${selectedRoupa && selectedRoupa.id === r.id ? 'selected' : ''}" onclick="selectRoupa('${r.id}')">
-      <div style="width:100%;height:100px;border-radius:4px;overflow:hidden;margin-bottom:10px;background:var(--gray)">
-        <img src="${img}" alt="${r.nome}" style="width:100%;height:100%;object-fit:cover"
-          onerror="this.parentElement.innerHTML='<div style=\'height:100%;display:flex;align-items:center;justify-content:center;font-size:2.5rem\'>${r.tipo==='terno'?'🤵':r.tipo==='smoking'?'🎩':r.tipo==='costume'?'👔':r.tipo==='blazer'?'🧥':'👗'}</div>'">
-      </div>
+      <div class="icon">${roupaEmojis[r.tipo] || '👔'}</div>
       <div class="name">${r.nome}</div>
       <div class="price">R$ ${Number(r.preco_diaria).toFixed(2)}/dia</div>
-    </div>`;
-  }).join('');
+    </div>
+  `).join('');
 }
 
 function selectRoupa(id) {
