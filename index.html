@@ -209,9 +209,7 @@ section { padding: 100px 40px; }
 .card-tipo { font-size: 0.65rem; color: var(--gold); font-weight: 600; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px; }
 .card-nome { font-family: 'Barlow Condensed', sans-serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 8px; }
 .card-desc { font-size: 0.8rem; color: rgba(255,255,255,0.55); line-height: 1.6; margin-bottom: 16px; }
-.card-footer { display: flex; align-items: center; justify-content: space-between; }
-.card-price { font-family: 'Barlow Condensed', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--gold); }
-.card-price span { font-size: 0.75rem; color: rgba(255,255,255,0.4); font-weight: 400; }
+.card-footer { display: flex; align-items: center; justify-content: flex-end; }
 .card-btn { background: var(--bordeaux); color: var(--white); border: none; padding: 10px 20px; font-size: 0.75rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; border-radius: 2px; transition: all 0.3s; }
 .card-btn:hover { background: var(--gold); color: var(--dark); }
 
@@ -581,7 +579,6 @@ footer {
 </head>
 <body>
 
-<!-- Loading -->
 <div id="loading-screen">
   <div class="loading-logo">
     <img src="https://mgqvrijrxxdwqstvrtxw.supabase.co/storage/v1/object/public/imagens/AtualFestasModaMasculina.jpeg" alt="Logo" style="width:80px;height:80px;border-radius:50%;border:2px solid var(--gold);object-fit:cover;margin-bottom:16px" onerror="this.style.display='none'">
@@ -591,7 +588,6 @@ footer {
   </div>
 </div>
 
-<!-- NAVBAR -->
 <nav id="navbar">
   <a href="#" class="nav-brand">
     <div class="nav-logo-icon">
@@ -614,7 +610,6 @@ footer {
   </button>
 </nav>
 
-<!-- MOBILE MENU -->
 <div class="nav-mobile-menu" id="mobile-menu">
   <span class="close-btn" onclick="toggleMobileMenu()">✕</span>
   <a href="#catalogo" onclick="toggleMobileMenu()">Catálogo</a>
@@ -655,7 +650,6 @@ footer {
   </div>
 </section>
 
-<!-- CATÁLOGO -->
 <section id="catalogo">
   <div class="section-header">
     <span class="section-tag">✦ Nossa Coleção</span>
@@ -667,7 +661,6 @@ footer {
   </div>
 </section>
 
-<!-- COMO FUNCIONA -->
 <section id="como-funciona" style="background:linear-gradient(180deg,var(--dark),rgba(86,15,34,0.15),var(--dark))">
   <div class="section-header">
     <span class="section-tag">✦ Processo</span>
@@ -698,7 +691,6 @@ footer {
   </div>
 </section>
 
-<!-- AGENDAMENTO -->
 <section id="agendar">
   <div class="section-header">
     <span class="section-tag">✦ Reserva</span>
@@ -729,7 +721,6 @@ footer {
       </div>
     </div>
 
-    <!-- Painel 1: Escolha do traje -->
     <div class="form-panel active" id="panel-1">
       <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;font-weight:700;margin-bottom:8px;text-transform:uppercase">Escolha seu Traje</h3>
       <p style="font-size:0.82rem;color:rgba(255,255,255,0.5);margin-bottom:24px">Selecione o traje ideal para o seu evento especial</p>
@@ -741,7 +732,6 @@ footer {
       </div>
     </div>
 
-    <!-- Painel 2: Dados do cliente -->
     <div class="form-panel" id="panel-2">
       <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;font-weight:700;margin-bottom:8px;text-transform:uppercase">Seus Dados</h3>
       <p style="font-size:0.82rem;color:rgba(255,255,255,0.5);margin-bottom:24px">Preencha seus dados para cadastro</p>
@@ -781,7 +771,6 @@ footer {
       </div>
     </div>
 
-    <!-- Painel 3: Agendamento -->
     <div class="form-panel" id="panel-3">
       <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;font-weight:700;margin-bottom:8px;text-transform:uppercase">Agendamento</h3>
       <p style="font-size:0.82rem;color:rgba(255,255,255,0.5);margin-bottom:24px">Escolha as datas e o tipo do seu evento</p>
@@ -832,7 +821,6 @@ footer {
       </div>
     </div>
 
-    <!-- Painel 4: Termo -->
     <div class="form-panel" id="panel-4">
       <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;font-weight:700;margin-bottom:8px;text-transform:uppercase">Termo de Responsabilidade</h3>
       <p style="font-size:0.82rem;color:rgba(255,255,255,0.5);margin-bottom:24px">Leia e aceite os termos para concluir seu agendamento</p>
@@ -868,7 +856,6 @@ footer {
       </div>
     </div>
 
-    <!-- Painel 5: Sucesso -->
     <div class="form-panel" id="panel-5">
       <div class="success-screen">
         <div class="success-icon">🎉</div>
@@ -882,7 +869,6 @@ footer {
   </div>
 </section>
 
-<!-- CONTATO / FOOTER -->
 <section id="contato" style="background:var(--bordeaux-dark);padding:60px 40px">
   <div style="max-width:900px;margin:0 auto;text-align:center">
     <span class="section-tag">✦ Fale Conosco</span>
@@ -927,13 +913,10 @@ footer {
   </div>
 </footer>
 
-<!-- Toast Container -->
 <div id="toast-container"></div>
 
-<!-- Admin Hidden Trigger -->
 <div id="admin-trigger" onclick="openAdminLogin()"></div>
 
-<!-- ADMIN LOGIN -->
 <div id="admin-login">
   <div class="login-box">
     <div class="login-icon">🔐</div>
@@ -948,7 +931,6 @@ footer {
   </div>
 </div>
 
-<!-- ADMIN PANEL -->
 <div id="admin-overlay">
   <div class="admin-sidebar">
     <div class="admin-logo">
@@ -980,7 +962,6 @@ footer {
 
   <div class="admin-main">
 
-    <!-- DASHBOARD -->
     <div class="admin-page active" id="page-dashboard">
       <div class="admin-header-bar">
         <div>
@@ -1015,7 +996,6 @@ footer {
       </div>
     </div>
 
-    <!-- AGENDAMENTOS -->
     <div class="admin-page" id="page-agendamentos">
       <div class="admin-header-bar">
         <div>
@@ -1051,7 +1031,6 @@ footer {
       </div>
     </div>
 
-    <!-- CLIENTES -->
     <div class="admin-page" id="page-clientes">
       <div class="admin-header-bar">
         <div>
@@ -1072,7 +1051,6 @@ footer {
       </div>
     </div>
 
-    <!-- MENSAGENS -->
     <div class="admin-page" id="page-mensagens">
       <div class="admin-header-bar">
         <div>
@@ -1113,7 +1091,6 @@ footer {
       </div>
     </div>
 
-    <!-- ROUPAS/CATÁLOGO ADMIN -->
     <div class="admin-page" id="page-roupas">
       <div class="admin-header-bar">
         <div>
@@ -1134,10 +1111,7 @@ footer {
       </div>
     </div>
 
-  </div><!-- admin-main -->
-
-  <!-- Admin Mobile Bottom Nav -->
-  <div class="admin-mobile-bar" id="admin-mobile-bar">
+  </div><div class="admin-mobile-bar" id="admin-mobile-bar">
     <div class="admin-mobile-bar-items">
       <button class="admin-mobile-btn active" onclick="showAdminPage('dashboard',this)"><span class="icon">📊</span>Dashboard</button>
       <button class="admin-mobile-btn" onclick="showAdminPage('agendamentos',this)"><span class="icon">📅</span>Agenda</button>
@@ -1147,7 +1121,6 @@ footer {
     </div>
   </div>
 
-  <!-- MODAL DETALHE AGENDAMENTO (dentro do admin) -->
   <div class="modal-overlay" id="modal-agendamento">
     <div class="modal">
       <button class="modal-close" onclick="closeModal('modal-agendamento')">✕</button>
@@ -1157,7 +1130,6 @@ footer {
     </div>
   </div>
 
-  <!-- MODAL NOVA/EDITAR ROUPA (dentro do admin) -->
   <div class="modal-overlay" id="modal-roupa">
     <div class="modal" style="max-width:680px">
       <button class="modal-close" onclick="closeModal('modal-roupa')">✕</button>
@@ -1229,9 +1201,7 @@ footer {
     </div>
   </div>
 
-</div><!-- admin-overlay -->
-
-<script>
+</div><script>
 // ==================== MOBILE MENU ====================
 function toggleMobileMenu() {
   const menu = document.getElementById('mobile-menu');
@@ -1324,14 +1294,14 @@ async function loadRoupas() {
   const grid = document.getElementById('catalog-grid');
   const selector = document.getElementById('roupa-selector');
   if(error || !data || data.length === 0) {
-    // Fallback data
+    // Fallback data com as URLs reais das imagens
     allRoupas = [
-      {id:'1', nome:'Terno Slim Preto Premium', tipo:'terno', cor:'Preto', tamanho:'P/M/G/GG', preco_diaria:150, descricao:'Terno slim fit premium, tecido italiano', disponivel:true},
-      {id:'2', nome:'Smoking Branco Luxo', tipo:'smoking', cor:'Branco', tamanho:'P/M/G/GG', preco_diaria:200, descricao:'Smoking branco de grife, elegância máxima', disponivel:true},
-      {id:'3', nome:'Terno Cinza Chumbo', tipo:'terno', cor:'Cinza Chumbo', tamanho:'P/M/G/GG', preco_diaria:140, descricao:'Terno executivo cinza chumbo', disponivel:true},
-      {id:'4', nome:'Costume Bordô Festivo', tipo:'costume', cor:'Bordô', tamanho:'P/M/G/GG', preco_diaria:130, descricao:'Costume bordô com detalhes exclusivos', disponivel:true},
-      {id:'5', nome:'Blazer Navy com Calça Bege', tipo:'blazer', cor:'Azul Navy', tamanho:'P/M/G/GG', preco_diaria:110, descricao:'Look casual chic perfeito', disponivel:true},
-      {id:'6', nome:'Terno Azul Royal', tipo:'terno', cor:'Azul Royal', tamanho:'P/M/G/GG', preco_diaria:155, descricao:'Terno azul royal moderno', disponivel:true},
+      {id:'1', nome:'Terno Slim Preto Premium', tipo:'terno', cor:'Preto', tamanho:'P/M/G/GG', preco_diaria:150, descricao:'Terno slim fit premium, tecido italiano', disponivel:true, imagem_url:'https://images.unsplash.com/photo-1593032465175-481ac7f401a0?auto=format&fit=crop&w=600&q=80'},
+      {id:'2', nome:'Smoking Branco Luxo', tipo:'smoking', cor:'Branco', tamanho:'P/M/G/GG', preco_diaria:200, descricao:'Smoking branco de grife, elegância máxima', disponivel:true, imagem_url:'https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?auto=format&fit=crop&w=600&q=80'},
+      {id:'3', nome:'Terno Cinza Chumbo', tipo:'terno', cor:'Cinza Chumbo', tamanho:'P/M/G/GG', preco_diaria:140, descricao:'Terno executivo cinza chumbo', disponivel:true, imagem_url:'https://images.unsplash.com/photo-1598808503746-f34c53b9323e?auto=format&fit=crop&w=600&q=80'},
+      {id:'4', nome:'Costume Bordô Festivo', tipo:'costume', cor:'Bordô', tamanho:'P/M/G/GG', preco_diaria:130, descricao:'Costume bordô com detalhes exclusivos', disponivel:true, imagem_url:'https://images.unsplash.com/photo-1592878904946-b3cd8ae243d0?auto=format&fit=crop&w=600&q=80'},
+      {id:'5', nome:'Blazer Navy com Calça Bege', tipo:'blazer', cor:'Azul Navy', tamanho:'P/M/G/GG', preco_diaria:110, descricao:'Look casual chic perfeito', disponivel:true, imagem_url:'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80'},
+      {id:'6', nome:'Terno Azul Royal', tipo:'terno', cor:'Azul Royal', tamanho:'P/M/G/GG', preco_diaria:155, descricao:'Terno azul royal moderno', disponivel:true, imagem_url:'https://images.unsplash.com/photo-1550614000-4b95f1f1bb64?auto=format&fit=crop&w=600&q=80'},
     ];
   } else {
     allRoupas = data;
@@ -1355,8 +1325,7 @@ function renderCatalog() {
         <div class="card-tipo">${r.tipo.toUpperCase()} · ${r.cor || ''}</div>
         <div class="card-nome">${r.nome}</div>
         <div class="card-desc">${r.descricao || ''}</div>
-        <div class="card-footer">
-          <div class="card-price">R$ ${Number(r.preco_diaria).toFixed(0)}<span>/dia</span></div>
+        <div class="card-footer" style="justify-content: flex-end;">
           <button class="card-btn">Agendar</button>
         </div>
       </div>
