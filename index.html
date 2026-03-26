@@ -72,11 +72,11 @@ nav.scrolled { background: rgba(15,10,12,0.98); }
 
 .nav-brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
 .nav-logo-icon {
-  width: 48px; height: 48px; background: var(--bordeaux);
-  border-radius: 50%; display: flex; align-items: center; justify-content: center;
-  font-size: 1.2rem; border: 2px solid var(--gold); overflow: hidden; flex-shrink: 0;
+  width: 52px; height: 52px; border-radius: 50%; overflow: hidden;
+  border: 2px solid var(--gold); flex-shrink: 0;
+  background: var(--bordeaux-dark);
 }
-.nav-logo-icon img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+.nav-logo-icon img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .nav-brand-text .top { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 800; color: var(--white); letter-spacing: 3px; }
 .nav-brand-text .bottom { font-size: 0.65rem; color: var(--gold); letter-spacing: 2px; font-weight: 500; text-transform: uppercase; }
 
@@ -465,56 +465,88 @@ footer {
 /* Admin hidden trigger */
 #admin-trigger { position: fixed; bottom: 10px; left: 10px; width: 10px; height: 10px; cursor: pointer; z-index: 999; opacity: 0; }
 
-/* Hamburger */
-.hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; z-index: 1001; }
-.hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.3s; }
-.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.hamburger.open span:nth-child(2) { opacity: 0; }
-.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+/* ===================== HAMBURGER ===================== */
+.nav-hamburger {
+  display: none; flex-direction: column; gap: 5px; cursor: pointer;
+  padding: 6px; background: none; border: none; z-index: 1100;
+}
+.nav-hamburger span { width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.3s; display: block; }
+.nav-hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+.nav-mobile-menu {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(15,10,12,0.98); backdrop-filter: blur(20px);
+  z-index: 1050; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 32px;
+  transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.nav-mobile-menu.open { transform: translateX(0); }
+.nav-mobile-menu a {
+  color: var(--white); text-decoration: none; font-family: 'Barlow Condensed', sans-serif;
+  font-size: 2rem; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; transition: color 0.3s;
+}
+.nav-mobile-menu a:hover { color: var(--gold); }
+.nav-mobile-menu .close-btn {
+  position: absolute; top: 20px; right: 20px; font-size: 2rem;
+  color: rgba(255,255,255,0.5); cursor: pointer; transition: color 0.3s;
+}
+.nav-mobile-menu .close-btn:hover { color: var(--gold); }
 
-/* Admin mobile toggle */
-.admin-mobile-toggle { display: none; }
+/* ===================== ADMIN MOBILE BAR ===================== */
+.admin-mobile-bar {
+  display: none; position: fixed; bottom: 0; left: 0; right: 0;
+  background: var(--bordeaux-dark); border-top: 1px solid rgba(201,168,76,0.2);
+  z-index: 3100; padding: 6px 0;
+}
+.admin-mobile-bar-items { display: flex; justify-content: space-around; }
+.admin-mobile-btn {
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  padding: 8px 6px; cursor: pointer; color: rgba(255,255,255,0.5);
+  font-size: 0.55rem; letter-spacing: 0.5px; text-transform: uppercase;
+  border: none; background: none; transition: color 0.2s; min-width: 0;
+}
+.admin-mobile-btn.active { color: var(--gold); }
+.admin-mobile-btn .icon { font-size: 1.2rem; }
 
-/* Responsive */
+/* ===================== RESPONSIVE ===================== */
 @media (max-width: 768px) {
   nav { padding: 12px 16px; }
-  .nav-links {
-    display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(15,10,12,0.98); flex-direction: column; align-items: center; justify-content: center;
-    gap: 32px; z-index: 999; list-style: none;
-  }
-  .nav-links.open { display: flex; }
-  .nav-links a { font-size: 1.2rem; letter-spacing: 3px; }
+  .nav-links { display: none; }
   .nav-cta { display: none; }
-  .hamburger { display: flex; }
+  .nav-hamburger { display: flex; }
   section { padding: 60px 16px; }
   .form-grid.cols-2, .form-grid.cols-3 { grid-template-columns: 1fr; }
   .hero-stats { gap: 16px; flex-wrap: wrap; }
+  .hero-stats .stat { min-width: 80px; }
   .kpi-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-  .footer-grid { grid-template-columns: 1fr; }
-  #admin-overlay { flex-direction: column; }
-  .admin-sidebar {
-    width: 100%; flex-direction: row; align-items: center; flex-shrink: 0;
-    overflow-x: auto; border-right: none; border-bottom: 1px solid rgba(201,168,76,0.2);
-  }
-  .admin-logo { padding: 12px 16px; border-bottom: none; border-right: 1px solid rgba(201,168,76,0.1); white-space: nowrap; flex-shrink: 0; }
-  .admin-logo .badge { display: none; }
-  .admin-nav { display: flex; flex-direction: row; padding: 8px 0; overflow-x: auto; flex: 1; }
-  .admin-nav-item { flex-direction: column; gap: 4px; padding: 8px 14px; font-size: 0.65rem; border-left: none; border-bottom: 3px solid transparent; white-space: nowrap; }
-  .admin-nav-item:hover, .admin-nav-item.active { border-left-color: transparent; border-bottom-color: var(--gold); }
-  .admin-footer { display: none; }
-  .admin-main { flex: 1; overflow-y: auto; }
-  .admin-page { padding: 16px; }
-  .admin-header-bar { flex-direction: column; align-items: flex-start; gap: 12px; }
-  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
-  #page-mensagens > div { grid-template-columns: 1fr !important; }
-  .hero-title { font-size: 3rem; }
-  .catalog-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
-  .form-steps { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 10px; }
-  .step-label { font-size: 0.6rem; }
+  .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+  .admin-sidebar { display: none; }
+  .admin-main { width: 100%; }
+  .admin-mobile-bar { display: block; }
+  .admin-page { padding: 16px 12px 80px; }
+  .admin-header-bar { flex-direction: column; gap: 12px; align-items: flex-start; }
+  .hero-title { font-size: 3.2rem; }
+  .filter-bar { gap: 8px; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 4px; }
+  .filter-btn { padding: 6px 10px; font-size: 0.68rem; white-space: nowrap; }
+  .data-table th, .data-table td { padding: 10px 8px; font-size: 0.75rem; }
+  .action-btns { flex-wrap: wrap; gap: 4px; }
   .modal { padding: 24px 16px; }
   .hero-actions { flex-direction: column; align-items: center; }
   .btn-primary, .btn-outline { width: 100%; max-width: 280px; text-align: center; }
+  footer { padding: 40px 16px 20px; }
+  section#contato { padding: 40px 16px; }
+  .catalog-grid { grid-template-columns: repeat(auto-fill, minmax(250px,1fr)); }
+  #page-mensagens > div { display: flex; flex-direction: column; grid-template-columns: unset !important; }
+}
+@media (max-width: 480px) {
+  .hero-title { font-size: 2.5rem; }
+  .section-title { font-size: 1.9rem; }
+  .kpi-grid { grid-template-columns: 1fr 1fr; }
+  .kpi-value { font-size: 1.6rem; }
+  .catalog-grid { grid-template-columns: 1fr; }
+  .roupa-selector { grid-template-columns: 1fr; }
+  .hero-badge { font-size: 0.6rem; letter-spacing: 2px; }
 }
 
 .card-unavailable { opacity: 0.5; pointer-events: none; }
@@ -552,7 +584,7 @@ footer {
 <!-- Loading -->
 <div id="loading-screen">
   <div class="loading-logo">
-    <img src="https://mgqvrijrxxdwqstvrtxw.supabase.co/storage/v1/object/public/imagens/AtualFestasModaMasculina.jpeg" alt="Atual Festas" style="width:90px;height:90px;object-fit:cover;border-radius:50%;border:3px solid var(--gold);margin-bottom:14px;display:block;margin-left:auto;margin-right:auto;" onerror="this.style.display='none'">
+    <img src="https://mgqvrijrxxdwqstvrtxw.supabase.co/storage/v1/object/public/imagens/AtualFestasModaMasculina.jpeg" alt="Logo" style="width:80px;height:80px;border-radius:50%;border:2px solid var(--gold);object-fit:cover;margin-bottom:16px" onerror="this.style.display='none'">
     <div class="brand">ATUAL FESTAS</div>
     <div class="sub">Moda Masculina · Locações</div>
     <div class="loading-bar"><div class="loading-fill"></div></div>
@@ -563,26 +595,34 @@ footer {
 <nav id="navbar">
   <a href="#" class="nav-brand">
     <div class="nav-logo-icon">
-      <img src="https://mgqvrijrxxdwqstvrtxw.supabase.co/storage/v1/object/public/imagens/AtualFestasModaMasculina.jpeg" alt="Atual Festas Logo" onerror="this.outerHTML='🤵'">
+      <img src="https://mgqvrijrxxdwqstvrtxw.supabase.co/storage/v1/object/public/imagens/AtualFestasModaMasculina.jpeg" alt="Atual Festas Logo" onerror="this.parentElement.innerHTML='🤵'">
     </div>
     <div class="nav-brand-text">
       <div class="top">ATUAL FESTAS</div>
       <div class="bottom">Moda Masculina · Locações</div>
     </div>
   </a>
-  <ul class="nav-links" id="nav-links">
-    <li><a href="#catalogo" onclick="closeMobileMenu()">Catálogo</a></li>
-    <li><a href="#agendar" onclick="closeMobileMenu()">Agendar</a></li>
-    <li><a href="#como-funciona" onclick="closeMobileMenu()">Como Funciona</a></li>
-    <li><a href="#contato" onclick="closeMobileMenu()">Contato</a></li>
+  <ul class="nav-links">
+    <li><a href="#catalogo">Catálogo</a></li>
+    <li><a href="#agendar">Agendar</a></li>
+    <li><a href="#como-funciona">Como Funciona</a></li>
+    <li><a href="#contato">Contato</a></li>
   </ul>
   <button class="nav-cta" onclick="scrollToAgendar()">Agendar Agora</button>
-  <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
+  <button class="nav-hamburger" id="hamburger-btn" onclick="toggleMobileMenu()" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
-<!-- HERO -->
+<!-- MOBILE MENU -->
+<div class="nav-mobile-menu" id="mobile-menu">
+  <span class="close-btn" onclick="toggleMobileMenu()">✕</span>
+  <a href="#catalogo" onclick="toggleMobileMenu()">Catálogo</a>
+  <a href="#agendar" onclick="toggleMobileMenu()">Agendar</a>
+  <a href="#como-funciona" onclick="toggleMobileMenu()">Como Funciona</a>
+  <a href="#contato" onclick="toggleMobileMenu()">Contato</a>
+  <button class="btn-primary" onclick="scrollToAgendar();toggleMobileMenu()">📅 Agendar Agora</button>
+</div>
 <section id="hero">
   <div class="hero-bg-pattern"></div>
   <div class="hero-glow"></div>
@@ -850,8 +890,8 @@ footer {
     <div class="section-line"></div>
     <p style="margin-top:20px;color:rgba(255,255,255,0.6);margin-bottom:40px">Tire suas dúvidas ou fale diretamente conosco pelo WhatsApp</p>
     <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
-      <a href="https://wa.me/5583987483838" target="_blank" class="btn-primary" style="text-decoration:none">💬 WhatsApp</a>
-      <a href="/cdn-cgi/l/email-protection#bcddc8c9ddd0dad9cfc8ddcfd1d3d8ddd1ddcfdfc9d0d5d2ddfcdbd1ddd5d092dfd3d1" class="btn-outline" style="text-decoration:none">📧 Enviar E-mail</a>
+      <a href="https://wa.me/5583987483838" class="btn-primary" style="text-decoration:none" target="_blank">💬 WhatsApp</a>
+      <a href="mailto:atualfestasmodamasculina@gmail.com" class="btn-outline" style="text-decoration:none">📧 Enviar E-mail</a>
     </div>
   </div>
 </section>
@@ -887,125 +927,6 @@ footer {
   </div>
 </footer>
 
-<!-- MODAL SQL CONFIGURAÇÃO -->
-<div class="modal-overlay" id="modal-sql">
-  <div class="modal" style="max-width:760px;max-height:92vh">
-    <button class="modal-close" onclick="closeModal('modal-sql')">✕</button>
-    <div class="modal-title">🛠️ Configuração SQL</div>
-    <div class="modal-subtitle">Execute estes comandos no Supabase → SQL Editor</div>
-
-    <div style="background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.3);border-radius:6px;padding:16px;margin-bottom:20px;font-size:0.82rem;line-height:1.7;color:rgba(255,255,255,0.8)">
-      <strong style="color:var(--gold)">⚠️ Por que isso é necessário?</strong><br>
-      O Supabase usa RLS (Row Level Security) que bloqueia INSERT/UPDATE/DELETE por padrão para a chave anônima. Execute os SQLs abaixo para liberar as permissões necessárias.
-    </div>
-
-    <div style="margin-bottom:18px">
-      <div style="font-size:0.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:10px">PASSO 1 — Permissões da tabela <code style="background:rgba(255,255,255,0.1);padding:2px 6px;border-radius:3px">roupas</code></div>
-      <div style="position:relative">
-        <pre id="sql-roupas" style="background:#0d1117;border:1px solid rgba(201,168,76,0.2);border-radius:6px;padding:16px;font-size:0.75rem;line-height:1.7;color:#e6edf3;overflow-x:auto;margin:0;white-space:pre-wrap">-- Habilitar RLS na tabela roupas (caso não esteja)
-ALTER TABLE roupas ENABLE ROW LEVEL SECURITY;
-
--- Permitir leitura pública (catálogo visível para todos)
-DROP POLICY IF EXISTS "roupas_select_public" ON roupas;
-CREATE POLICY "roupas_select_public"
-  ON roupas FOR SELECT
-  TO anon, authenticated
-  USING (true);
-
--- Permitir INSERT para anon (admin do site)
-DROP POLICY IF EXISTS "roupas_insert_anon" ON roupas;
-CREATE POLICY "roupas_insert_anon"
-  ON roupas FOR INSERT
-  TO anon
-  WITH CHECK (true);
-
--- Permitir UPDATE para anon
-DROP POLICY IF EXISTS "roupas_update_anon" ON roupas;
-CREATE POLICY "roupas_update_anon"
-  ON roupas FOR UPDATE
-  TO anon
-  USING (true)
-  WITH CHECK (true);
-
--- Permitir DELETE para anon
-DROP POLICY IF EXISTS "roupas_delete_anon" ON roupas;
-CREATE POLICY "roupas_delete_anon"
-  ON roupas FOR DELETE
-  TO anon
-  USING (true);</pre>
-        <button onclick="copiarSQL('sql-roupas', this)" style="position:absolute;top:10px;right:10px;background:rgba(201,168,76,0.2);border:1px solid rgba(201,168,76,0.4);color:var(--gold);padding:5px 12px;font-size:0.65rem;font-weight:700;letter-spacing:1px;cursor:pointer;border-radius:3px;text-transform:uppercase">📋 Copiar</button>
-      </div>
-    </div>
-
-    <div style="margin-bottom:18px">
-      <div style="font-size:0.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:10px">PASSO 2 — Adicionar coluna <code style="background:rgba(255,255,255,0.1);padding:2px 6px;border-radius:3px">imagem_url</code> (se não existir)</div>
-      <div style="position:relative">
-        <pre id="sql-imagem" style="background:#0d1117;border:1px solid rgba(201,168,76,0.2);border-radius:6px;padding:16px;font-size:0.75rem;line-height:1.7;color:#e6edf3;overflow-x:auto;margin:0;white-space:pre-wrap">-- Adicionar coluna imagem_url na tabela roupas
-ALTER TABLE roupas
-  ADD COLUMN IF NOT EXISTS imagem_url TEXT;
-
--- Verificar a estrutura atual da tabela
-SELECT column_name, data_type
-FROM information_schema.columns
-WHERE table_name = 'roupas'
-ORDER BY ordinal_position;</pre>
-        <button onclick="copiarSQL('sql-imagem', this)" style="position:absolute;top:10px;right:10px;background:rgba(201,168,76,0.2);border:1px solid rgba(201,168,76,0.4);color:var(--gold);padding:5px 12px;font-size:0.65rem;font-weight:700;letter-spacing:1px;cursor:pointer;border-radius:3px;text-transform:uppercase">📋 Copiar</button>
-      </div>
-    </div>
-
-    <div style="margin-bottom:18px">
-      <div style="font-size:0.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:10px">PASSO 3 — Permissões do Storage (bucket <code style="background:rgba(255,255,255,0.1);padding:2px 6px;border-radius:3px">imagens</code>)</div>
-      <div style="position:relative">
-        <pre id="sql-storage" style="background:#0d1117;border:1px solid rgba(201,168,76,0.2);border-radius:6px;padding:16px;font-size:0.75rem;line-height:1.7;color:#e6edf3;overflow-x:auto;margin:0;white-space:pre-wrap">-- Permitir upload de imagens para usuários anônimos
-INSERT INTO storage.buckets (id, name, public)
-  VALUES ('imagens', 'imagens', true)
-  ON CONFLICT (id) DO UPDATE SET public = true;
-
--- Política de leitura pública
-DROP POLICY IF EXISTS "imagens_public_read" ON storage.objects;
-CREATE POLICY "imagens_public_read"
-  ON storage.objects FOR SELECT
-  TO public
-  USING (bucket_id = 'imagens');
-
--- Política de upload para anon
-DROP POLICY IF EXISTS "imagens_anon_upload" ON storage.objects;
-CREATE POLICY "imagens_anon_upload"
-  ON storage.objects FOR INSERT
-  TO anon
-  WITH CHECK (bucket_id = 'imagens');
-
--- Política de update para anon
-DROP POLICY IF EXISTS "imagens_anon_update" ON storage.objects;
-CREATE POLICY "imagens_anon_update"
-  ON storage.objects FOR UPDATE
-  TO anon
-  USING (bucket_id = 'imagens');
-
--- Política de delete para anon
-DROP POLICY IF EXISTS "imagens_anon_delete" ON storage.objects;
-CREATE POLICY "imagens_anon_delete"
-  ON storage.objects FOR DELETE
-  TO anon
-  USING (bucket_id = 'imagens');</pre>
-        <button onclick="copiarSQL('sql-storage', this)" style="position:absolute;top:10px;right:10px;background:rgba(201,168,76,0.2);border:1px solid rgba(201,168,76,0.4);color:var(--gold);padding:5px 12px;font-size:0.65rem;font-weight:700;letter-spacing:1px;cursor:pointer;border-radius:3px;text-transform:uppercase">📋 Copiar</button>
-      </div>
-    </div>
-
-    <div style="background:rgba(45,125,70,0.1);border:1px solid rgba(45,125,70,0.3);border-radius:6px;padding:14px;font-size:0.8rem;color:rgba(255,255,255,0.75);line-height:1.7">
-      <strong style="color:#4CAF50">✅ Como aplicar:</strong><br>
-      1. Acesse <strong>supabase.com</strong> → seu projeto<br>
-      2. Menu esquerdo → <strong>SQL Editor</strong><br>
-      3. Cole e execute cada bloco acima na ordem (1, 2, 3)<br>
-      4. Volte aqui e tente adicionar/editar um traje
-    </div>
-
-    <div style="text-align:right;margin-top:16px">
-      <button class="btn-form btn-next" onclick="testarPermissoes()">🔍 Testar Permissões</button>
-    </div>
-  </div>
-</div>
-
 <!-- Toast Container -->
 <div id="toast-container"></div>
 
@@ -1036,19 +957,19 @@ CREATE POLICY "imagens_anon_delete"
       <div class="badge">🔐 Admin</div>
     </div>
     <div class="admin-nav">
-      <div class="admin-nav-item active" onclick="showAdminPage('dashboard')">
+      <div class="admin-nav-item active" onclick="showAdminPage('dashboard',this)">
         <span class="icon">📊</span> Dashboard
       </div>
-      <div class="admin-nav-item" onclick="showAdminPage('agendamentos')">
+      <div class="admin-nav-item" onclick="showAdminPage('agendamentos',this)">
         <span class="icon">📅</span> Agendamentos
       </div>
-      <div class="admin-nav-item" onclick="showAdminPage('clientes')">
+      <div class="admin-nav-item" onclick="showAdminPage('clientes',this)">
         <span class="icon">👥</span> Clientes
       </div>
-      <div class="admin-nav-item" onclick="showAdminPage('mensagens')">
+      <div class="admin-nav-item" onclick="showAdminPage('mensagens',this)">
         <span class="icon">💬</span> Mensagens
       </div>
-      <div class="admin-nav-item" onclick="showAdminPage('roupas')">
+      <div class="admin-nav-item" onclick="showAdminPage('roupas',this)">
         <span class="icon">🤵</span> Catálogo
       </div>
     </div>
@@ -1197,18 +1118,15 @@ CREATE POLICY "imagens_anon_delete"
       <div class="admin-header-bar">
         <div>
           <div class="admin-page-title">Catálogo</div>
-          <div class="admin-page-subtitle">Gerencie os trajes disponíveis</div>
+          <div class="admin-page-subtitle">Gerencie as peças disponíveis</div>
         </div>
-        <div style="display:flex;gap:10px;flex-wrap:wrap">
-          <button class="btn-form btn-prev" style="padding:10px 16px;font-size:0.72rem;border-color:rgba(201,168,76,0.4);color:var(--gold)" onclick="openModal('modal-sql')">🛠️ Config SQL</button>
-          <button class="btn-form btn-next" style="padding:10px 20px;font-size:0.75rem" onclick="openAddRoupa()">+ Adicionar Traje</button>
-        </div>
+        <button class="btn-form btn-next" style="padding:10px 20px;font-size:0.75rem" onclick="openModalNovaRoupa()">+ Adicionar Peça</button>
       </div>
       <div class="table-container">
         <table class="data-table">
           <thead>
             <tr>
-              <th>Traje</th><th>Tipo</th><th>Cor</th><th>Tamanho</th><th>Diária</th><th>Status</th><th>Ações</th>
+              <th>Imagem</th><th>Nome</th><th>Tipo</th><th>Cor</th><th>Tamanho</th><th>Diária</th><th>Status</th><th>Ações</th>
             </tr>
           </thead>
           <tbody id="roupas-tbody"></tbody>
@@ -1217,6 +1135,17 @@ CREATE POLICY "imagens_anon_delete"
     </div>
 
   </div><!-- admin-main -->
+
+  <!-- Admin Mobile Bottom Nav -->
+  <div class="admin-mobile-bar" id="admin-mobile-bar">
+    <div class="admin-mobile-bar-items">
+      <button class="admin-mobile-btn active" onclick="showAdminPage('dashboard',this)"><span class="icon">📊</span>Dashboard</button>
+      <button class="admin-mobile-btn" onclick="showAdminPage('agendamentos',this)"><span class="icon">📅</span>Agenda</button>
+      <button class="admin-mobile-btn" onclick="showAdminPage('clientes',this)"><span class="icon">👥</span>Clientes</button>
+      <button class="admin-mobile-btn" onclick="showAdminPage('mensagens',this)"><span class="icon">💬</span>Msgs</button>
+      <button class="admin-mobile-btn" onclick="showAdminPage('roupas',this)"><span class="icon">🤵</span>Catálogo</button>
+    </div>
+  </div>
 </div><!-- admin-overlay -->
 
 <!-- MODAL DETALHE AGENDAMENTO -->
@@ -1229,68 +1158,104 @@ CREATE POLICY "imagens_anon_delete"
   </div>
 </div>
 
-<!-- MODAL CADASTRO/EDIÇÃO DE TRAJE -->
+<!-- MODAL NOVA/EDITAR ROUPA -->
 <div class="modal-overlay" id="modal-roupa">
-  <div class="modal" style="max-width:640px">
+  <div class="modal" style="max-width:680px">
     <button class="modal-close" onclick="closeModal('modal-roupa')">✕</button>
-    <div class="modal-title" id="modal-roupa-title">Adicionar Traje</div>
+    <div class="modal-title" id="modal-roupa-title">Nova Peça</div>
     <div class="modal-subtitle">Preencha os dados do traje</div>
-    <div style="display:grid;gap:16px">
-      <div class="form-group">
+    <input type="hidden" id="edit-roupa-id">
+    <div class="form-grid cols-2" style="gap:16px">
+      <div class="form-group" style="grid-column:1/-1">
         <label>Nome do Traje *</label>
-        <input type="text" id="form-roupa-nome" placeholder="Ex: Terno Slim Preto Premium">
-      </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
-        <div class="form-group">
-          <label>Tipo *</label>
-          <select id="form-roupa-tipo">
-            <option value="terno">🤵 Terno</option>
-            <option value="smoking">🎩 Smoking</option>
-            <option value="costume">👔 Costume</option>
-            <option value="blazer">🧥 Blazer</option>
-            <option value="conjunto">👗 Conjunto</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Preço da Diária (R$) *</label>
-          <input type="number" id="form-roupa-preco" placeholder="Ex: 150.00" step="0.01" min="0">
-        </div>
-      </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
-        <div class="form-group">
-          <label>Cor</label>
-          <input type="text" id="form-roupa-cor" placeholder="Ex: Preto, Azul Navy">
-        </div>
-        <div class="form-group">
-          <label>Tamanhos Disponíveis</label>
-          <input type="text" id="form-roupa-tamanho" placeholder="Ex: P/M/G/GG">
-        </div>
+        <input type="text" id="edit-nome" placeholder="Ex: Terno Slim Preto Premium">
       </div>
       <div class="form-group">
+        <label>Tipo *</label>
+        <select id="edit-tipo">
+          <option value="terno">🤵 Terno</option>
+          <option value="smoking">🎩 Smoking</option>
+          <option value="costume">👔 Costume</option>
+          <option value="blazer">🧥 Blazer</option>
+          <option value="conjunto">👗 Conjunto</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Cor</label>
+        <input type="text" id="edit-cor" placeholder="Ex: Preto, Azul Navy">
+      </div>
+      <div class="form-group">
+        <label>Tamanhos Disponíveis</label>
+        <input type="text" id="edit-tamanho" placeholder="Ex: P/M/G/GG">
+      </div>
+      <div class="form-group">
+        <label>Valor da Diária (R$) *</label>
+        <input type="number" id="edit-preco" placeholder="150.00" step="0.01" min="0">
+      </div>
+      <div class="form-group" style="grid-column:1/-1">
         <label>Descrição</label>
-        <textarea id="form-roupa-descricao" placeholder="Breve descrição do traje..." style="min-height:80px"></textarea>
+        <textarea id="edit-descricao" placeholder="Descrição detalhada do traje..." style="min-height:80px"></textarea>
       </div>
-      <div class="form-group">
-        <label>Imagem do Traje (Upload pelo Supabase Storage)</label>
-        <input type="file" id="form-roupa-file" accept="image/*" onchange="uploadImagemRoupa(this)"
-          style="background:rgba(42,32,37,0.6);border:1px solid rgba(201,168,76,0.2);color:var(--white);padding:10px 14px;border-radius:2px;font-size:0.85rem;cursor:pointer;width:100%">
-        <div id="upload-status" style="font-size:0.75rem;margin-top:6px;letter-spacing:1px"></div>
-        <input type="hidden" id="form-roupa-imagem-url">
-        <img id="roupa-img-preview" src="" alt="Preview" style="display:none;margin-top:10px;max-height:140px;max-width:100%;object-fit:contain;border-radius:4px;border:1px solid rgba(201,168,76,0.3)">
+      <div class="form-group" style="grid-column:1/-1">
+        <label>Disponível para Locação</label>
+        <select id="edit-disponivel">
+          <option value="true">✅ Disponível</option>
+          <option value="false">❌ Indisponível</option>
+        </select>
       </div>
-      <div class="form-group" style="flex-direction:row;align-items:center;gap:12px">
-        <input type="checkbox" id="form-roupa-disponivel" style="width:18px;height:18px;accent-color:var(--bordeaux)">
-        <label for="form-roupa-disponivel" style="font-size:0.85rem;color:var(--white);text-transform:none;letter-spacing:0;cursor:pointer">Disponível para locação</label>
+      <!-- IMAGEM -->
+      <div class="form-group" style="grid-column:1/-1">
+        <label>Imagem do Traje</label>
+        <div style="display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap">
+          <div id="edit-img-preview" style="width:100px;height:120px;background:rgba(42,32,37,0.6);border:1px solid rgba(201,168,76,0.2);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:3rem;flex-shrink:0;overflow:hidden">
+            👔
+          </div>
+          <div style="flex:1;min-width:200px">
+            <div style="font-size:0.75rem;color:rgba(255,255,255,0.5);margin-bottom:10px">Faça upload de uma imagem do Supabase Storage ou cole a URL diretamente.</div>
+            <div class="form-group" style="margin-bottom:10px">
+              <label style="font-size:0.65rem">URL da Imagem (Supabase Storage)</label>
+              <input type="text" id="edit-img-url" placeholder="https://mgqvrijrxxdwqstvrtxw.supabase.co/storage/..." oninput="previewImgUrl(this.value)">
+            </div>
+            <div style="text-align:center;font-size:0.7rem;color:rgba(255,255,255,0.3);margin:8px 0">— ou —</div>
+            <label style="display:block;background:rgba(42,32,37,0.6);border:1px dashed rgba(201,168,76,0.3);border-radius:4px;padding:12px;text-align:center;cursor:pointer;font-size:0.75rem;color:var(--gold);transition:all 0.2s" onmouseover="this.style.background='rgba(201,168,76,0.1)'" onmouseout="this.style.background='rgba(42,32,37,0.6)'">
+              📁 Selecionar Arquivo para Upload
+              <input type="file" accept="image/*" style="display:none" onchange="uploadRoupáImagem(this)">
+            </label>
+            <div id="upload-progress" style="font-size:0.75rem;color:var(--gold);margin-top:8px;display:none">⏳ Fazendo upload...</div>
+          </div>
+        </div>
       </div>
-      <div style="display:flex;gap:12px;justify-content:flex-end;margin-top:8px">
-        <button class="btn-form btn-prev" onclick="closeModal('modal-roupa')">Cancelar</button>
-        <button class="btn-form btn-next" onclick="saveRoupa()">💾 Salvar Traje</button>
-      </div>
+    </div>
+    <div style="display:flex;gap:12px;margin-top:24px;justify-content:flex-end">
+      <button class="btn-form btn-prev" onclick="closeModal('modal-roupa')">Cancelar</button>
+      <button class="btn-form btn-next" onclick="salvarRoupa()">💾 Salvar Peça</button>
     </div>
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
+// ==================== MOBILE MENU ====================
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobile-menu');
+  const btn = document.getElementById('hamburger-btn');
+  menu.classList.toggle('open');
+  btn.classList.toggle('open');
+  document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+}
+
+// Close mobile menu on resize to desktop
+window.addEventListener('resize', () => {
+  if(window.innerWidth > 768) {
+    const menu = document.getElementById('mobile-menu');
+    const btn = document.getElementById('hamburger-btn');
+    if(menu && menu.classList.contains('open')) {
+      menu.classList.remove('open');
+      btn && btn.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  }
+});
+
 // ==================== SUPABASE INIT ====================
 const SUPABASE_URL = 'https://mgqvrijrxxdwqstvrtxw.supabase.co';
 const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1ncXZyaWpyeHhkd3FzdHZydHh3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0NjQ2ODAsImV4cCI6MjA5MDA0MDY4MH0.J1AgGUUTsf8qSdfPgDRc9-YRYv2hACnHfHx0SVBr_pM';
@@ -1381,10 +1346,11 @@ function renderCatalog() {
   const grid = document.getElementById('catalog-grid');
   grid.innerHTML = allRoupas.map(r => `
     <div class="roupa-card ${!r.disponivel ? 'card-unavailable' : ''}" onclick="openAgendarComRoupa('${r.id}')">
-      <div class="card-image" style="${r.imagem_url ? 'padding:0;background:none;' : ''}">
+      <div class="card-image" style="${r.imagem_url ? 'padding:0;' : ''}">
         ${r.imagem_url
-          ? `<img src="${r.imagem_url}" alt="${r.nome}" style="width:100%;height:100%;object-fit:cover;">`
-          : `<span>${roupaEmojis[r.tipo] || '👔'}</span>`}
+          ? `<img src="${r.imagem_url}" alt="${r.nome}" style="width:100%;height:100%;object-fit:cover;display:block">`
+          : `<span>${roupaEmojis[r.tipo] || '👔'}</span>`
+        }
         <span class="card-badge">${r.disponivel ? 'Disponível' : 'Indisponível'}</span>
       </div>
       <div class="card-body">
@@ -1617,24 +1583,27 @@ function exitAdmin() {
   document.body.style.overflow = '';
 }
 
-function showAdminPage(page) {
+function showAdminPage(page, el) {
   document.querySelectorAll('.admin-page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.admin-nav-item').forEach(n => n.classList.remove('active'));
+  document.querySelectorAll('.admin-mobile-btn').forEach(n => n.classList.remove('active'));
   document.getElementById('page-' + page).classList.add('active');
-  event.currentTarget.classList.add('active');
+  const target = el || (typeof event !== 'undefined' && event && event.currentTarget ? event.currentTarget : null);
+  if(target) target.classList.add('active');
   if(page === 'mensagens') renderMsgClienteList();
 }
 
 // ==================== ADMIN DATA ====================
 async function loadAdminData() {
   const [{ data: ags }, { data: clis }, { data: roupas }] = await Promise.all([
-    db.from('agendamentos').select('*, clientes(nome_completo, telefone, email), roupas(nome, tipo)').order('created_at', { ascending: false }),
+    db.from('agendamentos').select('*, clientes(nome_completo, telefone, email, cpf, endereco), roupas(nome, tipo)').order('created_at', { ascending: false }),
     db.from('clientes').select('*').order('data_cadastro', { ascending: false }),
     db.from('roupas').select('*').order('tipo')
   ]);
 
   allAgendamentos = ags || [];
   allClientes = clis || [];
+  if(roupas) { allRoupasAdmin = roupas; }
 
   // KPIs
   const totalAgs = allAgendamentos.length;
@@ -1710,7 +1679,7 @@ function renderAgendamentosTable(data) {
         <div class="action-btns">
           ${a.status === 'pendente' ? `<button class="action-btn confirm" onclick="updateStatus('${a.id}','confirmado')">Confirmar</button>` : ''}
           ${a.status === 'confirmado' ? `<button class="action-btn entregue" onclick="updateStatus('${a.id}','retirado')">Retirou</button>` : ''}
-          ${a.status === 'confirmado' ? `<button class="action-btn view" onclick="printContrato('${a.id}')">🖨️ Contrato</button>` : ''}
+          ${a.status === 'confirmado' ? `<button class="action-btn view" onclick="printContrato('${a.id}')">🖨️ Imprimir</button>` : ''}
           ${a.status === 'retirado' ? `<button class="action-btn confirm" onclick="markDevolvido('${a.id}')">Devolveu</button>` : ''}
           ${['pendente','confirmado'].includes(a.status) ? `<button class="action-btn cancel" onclick="updateStatus('${a.id}','cancelado')">Cancelar</button>` : ''}
         </div>
@@ -1742,7 +1711,135 @@ function searchClientes(q) {
   renderClientesTable(filtered);
 }
 
-// renderRoupasAdmin is defined below with full CRUD support
+function renderRoupasAdmin(data) {
+  document.getElementById('roupas-tbody').innerHTML = data.map(r => `
+    <tr>
+      <td>
+        ${r.imagem_url
+          ? `<img src="${r.imagem_url}" alt="${r.nome}" style="width:48px;height:58px;object-fit:cover;border-radius:4px;border:1px solid rgba(201,168,76,0.3)">`
+          : `<div style="width:48px;height:58px;background:rgba(42,32,37,0.6);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:1.6rem">${roupaEmojis[r.tipo]||'👔'}</div>`
+        }
+      </td>
+      <td><strong>${r.nome}</strong></td>
+      <td>${r.tipo}</td>
+      <td>${r.cor||'-'}</td>
+      <td>${r.tamanho||'-'}</td>
+      <td>R$ ${Number(r.preco_diaria).toFixed(2)}</td>
+      <td><span class="status-badge ${r.disponivel ? 'status-confirmado' : 'status-cancelado'}">${r.disponivel ? 'Disponível' : 'Indisponível'}</span></td>
+      <td>
+        <div class="action-btns">
+          <button class="action-btn view" onclick="openModalEditarRoupa('${r.id}')">✏️ Editar</button>
+          <button class="action-btn cancel" onclick="excluirRoupa('${r.id}','${r.nome.replace(/'/g,"\\'")}')">🗑️ Excluir</button>
+        </div>
+      </td>
+    </tr>
+  `).join('') || '<tr><td colspan="8" style="text-align:center;padding:40px;color:rgba(255,255,255,0.3)">Nenhuma peça cadastrada</td></tr>';
+}
+
+// ==================== CATÁLOGO CRUD ====================
+let allRoupasAdmin = [];
+
+function openModalNovaRoupa() {
+  document.getElementById('modal-roupa-title').textContent = 'Nova Peça';
+  document.getElementById('edit-roupa-id').value = '';
+  document.getElementById('edit-nome').value = '';
+  document.getElementById('edit-tipo').value = 'terno';
+  document.getElementById('edit-cor').value = '';
+  document.getElementById('edit-tamanho').value = '';
+  document.getElementById('edit-preco').value = '';
+  document.getElementById('edit-descricao').value = '';
+  document.getElementById('edit-disponivel').value = 'true';
+  document.getElementById('edit-img-url').value = '';
+  document.getElementById('edit-img-preview').innerHTML = '👔';
+  openModal('modal-roupa');
+}
+
+function openModalEditarRoupa(id) {
+  const r = allRoupasAdmin.find(x => x.id === id) || allRoupas.find(x => x.id === id);
+  if(!r) { showToast('Peça não encontrada!','error'); return; }
+  document.getElementById('modal-roupa-title').textContent = 'Editar Peça';
+  document.getElementById('edit-roupa-id').value = r.id;
+  document.getElementById('edit-nome').value = r.nome || '';
+  document.getElementById('edit-tipo').value = r.tipo || 'terno';
+  document.getElementById('edit-cor').value = r.cor || '';
+  document.getElementById('edit-tamanho').value = r.tamanho || '';
+  document.getElementById('edit-preco').value = r.preco_diaria || '';
+  document.getElementById('edit-descricao').value = r.descricao || '';
+  document.getElementById('edit-disponivel').value = r.disponivel ? 'true' : 'false';
+  const imgUrl = r.imagem_url || '';
+  document.getElementById('edit-img-url').value = imgUrl;
+  previewImgUrl(imgUrl);
+  openModal('modal-roupa');
+}
+
+function previewImgUrl(url) {
+  const preview = document.getElementById('edit-img-preview');
+  if(url && url.startsWith('http')) {
+    preview.innerHTML = `<img src="${url}" alt="Preview" style="width:100%;height:100%;object-fit:cover" onerror="this.parentElement.innerHTML='❌'">`;
+  } else {
+    preview.innerHTML = '👔';
+  }
+}
+
+async function uploadRoupaImagem(input) {
+  const file = input.files[0];
+  if(!file) return;
+  const progress = document.getElementById('upload-progress');
+  progress.style.display = 'block';
+  try {
+    const ext = file.name.split('.').pop();
+    const fileName = `roupas/traje_${Date.now()}.${ext}`;
+    const { data, error } = await db.storage.from('imagens').upload(fileName, file, { upsert: true });
+    if(error) throw error;
+    const publicUrl = `${SUPABASE_URL}/storage/v1/object/public/imagens/${fileName}`;
+    document.getElementById('edit-img-url').value = publicUrl;
+    previewImgUrl(publicUrl);
+    showToast('Imagem enviada com sucesso!', 'success');
+  } catch(err) {
+    showToast('Erro no upload: ' + (err.message || 'Tente novamente'), 'error');
+  } finally {
+    progress.style.display = 'none';
+  }
+}
+
+async function salvarRoupa() {
+  const id = document.getElementById('edit-roupa-id').value;
+  const nome = document.getElementById('edit-nome').value.trim();
+  const tipo = document.getElementById('edit-tipo').value;
+  const preco = parseFloat(document.getElementById('edit-preco').value);
+  if(!nome) { showToast('Informe o nome do traje!','error'); return; }
+  if(isNaN(preco) || preco <= 0) { showToast('Informe um valor de diária válido!','error'); return; }
+  const payload = {
+    nome,
+    tipo,
+    cor: document.getElementById('edit-cor').value.trim() || null,
+    tamanho: document.getElementById('edit-tamanho').value.trim() || null,
+    preco_diaria: preco,
+    descricao: document.getElementById('edit-descricao').value.trim() || null,
+    disponivel: document.getElementById('edit-disponivel').value === 'true',
+    imagem_url: document.getElementById('edit-img-url').value.trim() || null,
+  };
+  let error;
+  if(id) {
+    ({ error } = await db.from('roupas').update({ ...payload, updated_at: new Date().toISOString() }).eq('id', id));
+  } else {
+    ({ error } = await db.from('roupas').insert(payload));
+  }
+  if(error) { showToast('Erro ao salvar: ' + (error.message || 'Tente novamente'), 'error'); return; }
+  showToast(id ? 'Peça atualizada!' : 'Peça adicionada!', 'success');
+  closeModal('modal-roupa');
+  await loadAdminData();
+  await loadRoupas();
+}
+
+async function excluirRoupa(id, nome) {
+  if(!confirm(`Deseja excluir a peça "${nome}"? Esta ação não pode ser desfeita.`)) return;
+  const { error } = await db.from('roupas').delete().eq('id', id);
+  if(error) { showToast('Erro ao excluir!', 'error'); return; }
+  showToast('Peça excluída com sucesso!', 'success');
+  await loadAdminData();
+  await loadRoupas();
+}
 
 async function updateStatus(id, status) {
   const { error } = await db.from('agendamentos').update({ status, updated_at: new Date().toISOString() }).eq('id', id);
@@ -1756,6 +1853,117 @@ async function markDevolvido(id) {
   if(error) { showToast('Erro ao atualizar!', 'error'); return; }
   showToast('Traje marcado como devolvido!', 'success');
   await loadAdminData();
+}
+
+// ==================== IMPRIMIR CONTRATO ====================
+function printContrato(id) {
+  const ag = allAgendamentos.find(a => a.id === id);
+  if(!ag) { showToast('Agendamento não encontrado!', 'error'); return; }
+  const cliente = ag.clientes || {};
+  const roupa = ag.roupas || {};
+  const dias = ag.data_retirada && ag.data_devolucao_prevista
+    ? Math.max(1, Math.ceil((new Date(ag.data_devolucao_prevista) - new Date(ag.data_retirada)) / 86400000))
+    : '-';
+  const valor = ag.valor_total ? `R$ ${Number(ag.valor_total).toFixed(2)}` : '-';
+  const dataHoje = new Date().toLocaleDateString('pt-BR');
+  const win = window.open('', '_blank', 'width=800,height=900,scrollbars=yes');
+  win.document.write(`<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8">
+  <title>Contrato de Locação - Atual Festas</title>
+  <style>
+    @media print { body { margin: 0; } .no-print { display: none; } }
+    body { font-family: Arial, sans-serif; margin: 40px; color: #1a1a1a; font-size: 13px; line-height: 1.6; }
+    .header { text-align: center; margin-bottom: 24px; border-bottom: 3px solid #7A1530; padding-bottom: 16px; }
+    .logo { width: 70px; height: 70px; border-radius: 50%; object-fit: cover; border: 2px solid #C9A84C; }
+    h1 { font-size: 20px; color: #7A1530; margin: 8px 0 2px; letter-spacing: 2px; }
+    h2 { font-size: 14px; color: #C9A84C; margin: 0; font-weight: normal; letter-spacing: 1px; }
+    .contract-title { font-size: 16px; font-weight: bold; text-align: center; margin: 20px 0 16px; text-transform: uppercase; color: #7A1530; letter-spacing: 2px; }
+    .section { margin-bottom: 18px; }
+    .section-title { font-size: 11px; font-weight: bold; text-transform: uppercase; color: #7A1530; letter-spacing: 2px; border-bottom: 1px solid #eee; padding-bottom: 4px; margin-bottom: 10px; }
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px; }
+    .info-row { display: flex; gap: 6px; font-size: 12px; }
+    .info-label { font-weight: bold; color: #555; min-width: 120px; }
+    .info-value { color: #1a1a1a; }
+    .termos { font-size: 11px; line-height: 1.7; }
+    .termos p { margin-bottom: 6px; }
+    .assinaturas { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 48px; }
+    .assinatura { text-align: center; }
+    .assinatura-linha { border-top: 1px solid #333; margin-bottom: 6px; padding-top: 6px; font-size: 11px; color: #555; }
+    .destaque { background: #fff8e7; border: 1px solid #C9A84C; border-radius: 4px; padding: 10px 14px; margin-bottom: 16px; font-size: 12px; }
+    .destaque strong { color: #7A1530; }
+    .print-btn { background: #7A1530; color: #fff; border: none; padding: 10px 24px; font-size: 14px; cursor: pointer; border-radius: 4px; margin: 0 8px; }
+    .close-btn-p { background: #555; color: #fff; border: none; padding: 10px 24px; font-size: 14px; cursor: pointer; border-radius: 4px; }
+    .btn-row { text-align: center; margin-bottom: 24px; }
+  </style></head><body>
+  <div class="no-print btn-row">
+    <button class="print-btn" onclick="window.print()">🖨️ Imprimir</button>
+    <button class="close-btn-p" onclick="window.close()">Fechar</button>
+  </div>
+  <div class="header">
+    <img class="logo" src="https://mgqvrijrxxdwqstvrtxw.supabase.co/storage/v1/object/public/imagens/AtualFestasModaMasculina.jpeg" alt="Logo" onerror="this.style.display='none'">
+    <h1>ATUAL FESTAS</h1>
+    <h2>Moda Masculina · Locações · Campina Grande, PB</h2>
+  </div>
+  <div class="contract-title">CONTRATO DE LOCAÇÃO DE TRAJE</div>
+  <div class="destaque">
+    <strong>Nº do Agendamento:</strong> ${ag.id ? ag.id.substring(0,8).toUpperCase() : 'N/A'} &nbsp;&nbsp;
+    <strong>Data de Emissão:</strong> ${dataHoje} &nbsp;&nbsp;
+    <strong>Status:</strong> ${ag.status ? ag.status.toUpperCase() : '-'}
+  </div>
+  <div class="section">
+    <div class="section-title">Dados do Locatário</div>
+    <div class="info-grid">
+      <div class="info-row"><span class="info-label">Nome Completo:</span><span class="info-value">${cliente.nome_completo || '-'}</span></div>
+      <div class="info-row"><span class="info-label">CPF:</span><span class="info-value">${cliente.cpf || '-'}</span></div>
+      <div class="info-row"><span class="info-label">Telefone/WhatsApp:</span><span class="info-value">${cliente.telefone || '-'}</span></div>
+      <div class="info-row"><span class="info-label">E-mail:</span><span class="info-value">${cliente.email || '-'}</span></div>
+      <div class="info-row" style="grid-column:1/-1"><span class="info-label">Endereço:</span><span class="info-value">${cliente.endereco || '-'}</span></div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-title">Dados do Traje Locado</div>
+    <div class="info-grid">
+      <div class="info-row"><span class="info-label">Traje:</span><span class="info-value">${roupa.nome || '-'}</span></div>
+      <div class="info-row"><span class="info-label">Tipo:</span><span class="info-value">${roupa.tipo || '-'}</span></div>
+      <div class="info-row"><span class="info-label">Tamanho:</span><span class="info-value">${ag.tamanho || '-'}</span></div>
+      <div class="info-row"><span class="info-label">Evento:</span><span class="info-value">${eventoLabel(ag.tipo_evento)}</span></div>
+      <div class="info-row"><span class="info-label">Data de Retirada:</span><span class="info-value">${formatDate(ag.data_retirada)}</span></div>
+      <div class="info-row"><span class="info-label">Data de Devolução:</span><span class="info-value">${formatDate(ag.data_devolucao_prevista)}</span></div>
+      <div class="info-row"><span class="info-label">Período (dias):</span><span class="info-value">${dias}</span></div>
+      <div class="info-row"><span class="info-label">Valor Total:</span><span class="info-value"><strong>${valor}</strong></span></div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-title">Termo de Responsabilidade e Compromisso</div>
+    <div class="termos">
+      <p><strong>1. CUIDADO E CONSERVAÇÃO:</strong> O locatário compromete-se a zelar pelo traje com o máximo de cuidado durante todo o período de uso, evitando manchas, rasgos, danos por mau uso ou descuido.</p>
+      <p><strong>2. RESPONSABILIDADE POR DANOS:</strong> Em caso de danos materiais ao traje, o locatário responsabiliza-se integralmente pelo custo de reparo ou reposição, conforme avaliação técnica da loja.</p>
+      <p><strong>3. PRAZO DE DEVOLUÇÃO:</strong> O locatário compromete-se a devolver o traje impreterivelmente até a data acordada. Atrasos geram multa de R$ 50,00 por dia de atraso.</p>
+      <p><strong>4. CONDIÇÕES DE DEVOLUÇÃO:</strong> O traje deve ser devolvido em condições equivalentes às do recebimento — limpo e acondicionado adequadamente.</p>
+      <p><strong>5. PROIBIÇÕES:</strong> É proibido emprestar, sublocar ou ceder o traje a terceiros. O contrato é pessoal e intransferível.</p>
+      <p><strong>6. HIGIENE E LIMPEZA:</strong> O locatário não deve lavar, secar na máquina ou passar as peças sem orientação da loja.</p>
+      <p><strong>7. VERIFICAÇÃO PRÉVIA:</strong> O locatário confirma ter verificado o traje no ato da retirada e está de acordo com seu estado de conservação.</p>
+      <p><strong>8. ACEITAÇÃO INTEGRAL:</strong> A assinatura deste contrato tem plena validade jurídica, vinculando o locatário a todas as cláusulas, em conformidade com o Código Civil Brasileiro.</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-title">Observações</div>
+    <div style="font-size:12px;min-height:36px;border-bottom:1px solid #ddd;padding-bottom:8px">${ag.observacoes || 'Nenhuma observação registrada.'}</div>
+  </div>
+  <div class="assinaturas">
+    <div class="assinatura">
+      <div style="height:60px"></div>
+      <div class="assinatura-linha">Assinatura do Locatário<br><strong>${cliente.nome_completo || '___________________________'}</strong><br>CPF: ${cliente.cpf || '-'}</div>
+    </div>
+    <div class="assinatura">
+      <div style="height:60px"></div>
+      <div class="assinatura-linha">Assinatura da Atual Festas<br><strong>Atual Festas Moda Masculina</strong><br>Campina Grande, PB</div>
+    </div>
+  </div>
+  <div style="text-align:center;font-size:10px;color:#999;margin-top:32px;border-top:1px solid #eee;padding-top:12px">
+    Atual Festas Moda Masculina · (83) 98748-3838 · atualfestasmodamasculina@gmail.com · Campina Grande, PB
+  </div>
+  </body></html>`);
+  win.document.close();
 }
 
 // ==================== MENSAGENS ====================
@@ -1864,364 +2072,11 @@ document.querySelectorAll('.modal-overlay').forEach(mo => {
 
 // Admin login on Enter
 document.addEventListener('keydown', e => {
-  if(e.key === 'Enter' && document.getElementById('admin-login').classList.contains('active')) doAdminLogin();
+  if(e.key === 'Enter') {
+    const login = document.getElementById('admin-login');
+    if(login && login.classList.contains('active')) doAdminLogin();
+  }
 });
-
-// ==================== SQL UTILS ====================
-function copiarSQL(elId, btn) {
-  const text = document.getElementById(elId).textContent;
-  navigator.clipboard.writeText(text).then(() => {
-    btn.textContent = '✅ Copiado!';
-    setTimeout(() => btn.textContent = '📋 Copiar', 2000);
-  }).catch(() => {
-    // fallback
-    const ta = document.createElement('textarea');
-    ta.value = text; document.body.appendChild(ta);
-    ta.select(); document.execCommand('copy');
-    document.body.removeChild(ta);
-    btn.textContent = '✅ Copiado!';
-    setTimeout(() => btn.textContent = '📋 Copiar', 2000);
-  });
-}
-
-async function testarPermissoes() {
-  showToast('Testando permissões...', 'info');
-  const resultados = [];
-
-  // Test SELECT
-  const { error: errSel } = await db.from('roupas').select('id').limit(1);
-  resultados.push(`SELECT: ${errSel ? '❌ ' + errSel.message : '✅ OK'}`);
-
-  // Test INSERT
-  const { data: ins, error: errIns } = await db.from('roupas').insert({
-    nome: '__TESTE_TEMP__', tipo: 'terno', preco_diaria: 1, disponivel: false
-  }).select();
-  resultados.push(`INSERT: ${errIns ? '❌ ' + errIns.message : '✅ OK'}`);
-
-  // Test UPDATE & DELETE if insert worked
-  if(ins && ins[0]) {
-    const { error: errUpd } = await db.from('roupas').update({ nome: '__TESTE_UPD__' }).eq('id', ins[0].id);
-    resultados.push(`UPDATE: ${errUpd ? '❌ ' + errUpd.message : '✅ OK'}`);
-    const { error: errDel } = await db.from('roupas').delete().eq('id', ins[0].id);
-    resultados.push(`DELETE: ${errDel ? '❌ ' + errDel.message : '✅ OK'}`);
-  }
-
-  // Test Storage upload
-  const blob = new Blob(['test'], { type: 'text/plain' });
-  const { error: errSto } = await db.storage.from('imagens').upload(`test_${Date.now()}.txt`, blob, { upsert: true });
-  resultados.push(`STORAGE UPLOAD: ${errSto ? '❌ ' + errSto.message : '✅ OK'}`);
-
-  alert('Resultado dos testes:\n\n' + resultados.join('\n'));
-}
-
-// ==================== MOBILE MENU ====================
-function toggleMobileMenu() {
-  const links = document.getElementById('nav-links');
-  const burger = document.getElementById('hamburger');
-  links.classList.toggle('open');
-  burger.classList.toggle('open');
-}
-function closeMobileMenu() {
-  document.getElementById('nav-links').classList.remove('open');
-  document.getElementById('hamburger').classList.remove('open');
-}
-
-// ==================== PRINT CONTRACT ====================
-function printContrato(id) {
-  const ag = allAgendamentos.find(a => a.id === id);
-  if(!ag) { showToast('Agendamento não encontrado!', 'error'); return; }
-
-  const cliente = ag.clientes || {};
-  const roupa = ag.roupas || {};
-  const hoje = new Date().toLocaleDateString('pt-BR');
-  const dataRetirada = formatDate(ag.data_retirada);
-  const dataDevolucao = formatDate(ag.data_devolucao_prevista);
-  const valor = Number(ag.valor_total || 0).toFixed(2);
-
-  const html = `<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<title>Contrato de Aluguel - Atual Festas</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&family=Barlow+Condensed:wght@700;800&display=swap');
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family: 'Barlow', Arial, sans-serif; color: #1a1a1a; background: #fff; padding: 40px; font-size: 13px; line-height: 1.6; }
-  .header { text-align:center; border-bottom: 3px solid #7A1530; padding-bottom: 20px; margin-bottom: 28px; }
-  .header img { width:80px; height:80px; object-fit:cover; border-radius:50%; border:3px solid #7A1530; margin-bottom:10px; }
-  .header h1 { font-family:'Barlow Condensed',sans-serif; font-size:26px; font-weight:800; letter-spacing:3px; color:#7A1530; text-transform:uppercase; }
-  .header p { font-size:11px; color:#666; letter-spacing:2px; text-transform:uppercase; margin-top:4px; }
-  .contrato-titulo { text-align:center; font-family:'Barlow Condensed',sans-serif; font-size:18px; font-weight:800; letter-spacing:3px; text-transform:uppercase; color:#560F22; background:#fdf0f3; border:2px solid #7A1530; padding:12px; margin-bottom:24px; border-radius:4px; }
-  .secao { margin-bottom:20px; }
-  .secao-titulo { font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:#7A1530; border-bottom:1px solid #C9A84C; padding-bottom:5px; margin-bottom:12px; }
-  .dados-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
-  .dado { background:#f9f9f9; border:1px solid #e0e0e0; border-radius:3px; padding:8px 12px; }
-  .dado label { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#7A1530; display:block; margin-bottom:3px; }
-  .dado span { font-size:13px; font-weight:600; color:#1a1a1a; }
-  .dado.full { grid-column:1/-1; }
-  .clausulas { font-size:12px; color:#333; }
-  .clausulas p { margin-bottom:9px; padding-left:14px; text-indent:-14px; }
-  .clausulas strong { color:#7A1530; }
-  .assinaturas { display:grid; grid-template-columns:1fr 1fr; gap:40px; margin-top:30px; }
-  .assinatura { text-align:center; }
-  .linha-assinatura { border-top:1px solid #333; padding-top:8px; margin-top:50px; }
-  .linha-assinatura p { font-size:12px; color:#333; }
-  .linha-assinatura small { font-size:10px; color:#666; }
-  .rodape { text-align:center; font-size:10px; color:#999; margin-top:28px; padding-top:14px; border-top:1px solid #eee; }
-  .valor-destaque { background:#7A1530; color:#fff; text-align:center; padding:12px; border-radius:4px; font-family:'Barlow Condensed',sans-serif; font-size:20px; font-weight:800; letter-spacing:2px; margin:16px 0; }
-  @media print {
-    body { padding: 20px; }
-    @page { margin: 15mm; }
-  }
-</style>
-</head>
-<body>
-<div class="header">
-  <img src="https://mgqvrijrxxdwqstvrtxw.supabase.co/storage/v1/object/public/imagens/AtualFestasModaMasculina.jpeg" alt="Logo" onerror="this.style.display='none'">
-  <h1>Atual Festas</h1>
-  <p>Moda Masculina · Locações · Campina Grande, PB</p>
-</div>
-
-<div class="contrato-titulo">📋 Contrato de Aluguel de Traje</div>
-
-<div class="secao">
-  <div class="secao-titulo">Dados do Contratante (Locatário)</div>
-  <div class="dados-grid">
-    <div class="dado full"><label>Nome Completo</label><span>${cliente.nome_completo || '-'}</span></div>
-    <div class="dado"><label>CPF</label><span>${cliente.cpf || '-'}</span></div>
-    <div class="dado"><label>Telefone / WhatsApp</label><span>${cliente.telefone || '-'}</span></div>
-    <div class="dado full"><label>E-mail</label><span>${cliente.email || '-'}</span></div>
-    <div class="dado full"><label>Endereço</label><span>${cliente.endereco || '-'}</span></div>
-  </div>
-</div>
-
-<div class="secao">
-  <div class="secao-titulo">Dados do Traje Locado</div>
-  <div class="dados-grid">
-    <div class="dado full"><label>Traje</label><span>${roupa.nome || ag.roupa_id || '-'}</span></div>
-    <div class="dado"><label>Tipo</label><span>${roupa.tipo || '-'}</span></div>
-    <div class="dado"><label>Tamanho</label><span>${ag.tamanho || '-'}</span></div>
-    <div class="dado"><label>Tipo de Evento</label><span>${ag.tipo_evento || '-'}</span></div>
-    <div class="dado"><label>Data de Retirada</label><span>${dataRetirada}</span></div>
-    <div class="dado"><label>Data de Devolução</label><span>${dataDevolucao}</span></div>
-    <div class="dado"><label>Código do Agendamento</label><span>${ag.codigo || ag.id || '-'}</span></div>
-    <div class="dado"><label>Data do Contrato</label><span>${hoje}</span></div>
-  </div>
-  <div class="valor-destaque">💰 Valor Total: R$ ${valor}</div>
-</div>
-
-<div class="secao">
-  <div class="secao-titulo">Termo de Responsabilidade e Compromisso</div>
-  <div class="clausulas">
-    <p><strong>1. CUIDADO E CONSERVAÇÃO:</strong> O locatário compromete-se a zelar pelo traje com o máximo de cuidado durante todo o período de uso, evitando manchas, rasgos, danos por mau uso ou descuido.</p>
-    <p><strong>2. RESPONSABILIDADE POR DANOS:</strong> Em caso de danos materiais — manchas permanentes, rasgos, queimaduras, perda de peças — o locatário responsabiliza-se integralmente pelo custo de reparo ou reposição, conforme avaliação técnica da loja.</p>
-    <p><strong>3. PRAZO DE DEVOLUÇÃO:</strong> O traje deverá ser devolvido impreterivelmente até a data acordada. Atrasos geram multa de R$ 50,00 por dia, além de indenização por impedimento de nova locação.</p>
-    <p><strong>4. CONDIÇÕES DE DEVOLUÇÃO:</strong> O traje deve ser devolvido em condições equivalentes às do recebimento — limpo, passado e acondicionado adequadamente.</p>
-    <p><strong>5. PROIBIÇÕES DE USO:</strong> É proibido o uso em situações que exponham as peças a risco: ambientes com fumaça excessiva, atividades físicas intensas, chuva sem proteção.</p>
-    <p><strong>6. HIGIENE E LIMPEZA:</strong> Não lavar, secar na máquina ou passar sem orientação da loja. A limpeza profissional pós-devolução é responsabilidade da Atual Festas, exceto sujeira por descuido.</p>
-    <p><strong>7. TRANSFERÊNCIA PROIBIDA:</strong> O traje não pode ser emprestado, sublocado ou cedido a terceiros. O contrato é pessoal e intransferível.</p>
-    <p><strong>8. AUTORIZAÇÃO DE COBRANÇA:</strong> Em caso de não devolução ou danos irreparáveis, o locatário autoriza a adoção de medidas legais, incluindo registro de boletim de ocorrência.</p>
-    <p><strong>9. VERIFICAÇÃO PRÉVIA:</strong> O locatário confirma que verificou o traje no ato da retirada e está de acordo com seu estado de conservação.</p>
-    <p><strong>10. VALIDADE JURÍDICA:</strong> A assinatura deste contrato tem plena validade jurídica, vinculando o locatário a todas as cláusulas, conforme o Código Civil Brasileiro e a Lei nº 12.965/2014.</p>
-  </div>
-</div>
-
-<div class="assinaturas">
-  <div class="assinatura">
-    <div class="linha-assinatura">
-      <p><strong>${cliente.nome_completo || 'Locatário'}</strong></p>
-      <small>CPF: ${cliente.cpf || '-'}</small><br>
-      <small>Locatário</small>
-    </div>
-  </div>
-  <div class="assinatura">
-    <div class="linha-assinatura">
-      <p><strong>Atual Festas Moda Masculina</strong></p>
-      <small>CNPJ / Responsável</small><br>
-      <small>Locadora</small>
-    </div>
-  </div>
-</div>
-
-<div class="rodape">
-  <p>Atual Festas Moda Masculina · Campina Grande, PB · (83) 98748-3838 · atualfestasmodamasculina@gmail.com</p>
-  <p>Contrato gerado em ${hoje} · Código: ${ag.codigo || ag.id || 'N/A'}</p>
-</div>
-</body>
-</html>`;
-
-  const win = window.open('', '_blank', 'width=800,height=900');
-  win.document.write(html);
-  win.document.close();
-  win.focus();
-  setTimeout(() => win.print(), 600);
-}
-
-// ==================== CATALOG ADMIN CRUD ====================
-let editingRoupaId = null;
-
-function renderRoupasAdmin(data) {
-  const tbody = document.getElementById('roupas-tbody');
-  if(!data || !data.length) {
-    tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;padding:40px;color:rgba(255,255,255,0.3)">Nenhum traje cadastrado</td></tr>';
-    return;
-  }
-  tbody.innerHTML = data.map(r => `
-    <tr>
-      <td>
-        ${r.imagem_url ? `<img src="${r.imagem_url}" alt="${r.nome}" style="width:44px;height:44px;object-fit:cover;border-radius:4px;border:1px solid rgba(201,168,76,0.3);vertical-align:middle;margin-right:8px;">` : `<span style="font-size:1.5rem;vertical-align:middle;margin-right:8px;">${roupaEmojis[r.tipo]||'👔'}</span>`}
-        ${r.nome}
-      </td>
-      <td>${r.tipo}</td>
-      <td>${r.cor||'-'}</td>
-      <td>${r.tamanho||'-'}</td>
-      <td>R$ ${Number(r.preco_diaria).toFixed(2)}</td>
-      <td><span class="status-badge ${r.disponivel ? 'status-confirmado' : 'status-cancelado'}">${r.disponivel ? 'Disponível' : 'Indisponível'}</span></td>
-      <td>
-        <div class="action-btns">
-          <button class="action-btn view" onclick="openEditRoupa('${r.id}')">✏️ Editar</button>
-          <button class="action-btn cancel" onclick="deleteRoupa('${r.id}', '${r.nome.replace(/'/g,"\'")}')">🗑️ Excluir</button>
-        </div>
-      </td>
-    </tr>
-  `).join('');
-}
-
-function openAddRoupa() {
-  editingRoupaId = null;
-  document.getElementById('modal-roupa-title').textContent = 'Adicionar Traje';
-  document.getElementById('form-roupa-nome').value = '';
-  document.getElementById('form-roupa-tipo').value = 'terno';
-  document.getElementById('form-roupa-cor').value = '';
-  document.getElementById('form-roupa-tamanho').value = '';
-  document.getElementById('form-roupa-preco').value = '';
-  document.getElementById('form-roupa-descricao').value = '';
-  document.getElementById('form-roupa-disponivel').checked = true;
-  document.getElementById('form-roupa-imagem-url').value = '';
-  document.getElementById('roupa-img-preview').style.display = 'none';
-  document.getElementById('upload-status').textContent = '';
-  openModal('modal-roupa');
-}
-
-function openEditRoupa(id) {
-  const r = allRoupas.find(x => x.id == id);
-  if(!r) return;
-  editingRoupaId = id;
-  document.getElementById('modal-roupa-title').textContent = 'Editar Traje';
-  document.getElementById('form-roupa-nome').value = r.nome || '';
-  document.getElementById('form-roupa-tipo').value = r.tipo || 'terno';
-  document.getElementById('form-roupa-cor').value = r.cor || '';
-  document.getElementById('form-roupa-tamanho').value = r.tamanho || '';
-  document.getElementById('form-roupa-preco').value = r.preco_diaria || '';
-  document.getElementById('form-roupa-descricao').value = r.descricao || '';
-  document.getElementById('form-roupa-disponivel').checked = r.disponivel !== false;
-  document.getElementById('form-roupa-imagem-url').value = r.imagem_url || '';
-  document.getElementById('upload-status').textContent = '';
-  const preview = document.getElementById('roupa-img-preview');
-  if(r.imagem_url) { preview.src = r.imagem_url; preview.style.display = 'block'; }
-  else preview.style.display = 'none';
-  openModal('modal-roupa');
-}
-
-async function uploadImagemRoupa(input) {
-  const file = input.files[0];
-  if(!file) return;
-  const statusEl = document.getElementById('upload-status');
-  statusEl.textContent = '⏳ Enviando imagem...';
-  statusEl.style.color = 'var(--gold)';
-
-  // Validate file
-  if(file.size > 5 * 1024 * 1024) {
-    statusEl.textContent = '❌ Imagem muito grande! Máx: 5MB';
-    statusEl.style.color = 'var(--danger)';
-    return;
-  }
-
-  const ext = file.name.split('.').pop().toLowerCase();
-  const allowed = ['jpg','jpeg','png','webp'];
-  if(!allowed.includes(ext)) {
-    statusEl.textContent = '❌ Formato inválido! Use JPG, PNG ou WEBP';
-    statusEl.style.color = 'var(--danger)';
-    return;
-  }
-
-  const fileName = `roupas/traje_${Date.now()}.${ext}`;
-
-  const { data, error } = await db.storage.from('imagens').upload(fileName, file, {
-    upsert: true,
-    contentType: file.type
-  });
-
-  if(error) {
-    console.error('Storage error:', error);
-    const msg = error.message?.includes('row-level security') || error.statusCode === 403
-      ? '❌ Sem permissão de upload! Execute o SQL de configuração no Supabase.'
-      : `❌ Erro no upload: ${error.message}`;
-    statusEl.textContent = msg;
-    statusEl.style.color = 'var(--danger)';
-    return;
-  }
-
-  const { data: urlData } = db.storage.from('imagens').getPublicUrl(fileName);
-  const url = urlData.publicUrl;
-  document.getElementById('form-roupa-imagem-url').value = url;
-  const preview = document.getElementById('roupa-img-preview');
-  preview.src = url;
-  preview.style.display = 'block';
-  statusEl.textContent = '✅ Imagem enviada com sucesso!';
-  statusEl.style.color = '#4CAF50';
-}
-
-async function saveRoupa() {
-  const nome = document.getElementById('form-roupa-nome').value.trim();
-  const tipo = document.getElementById('form-roupa-tipo').value;
-  const cor = document.getElementById('form-roupa-cor').value.trim();
-  const tamanho = document.getElementById('form-roupa-tamanho').value.trim();
-  const preco = parseFloat(document.getElementById('form-roupa-preco').value);
-  const descricao = document.getElementById('form-roupa-descricao').value.trim();
-  const disponivel = document.getElementById('form-roupa-disponivel').checked;
-  const imagem_url = document.getElementById('form-roupa-imagem-url').value.trim();
-
-  if(!nome || !tipo || isNaN(preco)) { showToast('Preencha Nome, Tipo e Preço!', 'error'); return; }
-
-  const payload = { nome, tipo, cor, tamanho, preco_diaria: preco, descricao, disponivel, imagem_url: imagem_url || null };
-
-  showToast('Salvando...', 'info');
-
-  let result;
-  if(editingRoupaId) {
-    result = await db.from('roupas').update(payload).eq('id', editingRoupaId).select();
-  } else {
-    result = await db.from('roupas').insert(payload).select();
-  }
-
-  const { data, error } = result;
-
-  if(error) {
-    console.error('Supabase error:', error);
-    const msg = error.code === '42501'
-      ? 'Sem permissão! Execute o SQL de configuração no Supabase (veja botão SQL na aba Catálogo).'
-      : `Erro: ${error.message} (código: ${error.code})`;
-    showToast(msg, 'error');
-    return;
-  }
-
-  showToast(editingRoupaId ? '✅ Traje atualizado!' : '✅ Traje adicionado!', 'success');
-  closeModal('modal-roupa');
-  await loadRoupas();
-  const { data: roupasUpd } = await db.from('roupas').select('*').order('tipo');
-  if(roupasUpd) renderRoupasAdmin(roupasUpd);
-}
-
-async function deleteRoupa(id, nome) {
-  if(!confirm(`Tem certeza que deseja excluir "${nome}"?`)) return;
-  const { error } = await db.from('roupas').delete().eq('id', id);
-  if(error) { showToast('Erro ao excluir: ' + error.message, 'error'); return; }
-  showToast('Traje excluído com sucesso!', 'success');
-  await loadRoupas();
-  const { data: roupasUpd } = await db.from('roupas').select('*').order('tipo');
-  if(roupasUpd) renderRoupasAdmin(roupasUpd);
-}
 </script>
 </body>
 </html>
