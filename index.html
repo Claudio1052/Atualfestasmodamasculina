@@ -286,7 +286,7 @@ section { padding: 100px 40px; }
 /* ===================== MODALS ===================== */
 .modal-overlay {
   position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(6px);
-  z-index: 4500; display: flex; align-items: center; justify-content: center;
+  z-index: 9000; display: flex; align-items: center; justify-content: center;
   padding: 20px; opacity: 0; pointer-events: none; transition: opacity 0.3s;
 }
 .modal-overlay.open { opacity: 1; pointer-events: all; }
@@ -317,14 +317,14 @@ section { padding: 100px 40px; }
 /* ===================== ADMIN ===================== */
 #admin-overlay {
   position: fixed; inset: 0; background: var(--dark); z-index: 3000;
-  display: none; overflow: hidden;
+  display: none; overflow: visible;
 }
 #admin-overlay.active { display: flex; }
 
 .admin-sidebar {
   width: 260px; background: linear-gradient(180deg, var(--bordeaux-dark), rgba(15,10,12,0.95));
   border-right: 1px solid rgba(201,168,76,0.2);
-  display: flex; flex-direction: column; flex-shrink: 0;
+  display: flex; flex-direction: column; flex-shrink: 0; overflow-y: auto;
 }
 .admin-logo { padding: 30px 24px; border-bottom: 1px solid rgba(201,168,76,0.2); }
 .admin-logo .title { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 800; letter-spacing: 3px; color: var(--white); }
@@ -1146,92 +1146,90 @@ footer {
       <button class="admin-mobile-btn" onclick="showAdminPage('roupas',this)"><span class="icon">🤵</span>Catálogo</button>
     </div>
   </div>
-</div><!-- admin-overlay -->
 
-<!-- MODAL DETALHE AGENDAMENTO -->
-<div class="modal-overlay" id="modal-agendamento">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal('modal-agendamento')">✕</button>
-    <div class="modal-title">Detalhe do Agendamento</div>
-    <div class="modal-subtitle">Informações completas</div>
-    <div id="modal-agendamento-content"></div>
+  <!-- MODAL DETALHE AGENDAMENTO (dentro do admin) -->
+  <div class="modal-overlay" id="modal-agendamento">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('modal-agendamento')">✕</button>
+      <div class="modal-title">Detalhe do Agendamento</div>
+      <div class="modal-subtitle">Informações completas</div>
+      <div id="modal-agendamento-content"></div>
+    </div>
   </div>
-</div>
 
-<!-- MODAL NOVA/EDITAR ROUPA -->
-<div class="modal-overlay" id="modal-roupa">
-  <div class="modal" style="max-width:680px">
-    <button class="modal-close" onclick="closeModal('modal-roupa')">✕</button>
-    <div class="modal-title" id="modal-roupa-title">Nova Peça</div>
-    <div class="modal-subtitle">Preencha os dados do traje</div>
-    <input type="hidden" id="edit-roupa-id">
-    <div class="form-grid cols-2" style="gap:16px">
-      <div class="form-group" style="grid-column:1/-1">
-        <label>Nome do Traje *</label>
-        <input type="text" id="edit-nome" placeholder="Ex: Terno Slim Preto Premium">
-      </div>
-      <div class="form-group">
-        <label>Tipo *</label>
-        <select id="edit-tipo">
-          <option value="terno">🤵 Terno</option>
-          <option value="smoking">🎩 Smoking</option>
-          <option value="costume">👔 Costume</option>
-          <option value="blazer">🧥 Blazer</option>
-          <option value="conjunto">👗 Conjunto</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Cor</label>
-        <input type="text" id="edit-cor" placeholder="Ex: Preto, Azul Navy">
-      </div>
-      <div class="form-group">
-        <label>Tamanhos Disponíveis</label>
-        <input type="text" id="edit-tamanho" placeholder="Ex: P/M/G/GG">
-      </div>
-      <div class="form-group">
-        <label>Valor da Diária (R$) *</label>
-        <input type="number" id="edit-preco" placeholder="150.00" step="0.01" min="0">
-      </div>
-      <div class="form-group" style="grid-column:1/-1">
-        <label>Descrição</label>
-        <textarea id="edit-descricao" placeholder="Descrição detalhada do traje..." style="min-height:80px"></textarea>
-      </div>
-      <div class="form-group" style="grid-column:1/-1">
-        <label>Disponível para Locação</label>
-        <select id="edit-disponivel">
-          <option value="true">✅ Disponível</option>
-          <option value="false">❌ Indisponível</option>
-        </select>
-      </div>
-      <!-- IMAGEM -->
-      <div class="form-group" style="grid-column:1/-1">
-        <label>Imagem do Traje</label>
-        <div style="display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap">
-          <div id="edit-img-preview" style="width:100px;height:120px;background:rgba(42,32,37,0.6);border:1px solid rgba(201,168,76,0.2);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:3rem;flex-shrink:0;overflow:hidden">
-            👔
-          </div>
-          <div style="flex:1;min-width:200px">
-            <div style="font-size:0.75rem;color:rgba(255,255,255,0.5);margin-bottom:10px">Faça upload de uma imagem do Supabase Storage ou cole a URL diretamente.</div>
-            <div class="form-group" style="margin-bottom:10px">
-              <label style="font-size:0.65rem">URL da Imagem (Supabase Storage)</label>
-              <input type="text" id="edit-img-url" placeholder="https://mgqvrijrxxdwqstvrtxw.supabase.co/storage/..." oninput="previewImgUrl(this.value)">
+  <!-- MODAL NOVA/EDITAR ROUPA (dentro do admin) -->
+  <div class="modal-overlay" id="modal-roupa">
+    <div class="modal" style="max-width:680px">
+      <button class="modal-close" onclick="closeModal('modal-roupa')">✕</button>
+      <div class="modal-title" id="modal-roupa-title">Nova Peça</div>
+      <div class="modal-subtitle">Preencha os dados do traje</div>
+      <input type="hidden" id="edit-roupa-id">
+      <div class="form-grid cols-2" style="gap:16px">
+        <div class="form-group" style="grid-column:1/-1">
+          <label>Nome do Traje *</label>
+          <input type="text" id="edit-nome" placeholder="Ex: Terno Slim Preto Premium">
+        </div>
+        <div class="form-group">
+          <label>Tipo *</label>
+          <select id="edit-tipo">
+            <option value="terno">🤵 Terno</option>
+            <option value="smoking">🎩 Smoking</option>
+            <option value="costume">👔 Costume</option>
+            <option value="blazer">🧥 Blazer</option>
+            <option value="conjunto">👗 Conjunto</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Cor</label>
+          <input type="text" id="edit-cor" placeholder="Ex: Preto, Azul Navy">
+        </div>
+        <div class="form-group">
+          <label>Tamanhos Disponíveis</label>
+          <input type="text" id="edit-tamanho" placeholder="Ex: P/M/G/GG">
+        </div>
+        <div class="form-group">
+          <label>Valor da Diária (R$) *</label>
+          <input type="number" id="edit-preco" placeholder="150.00" step="0.01" min="0">
+        </div>
+        <div class="form-group" style="grid-column:1/-1">
+          <label>Descrição</label>
+          <textarea id="edit-descricao" placeholder="Descrição detalhada do traje..." style="min-height:80px"></textarea>
+        </div>
+        <div class="form-group" style="grid-column:1/-1">
+          <label>Disponível para Locação</label>
+          <select id="edit-disponivel">
+            <option value="true">✅ Disponível</option>
+            <option value="false">❌ Indisponível</option>
+          </select>
+        </div>
+        <div class="form-group" style="grid-column:1/-1">
+          <label>Imagem do Traje</label>
+          <div style="display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap">
+            <div id="edit-img-preview" style="width:100px;height:120px;background:rgba(42,32,37,0.6);border:1px solid rgba(201,168,76,0.2);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:3rem;flex-shrink:0;overflow:hidden">👔</div>
+            <div style="flex:1;min-width:200px">
+              <div style="font-size:0.75rem;color:rgba(255,255,255,0.5);margin-bottom:10px">Faça upload de uma imagem do Supabase Storage ou cole a URL diretamente.</div>
+              <div class="form-group" style="margin-bottom:10px">
+                <label style="font-size:0.65rem">URL da Imagem (Supabase Storage)</label>
+                <input type="text" id="edit-img-url" placeholder="https://mgqvrijrxxdwqstvrtxw.supabase.co/storage/..." oninput="previewImgUrl(this.value)">
+              </div>
+              <div style="text-align:center;font-size:0.7rem;color:rgba(255,255,255,0.3);margin:8px 0">— ou —</div>
+              <label style="display:block;background:rgba(42,32,37,0.6);border:1px dashed rgba(201,168,76,0.3);border-radius:4px;padding:12px;text-align:center;cursor:pointer;font-size:0.75rem;color:var(--gold);transition:all 0.2s" onmouseover="this.style.background='rgba(201,168,76,0.1)'" onmouseout="this.style.background='rgba(42,32,37,0.6)'">
+                📁 Selecionar Arquivo para Upload
+                <input type="file" accept="image/*" style="display:none" onchange="uploadRoupaImagem(this)">
+              </label>
+              <div id="upload-progress" style="font-size:0.75rem;color:var(--gold);margin-top:8px;display:none">⏳ Fazendo upload...</div>
             </div>
-            <div style="text-align:center;font-size:0.7rem;color:rgba(255,255,255,0.3);margin:8px 0">— ou —</div>
-            <label style="display:block;background:rgba(42,32,37,0.6);border:1px dashed rgba(201,168,76,0.3);border-radius:4px;padding:12px;text-align:center;cursor:pointer;font-size:0.75rem;color:var(--gold);transition:all 0.2s" onmouseover="this.style.background='rgba(201,168,76,0.1)'" onmouseout="this.style.background='rgba(42,32,37,0.6)'">
-              📁 Selecionar Arquivo para Upload
-              <input type="file" accept="image/*" style="display:none" onchange="uploadRoupáImagem(this)">
-            </label>
-            <div id="upload-progress" style="font-size:0.75rem;color:var(--gold);margin-top:8px;display:none">⏳ Fazendo upload...</div>
           </div>
         </div>
       </div>
-    </div>
-    <div style="display:flex;gap:12px;margin-top:24px;justify-content:flex-end">
-      <button class="btn-form btn-prev" onclick="closeModal('modal-roupa')">Cancelar</button>
-      <button class="btn-form btn-next" onclick="salvarRoupa()">💾 Salvar Peça</button>
+      <div style="display:flex;gap:12px;margin-top:24px;justify-content:flex-end">
+        <button class="btn-form btn-prev" onclick="closeModal('modal-roupa')">Cancelar</button>
+        <button class="btn-form btn-next" onclick="salvarRoupa()">💾 Salvar Peça</button>
+      </div>
     </div>
   </div>
-</div>
+
+</div><!-- admin-overlay -->
 
 <script>
 // ==================== MOBILE MENU ====================
