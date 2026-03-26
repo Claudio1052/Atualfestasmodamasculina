@@ -195,10 +195,15 @@ section { padding: 100px 40px; }
 .roupa-card:hover::before { opacity: 1; }
 
 .card-image {
-  height: 200px; background: linear-gradient(135deg, var(--bordeaux-dark), var(--gray));
+  height: 260px; background: linear-gradient(135deg, var(--bordeaux-dark), var(--gray));
   display: flex; align-items: center; justify-content: center; font-size: 5rem;
   position: relative; overflow: hidden;
 }
+.card-image img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.roupa-card:hover .card-image img { transform: scale(1.07); }
 .card-badge {
   position: absolute; top: 12px; right: 12px;
   background: var(--gold); color: var(--dark);
@@ -1326,12 +1331,12 @@ async function loadRoupas() {
   if(error || !data || data.length === 0) {
     // Fallback data
     allRoupas = [
-      {id:'1', nome:'Terno Slim Preto Premium', tipo:'terno', cor:'Preto', tamanho:'P/M/G/GG', preco_diaria:150, descricao:'Terno slim fit premium, tecido italiano', disponivel:true},
-      {id:'2', nome:'Smoking Branco Luxo', tipo:'smoking', cor:'Branco', tamanho:'P/M/G/GG', preco_diaria:200, descricao:'Smoking branco de grife, elegância máxima', disponivel:true},
-      {id:'3', nome:'Terno Cinza Chumbo', tipo:'terno', cor:'Cinza Chumbo', tamanho:'P/M/G/GG', preco_diaria:140, descricao:'Terno executivo cinza chumbo', disponivel:true},
-      {id:'4', nome:'Costume Bordô Festivo', tipo:'costume', cor:'Bordô', tamanho:'P/M/G/GG', preco_diaria:130, descricao:'Costume bordô com detalhes exclusivos', disponivel:true},
-      {id:'5', nome:'Blazer Navy com Calça Bege', tipo:'blazer', cor:'Azul Navy', tamanho:'P/M/G/GG', preco_diaria:110, descricao:'Look casual chic perfeito', disponivel:true},
-      {id:'6', nome:'Terno Azul Royal', tipo:'terno', cor:'Azul Royal', tamanho:'P/M/G/GG', preco_diaria:155, descricao:'Terno azul royal moderno', disponivel:true},
+      {id:'1', nome:'Terno Slim Preto Premium', tipo:'terno', cor:'Preto', tamanho:'P/M/G/GG', preco_diaria:150, descricao:'Terno slim fit premium, tecido italiano, perfeito para formaturas e casamentos', disponivel:true, imagem_url:'https://images.unsplash.com/photo-1594938298603-c8148c4b4a25?w=600&q=80'},
+      {id:'2', nome:'Smoking Branco Luxo', tipo:'smoking', cor:'Branco', tamanho:'P/M/G/GG', preco_diaria:200, descricao:'Smoking branco de grife, elegância máxima para noivos e eventos especiais', disponivel:true, imagem_url:'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&q=80'},
+      {id:'3', nome:'Terno Cinza Chumbo', tipo:'terno', cor:'Cinza Chumbo', tamanho:'P/M/G/GG', preco_diaria:140, descricao:'Terno executivo cinza chumbo, ideal para eventos corporativos e cerimônias', disponivel:true, imagem_url:'https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?w=600&q=80'},
+      {id:'4', nome:'Costume Bordô Festivo', tipo:'costume', cor:'Bordô', tamanho:'P/M/G/GG', preco_diaria:130, descricao:'Costume bordô com detalhes exclusivos, destaque garantido em qualquer festa', disponivel:true, imagem_url:'https://images.unsplash.com/photo-1610652492500-ded49ceeb378?w=600&q=80'},
+      {id:'5', nome:'Blazer Navy com Calça Bege', tipo:'blazer', cor:'Azul Navy', tamanho:'P/M/G/GG', preco_diaria:110, descricao:'Look casual chic perfeito para eventos ao ar livre e confraternizações', disponivel:true, imagem_url:'https://images.unsplash.com/photo-1499971856191-1a420a42b498?w=600&q=80'},
+      {id:'6', nome:'Terno Azul Royal', tipo:'terno', cor:'Azul Royal', tamanho:'P/M/G/GG', preco_diaria:155, descricao:'Terno azul royal moderno, sofisticado para casamentos e formaturas', disponivel:true, imagem_url:'https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=600&q=80'},
     ];
   } else {
     allRoupas = data;
