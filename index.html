@@ -1,9 +1,8 @@
-
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR"> 
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Atual Festas | Moda Masculina - Locações</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
@@ -36,16 +35,21 @@ body {
   overflow-x: hidden;
 }
 
+/* ===================== SCROLLBAR ===================== */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--dark); }
 ::-webkit-scrollbar-thumb { background: var(--bordeaux); border-radius: 3px; }
 
+/* ===================== LOADING ===================== */
 #loading-screen {
   position: fixed; inset: 0; background: var(--dark);
   display: flex; align-items: center; justify-content: center;
   z-index: 9999; transition: opacity 0.8s ease;
 }
-.loading-logo { text-align: center; animation: fadeInUp 0.6s ease; }
+.loading-logo {
+  text-align: center;
+  animation: fadeInUp 0.6s ease;
+}
 .loading-logo .brand { font-family: 'Barlow Condensed', sans-serif; font-size: 2rem; font-weight: 800; color: var(--white); letter-spacing: 4px; }
 .loading-logo .sub { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--gold); margin-top: 4px; }
 .loading-bar { width: 200px; height: 2px; background: var(--gray); margin: 20px auto 0; border-radius: 2px; overflow: hidden; }
@@ -54,9 +58,10 @@ body {
 @keyframes loadFill { from { width: 0; } to { width: 100%; } }
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
+/* ===================== NAVBAR ===================== */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-  padding: 12px 20px;
+  padding: 18px 40px;
   display: flex; align-items: center; justify-content: space-between;
   background: linear-gradient(180deg, rgba(15,10,12,0.98) 0%, transparent 100%);
   backdrop-filter: blur(10px);
@@ -65,93 +70,97 @@ nav {
 }
 nav.scrolled { background: rgba(15,10,12,0.98); }
 
-.nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.nav-brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
 .nav-logo-icon {
-  width: 40px; height: 40px; border-radius: 50%;
-  overflow: hidden; border: 2px solid var(--gold);
-  background: var(--bordeaux);
+  width: 48px; height: 48px; background: var(--bordeaux);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; border: 2px solid var(--gold); overflow: hidden; flex-shrink: 0;
 }
-.nav-logo-icon img { width: 100%; height: 100%; object-fit: cover; }
-.nav-brand-text .top { font-family: 'Barlow Condensed', sans-serif; font-size: 0.9rem; font-weight: 800; color: var(--white); letter-spacing: 2px; }
-.nav-brand-text .bottom { font-size: 0.6rem; color: var(--gold); letter-spacing: 1.5px; font-weight: 500; text-transform: uppercase; }
+.nav-logo-icon img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+.nav-brand-text .top { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 800; color: var(--white); letter-spacing: 3px; }
+.nav-brand-text .bottom { font-size: 0.65rem; color: var(--gold); letter-spacing: 2px; font-weight: 500; text-transform: uppercase; }
 
-.nav-links { display: flex; gap: 24px; list-style: none; }
-.nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.75rem; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.3s; position: relative; }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.8rem; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; transition: color 0.3s; position: relative; }
 .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.3s; }
 .nav-links a:hover { color: var(--gold); }
 .nav-links a:hover::after { width: 100%; }
 
 .nav-cta {
-  background: var(--bordeaux); color: var(--white); border: none; padding: 8px 20px;
-  font-family: 'Barlow', sans-serif; font-size: 0.7rem; font-weight: 600; letter-spacing: 1.5px;
+  background: var(--bordeaux); color: var(--white); border: none; padding: 10px 24px;
+  font-family: 'Barlow', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 2px;
   text-transform: uppercase; cursor: pointer; border-radius: 2px;
   border: 1px solid var(--gold); transition: all 0.3s;
 }
 .nav-cta:hover { background: var(--gold); color: var(--dark); }
 
+/* ===================== HERO ===================== */
 #hero {
   min-height: 100vh;
   background: linear-gradient(135deg, var(--dark) 0%, var(--bordeaux-dark) 50%, var(--dark) 100%);
   display: flex; align-items: center; justify-content: center;
-  position: relative; overflow: hidden; padding: 100px 20px 60px;
+  position: relative; overflow: hidden; padding: 120px 40px 60px;
 }
+
 .hero-bg-pattern {
   position: absolute; inset: 0; opacity: 0.04;
   background-image: repeating-linear-gradient(45deg, var(--gold) 0, var(--gold) 1px, transparent 0, transparent 50%);
   background-size: 20px 20px;
 }
+
 .hero-glow {
   position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
   width: 600px; height: 600px;
   background: radial-gradient(circle, rgba(122,21,48,0.3) 0%, transparent 70%);
   pointer-events: none;
 }
+
 .hero-content { text-align: center; position: relative; z-index: 1; max-width: 800px; }
 .hero-badge {
   display: inline-block; border: 1px solid var(--gold);
-  padding: 5px 16px; font-size: 0.65rem; font-weight: 600;
-  letter-spacing: 3px; text-transform: uppercase; color: var(--gold);
-  margin-bottom: 20px; animation: fadeInUp 0.8s ease;
+  padding: 6px 20px; font-size: 0.7rem; font-weight: 600;
+  letter-spacing: 4px; text-transform: uppercase; color: var(--gold);
+  margin-bottom: 30px; animation: fadeInUp 0.8s ease;
 }
 .hero-title {
-  font-family: 'Barlow Condensed', sans-serif; font-size: clamp(3rem, 8vw, 7rem);
-  font-weight: 800; line-height: 0.95; text-transform: uppercase;
+  font-family: 'Barlow Condensed', sans-serif; font-size: clamp(4rem, 10vw, 8rem);
+  font-weight: 800; line-height: 0.9; text-transform: uppercase;
   animation: fadeInUp 0.8s ease 0.2s both;
   background: linear-gradient(135deg, var(--white) 0%, rgba(255,255,255,0.7) 100%);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
 .hero-title span { -webkit-text-fill-color: var(--gold); }
 .hero-subtitle {
-  font-family: 'Playfair Display', serif; font-size: clamp(0.9rem, 4vw, 1.2rem);
-  color: rgba(255,255,255,0.6); margin: 16px 0 32px;
+  font-family: 'Playfair Display', serif; font-size: 1.2rem;
+  color: rgba(255,255,255,0.6); margin: 20px 0 40px;
   animation: fadeInUp 0.8s ease 0.4s both;
 }
-.hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; animation: fadeInUp 0.8s ease 0.6s both; }
+.hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; animation: fadeInUp 0.8s ease 0.6s both; }
 
 .btn-primary {
   background: var(--bordeaux); color: var(--white);
-  border: 2px solid var(--bordeaux); padding: 12px 24px;
-  font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem;
-  font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  border: 2px solid var(--bordeaux); padding: 16px 36px;
+  font-family: 'Barlow Condensed', sans-serif; font-size: 0.85rem;
+  font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
   cursor: pointer; border-radius: 2px; transition: all 0.3s; text-decoration: none; display: inline-block;
 }
 .btn-primary:hover { background: var(--bordeaux-light); border-color: var(--gold); transform: translateY(-2px); }
 
 .btn-outline {
   background: transparent; color: var(--white);
-  border: 2px solid rgba(255,255,255,0.3); padding: 12px 24px;
-  font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem;
-  font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  border: 2px solid rgba(255,255,255,0.3); padding: 16px 36px;
+  font-family: 'Barlow Condensed', sans-serif; font-size: 0.85rem;
+  font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
   cursor: pointer; border-radius: 2px; transition: all 0.3s; text-decoration: none; display: inline-block;
 }
 .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
 
 .hero-stats {
-  display: flex; gap: 32px; justify-content: center; margin-top: 40px;
-  animation: fadeInUp 0.8s ease 0.8s both; flex-wrap: wrap;
+  display: flex; gap: 48px; justify-content: center; margin-top: 60px;
+  animation: fadeInUp 0.8s ease 0.8s both;
 }
 .stat { text-align: center; }
-.stat-number { font-family: 'Barlow Condensed', sans-serif; font-size: 1.8rem; font-weight: 800; color: var(--gold); }
+.stat-number { font-family: 'Barlow Condensed', sans-serif; font-size: 2.5rem; font-weight: 800; color: var(--gold); }
 .stat-label { font-size: 0.7rem; color: rgba(255,255,255,0.5); letter-spacing: 2px; text-transform: uppercase; margin-top: 4px; }
 
 .scroll-indicator {
@@ -163,14 +172,16 @@ nav.scrolled { background: rgba(15,10,12,0.98); }
 .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--gold), transparent); }
 @keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
 
-section { padding: 60px 20px; }
-.section-header { text-align: center; margin-bottom: 40px; }
+/* ===================== SECTIONS ===================== */
+section { padding: 100px 40px; }
+.section-header { text-align: center; margin-bottom: 60px; }
 .section-tag { font-size: 0.7rem; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; display: block; }
-.section-title { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; text-transform: uppercase; line-height: 1; }
+.section-title { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; text-transform: uppercase; line-height: 1; }
 .section-line { width: 60px; height: 2px; background: var(--bordeaux); margin: 20px auto 0; }
 
+/* ===================== CATALOG ===================== */
 #catalogo { background: var(--dark); }
-.catalog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
+.catalog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; max-width: 1200px; margin: 0 auto; }
 
 .roupa-card {
   background: linear-gradient(145deg, rgba(42,32,37,0.8), rgba(15,10,12,0.9));
@@ -180,90 +191,91 @@ section { padding: 60px 20px; }
   cursor: pointer; position: relative;
 }
 .roupa-card:hover { transform: translateY(-8px); border-color: var(--gold); box-shadow: 0 20px 60px rgba(122,21,48,0.4); }
+.roupa-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(201,168,76,0.05), transparent); opacity: 0; transition: opacity 0.3s; }
+.roupa-card:hover::before { opacity: 1; }
 
 .card-image {
-  height: 180px; background: linear-gradient(135deg, var(--bordeaux-dark), var(--gray));
-  display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;
+  height: 200px; background: linear-gradient(135deg, var(--bordeaux-dark), var(--gray));
+  display: flex; align-items: center; justify-content: center; font-size: 5rem;
+  position: relative; overflow: hidden;
 }
-.card-image img { width: 100%; height: 100%; object-fit: cover; }
-.card-image span:not(.card-badge) { font-size: 4rem; }
 .card-badge {
   position: absolute; top: 12px; right: 12px;
   background: var(--gold); color: var(--dark);
   padding: 4px 10px; font-size: 0.65rem; font-weight: 700; letter-spacing: 1px;
   border-radius: 2px; text-transform: uppercase;
 }
-.card-body { padding: 18px; }
+.card-body { padding: 24px; }
 .card-tipo { font-size: 0.65rem; color: var(--gold); font-weight: 600; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px; }
-.card-nome { font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
-.card-desc { font-size: 0.75rem; color: rgba(255,255,255,0.55); line-height: 1.5; margin-bottom: 12px; }
+.card-nome { font-family: 'Barlow Condensed', sans-serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 8px; }
+.card-desc { font-size: 0.8rem; color: rgba(255,255,255,0.55); line-height: 1.6; margin-bottom: 16px; }
 .card-footer { display: flex; align-items: center; justify-content: space-between; }
-.card-price { font-family: 'Barlow Condensed', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--gold); }
-.card-price span { font-size: 0.7rem; color: rgba(255,255,255,0.4); font-weight: 400; }
-.card-btn { background: var(--bordeaux); color: var(--white); border: none; padding: 8px 16px; font-size: 0.7rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; border-radius: 2px; transition: all 0.3s; }
+.card-price { font-family: 'Barlow Condensed', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--gold); }
+.card-price span { font-size: 0.75rem; color: rgba(255,255,255,0.4); font-weight: 400; }
+.card-btn { background: var(--bordeaux); color: var(--white); border: none; padding: 10px 20px; font-size: 0.75rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; border-radius: 2px; transition: all 0.3s; }
 .card-btn:hover { background: var(--gold); color: var(--dark); }
 
+/* ===================== AGENDAMENTO ===================== */
 #agendar { background: linear-gradient(180deg, var(--dark) 0%, rgba(86,15,34,0.2) 50%, var(--dark) 100%); }
-.form-container { max-width: 800px; margin: 0 auto; padding: 0 10px; }
-.form-steps { display: flex; gap: 0; margin-bottom: 40px; flex-wrap: wrap; justify-content: center; }
-.step { flex: 1; text-align: center; position: relative; min-width: 60px; }
+.form-container { max-width: 800px; margin: 0 auto; }
+.form-steps { display: flex; gap: 0; margin-bottom: 50px; }
+.step { flex: 1; text-align: center; position: relative; }
 .step::after { content: ''; position: absolute; top: 20px; right: 0; width: 100%; height: 1px; background: rgba(255,255,255,0.1); z-index: 0; }
 .step:last-child::after { display: none; }
 .step-num {
-  width: 36px; height: 36px; border-radius: 50%;
+  width: 40px; height: 40px; border-radius: 50%;
   background: var(--gray); border: 2px solid rgba(255,255,255,0.1);
   display: flex; align-items: center; justify-content: center;
   font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
-  margin: 0 auto 8px; position: relative; z-index: 1; transition: all 0.3s;
+  margin: 0 auto 10px; position: relative; z-index: 1; transition: all 0.3s;
 }
 .step.active .step-num { background: var(--bordeaux); border-color: var(--gold); }
 .step.done .step-num { background: var(--success); border-color: var(--success); }
-.step-label { font-size: 0.6rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.4); white-space: nowrap; }
+.step-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.4); }
 .step.active .step-label { color: var(--gold); }
 
 .form-panel { display: none; animation: fadeInUp 0.4s ease; }
 .form-panel.active { display: block; }
 
-.form-grid { display: grid; gap: 16px; }
-.form-grid.cols-2 { grid-template-columns: 1fr; }
-@media (min-width: 768px) {
-  .form-grid.cols-2 { grid-template-columns: 1fr 1fr; }
-  .form-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
-}
+.form-grid { display: grid; gap: 20px; }
+.form-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+.form-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
 
-.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group { display: flex; flex-direction: column; gap: 8px; }
 .form-group label { font-size: 0.7rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); }
 .form-group input, .form-group select, .form-group textarea {
   background: rgba(42,32,37,0.6); border: 1px solid rgba(201,168,76,0.2);
-  color: var(--white); padding: 12px; font-family: 'Barlow', sans-serif;
+  color: var(--white); padding: 14px 16px; font-family: 'Barlow', sans-serif;
   font-size: 0.9rem; border-radius: 2px; outline: none; transition: border-color 0.3s;
 }
 .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--gold); }
+.form-group select option { background: var(--gray); }
+.form-group textarea { resize: vertical; min-height: 100px; }
 
-.roupa-selector { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin: 20px 0; }
+.roupa-selector { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; margin: 20px 0; }
 .roupa-option {
   background: rgba(42,32,37,0.6); border: 2px solid rgba(201,168,76,0.15);
-  border-radius: 4px; padding: 15px; cursor: pointer; transition: all 0.3s; text-align: center;
+  border-radius: 4px; padding: 20px; cursor: pointer; transition: all 0.3s; text-align: center;
 }
 .roupa-option:hover { border-color: var(--bordeaux); }
 .roupa-option.selected { border-color: var(--gold); background: rgba(201,168,76,0.1); }
-.roupa-option .icon { font-size: 2rem; margin-bottom: 8px; }
-.roupa-option .name { font-family: 'Barlow Condensed', sans-serif; font-size: 0.9rem; font-weight: 700; margin-bottom: 4px; }
-.roupa-option .price { font-size: 0.75rem; color: var(--gold); }
+.roupa-option .icon { font-size: 2.5rem; margin-bottom: 10px; }
+.roupa-option .name { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+.roupa-option .price { font-size: 0.85rem; color: var(--gold); }
 
 .termo-box {
   background: rgba(42,32,37,0.4); border: 1px solid rgba(201,168,76,0.2);
-  border-radius: 4px; padding: 20px; max-height: 250px; overflow-y: auto; margin-bottom: 16px;
+  border-radius: 4px; padding: 30px; max-height: 300px; overflow-y: auto; margin-bottom: 20px;
 }
-.termo-box h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; color: var(--gold); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 2px; }
-.termo-box p { font-size: 0.75rem; color: rgba(255,255,255,0.7); line-height: 1.6; margin-bottom: 8px; }
+.termo-box h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; color: var(--gold); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 2px; }
+.termo-box p { font-size: 0.82rem; color: rgba(255,255,255,0.7); line-height: 1.8; margin-bottom: 12px; }
 
-.checkbox-group { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; }
-.checkbox-group input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--bordeaux); cursor: pointer; flex-shrink: 0; margin-top: 2px; }
-.checkbox-group label { font-size: 0.8rem; color: rgba(255,255,255,0.8); cursor: pointer; line-height: 1.4; }
+.checkbox-group { display: flex; align-items: flex-start; gap: 12px; }
+.checkbox-group input[type="checkbox"] { width: 20px; height: 20px; accent-color: var(--bordeaux); cursor: pointer; flex-shrink: 0; margin-top: 2px; }
+.checkbox-group label { font-size: 0.85rem; color: rgba(255,255,255,0.8); cursor: pointer; line-height: 1.5; }
 
-.form-nav { display: flex; justify-content: space-between; margin-top: 24px; gap: 12px; flex-wrap: wrap; }
-.btn-form { padding: 12px 24px; font-family: 'Barlow Condensed', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; border-radius: 2px; transition: all 0.3s; border: 2px solid; }
+.form-nav { display: flex; justify-content: space-between; margin-top: 30px; gap: 16px; }
+.btn-form { padding: 14px 32px; font-family: 'Barlow Condensed', sans-serif; font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; border-radius: 2px; transition: all 0.3s; border: 2px solid; }
 .btn-next { background: var(--bordeaux); color: var(--white); border-color: var(--bordeaux); }
 .btn-next:hover { background: var(--bordeaux-light); border-color: var(--gold); }
 .btn-prev { background: transparent; color: rgba(255,255,255,0.6); border-color: rgba(255,255,255,0.2); }
@@ -271,6 +283,7 @@ section { padding: 60px 20px; }
 .btn-submit { background: var(--gold); color: var(--dark); border-color: var(--gold); width: 100%; margin-top: 10px; }
 .btn-submit:hover { background: var(--gold-light); }
 
+/* ===================== MODALS ===================== */
 .modal-overlay {
   position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(6px);
   z-index: 2000; display: flex; align-items: center; justify-content: center;
@@ -281,197 +294,295 @@ section { padding: 60px 20px; }
   background: linear-gradient(145deg, var(--gray), var(--dark));
   border: 1px solid rgba(201,168,76,0.3); border-radius: 8px;
   max-width: 600px; width: 100%; max-height: 90vh; overflow-y: auto;
-  padding: 24px; position: relative; transform: translateY(20px); transition: transform 0.3s;
+  padding: 40px; position: relative; transform: translateY(20px); transition: transform 0.3s;
 }
 .modal-overlay.open .modal { transform: translateY(0); }
-.modal-close { position: absolute; top: 16px; right: 16px; background: none; border: none; color: rgba(255,255,255,0.5); font-size: 1.5rem; cursor: pointer; transition: color 0.3s; }
+.modal-close { position: absolute; top: 20px; right: 20px; background: none; border: none; color: rgba(255,255,255,0.5); font-size: 1.5rem; cursor: pointer; transition: color 0.3s; }
 .modal-close:hover { color: var(--gold); }
-.modal-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.5rem; font-weight: 800; text-transform: uppercase; margin-bottom: 8px; }
-.modal-subtitle { font-size: 0.75rem; color: var(--gold); letter-spacing: 2px; margin-bottom: 20px; }
+.modal-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.8rem; font-weight: 800; text-transform: uppercase; margin-bottom: 8px; }
+.modal-subtitle { font-size: 0.8rem; color: var(--gold); letter-spacing: 2px; margin-bottom: 24px; }
 
-#toast-container { position: fixed; bottom: 20px; right: 20px; z-index: 9000; display: flex; flex-direction: column; gap: 8px; }
+/* ===================== TOAST ===================== */
+#toast-container { position: fixed; bottom: 30px; right: 30px; z-index: 9000; display: flex; flex-direction: column; gap: 10px; }
 .toast {
   background: var(--gray); border-left: 4px solid var(--gold);
-  padding: 12px 16px; border-radius: 4px; min-width: 250px;
-  font-size: 0.8rem; animation: slideInRight 0.3s ease;
-  display: flex; align-items: center; gap: 10px;
+  padding: 16px 20px; border-radius: 4px; min-width: 300px;
+  font-size: 0.85rem; animation: slideInRight 0.3s ease;
+  display: flex; align-items: center; gap: 12px;
 }
 .toast.success { border-color: var(--success); }
 .toast.error { border-color: var(--danger); }
 @keyframes slideInRight { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
 
+/* ===================== ADMIN ===================== */
 #admin-overlay {
   position: fixed; inset: 0; background: var(--dark); z-index: 3000;
   display: none; overflow: hidden;
 }
-#admin-overlay.active { display: flex; flex-direction: column; }
-@media (min-width: 769px) {
-  #admin-overlay { flex-direction: row; }
-}
+#admin-overlay.active { display: flex; }
 
 .admin-sidebar {
   width: 260px; background: linear-gradient(180deg, var(--bordeaux-dark), rgba(15,10,12,0.95));
   border-right: 1px solid rgba(201,168,76,0.2);
   display: flex; flex-direction: column; flex-shrink: 0;
 }
-@media (max-width: 768px) {
-  .admin-sidebar { position: fixed; left: -280px; top: 0; bottom: 0; z-index: 3100; transition: left 0.3s; }
-  .admin-sidebar.open { left: 0; }
-  .admin-sidebar-mobile-toggle { display: block; position: fixed; top: 70px; left: 10px; z-index: 3101; background: var(--bordeaux); border: 1px solid var(--gold); padding: 8px 12px; border-radius: 4px; cursor: pointer; font-size: 1.2rem; }
-}
-.admin-sidebar-mobile-toggle { display: none; }
-.admin-logo { padding: 24px; border-bottom: 1px solid rgba(201,168,76,0.2); }
+.admin-logo { padding: 30px 24px; border-bottom: 1px solid rgba(201,168,76,0.2); }
 .admin-logo .title { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 800; letter-spacing: 3px; color: var(--white); }
+.admin-logo .sub { font-size: 0.65rem; color: var(--gold); letter-spacing: 2px; margin-top: 4px; }
 .admin-logo .badge { font-size: 0.6rem; background: rgba(201,168,76,0.2); color: var(--gold); padding: 3px 8px; border-radius: 20px; display: inline-block; margin-top: 8px; }
 
-.admin-nav { padding: 16px 0; flex: 1; }
+.admin-nav { padding: 20px 0; flex: 1; }
 .admin-nav-item {
-  display: flex; align-items: center; gap: 12px; padding: 12px 20px;
+  display: flex; align-items: center; gap: 12px; padding: 12px 24px;
   cursor: pointer; transition: all 0.2s; border-left: 3px solid transparent;
   color: rgba(255,255,255,0.6); font-size: 0.8rem; font-weight: 500; letter-spacing: 1px;
 }
 .admin-nav-item:hover { background: rgba(255,255,255,0.05); color: var(--white); border-left-color: var(--gold); }
 .admin-nav-item.active { background: rgba(201,168,76,0.1); color: var(--gold); border-left-color: var(--gold); }
+.admin-nav-item .icon { font-size: 1.1rem; }
 
-.admin-footer { padding: 16px 20px; border-top: 1px solid rgba(255,255,255,0.1); }
-.admin-footer button { width: 100%; background: transparent; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.5); padding: 8px; font-size: 0.7rem; letter-spacing: 1px; cursor: pointer; border-radius: 2px; transition: all 0.2s; }
+.admin-footer { padding: 20px 24px; border-top: 1px solid rgba(255,255,255,0.1); }
+.admin-footer button { width: 100%; background: transparent; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.5); padding: 10px; font-size: 0.75rem; letter-spacing: 1px; cursor: pointer; border-radius: 2px; transition: all 0.2s; }
 .admin-footer button:hover { border-color: var(--danger); color: var(--danger); }
 
-.admin-main { flex: 1; overflow-y: auto; padding: 20px; }
-.admin-page { display: none; }
+.admin-main { flex: 1; overflow-y: auto; padding: 0; }
+.admin-page { display: none; padding: 30px; }
 .admin-page.active { display: block; }
 
-.admin-header-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; flex-wrap: wrap; gap: 12px; }
-.admin-page-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.5rem; font-weight: 800; text-transform: uppercase; }
+.admin-header-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.admin-page-title { font-family: 'Barlow Condensed', sans-serif; font-size: 2rem; font-weight: 800; text-transform: uppercase; }
+.admin-page-subtitle { font-size: 0.75rem; color: rgba(255,255,255,0.4); letter-spacing: 1px; margin-top: 4px; }
 
-.kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 30px; }
+/* KPIs */
+.kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 30px; }
 .kpi-card {
   background: linear-gradient(145deg, rgba(42,32,37,0.8), rgba(15,10,12,0.6));
   border: 1px solid rgba(201,168,76,0.15); border-radius: 6px;
-  padding: 16px; text-align: center;
+  padding: 20px; transition: border-color 0.3s;
 }
-.kpi-value { font-family: 'Barlow Condensed', sans-serif; font-size: 1.8rem; font-weight: 800; color: var(--gold); }
+.kpi-card:hover { border-color: rgba(201,168,76,0.4); }
+.kpi-icon { font-size: 1.8rem; margin-bottom: 12px; }
+.kpi-value { font-family: 'Barlow Condensed', sans-serif; font-size: 2.2rem; font-weight: 800; color: var(--gold); }
 .kpi-label { font-size: 0.7rem; color: rgba(255,255,255,0.5); letter-spacing: 2px; text-transform: uppercase; margin-top: 4px; }
+.kpi-trend { font-size: 0.75rem; color: var(--success); margin-top: 8px; }
 
-.filter-bar { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; align-items: center; }
+/* Filters */
+.filter-bar { display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; align-items: center; }
 .filter-btn {
-  padding: 6px 14px; font-size: 0.7rem; font-weight: 600; letter-spacing: 1px;
+  padding: 8px 18px; font-size: 0.75rem; font-weight: 600; letter-spacing: 1px;
   border: 1px solid rgba(255,255,255,0.15); background: transparent; color: rgba(255,255,255,0.6);
   cursor: pointer; border-radius: 20px; transition: all 0.2s; text-transform: uppercase;
 }
 .filter-btn.active, .filter-btn:hover { background: var(--bordeaux); border-color: var(--bordeaux); color: var(--white); }
 .filter-select {
   background: rgba(42,32,37,0.6); border: 1px solid rgba(201,168,76,0.2);
-  color: var(--white); padding: 6px 12px; font-size: 0.75rem; border-radius: 4px; outline: none;
+  color: var(--white); padding: 8px 14px; font-size: 0.8rem; border-radius: 4px; outline: none;
 }
 
+/* Table */
 .data-table { width: 100%; border-collapse: collapse; }
-.data-table th { font-size: 0.65rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); padding: 10px 12px; text-align: left; border-bottom: 1px solid rgba(201,168,76,0.2); }
-.data-table td { padding: 10px 12px; font-size: 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.05); vertical-align: middle; }
-.table-container { overflow-x: auto; }
+.data-table th { font-size: 0.65rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(201,168,76,0.2); }
+.data-table td { padding: 14px 16px; font-size: 0.82rem; border-bottom: 1px solid rgba(255,255,255,0.05); vertical-align: middle; }
+.data-table tr:hover td { background: rgba(255,255,255,0.02); }
 
-.status-badge { padding: 3px 10px; border-radius: 20px; font-size: 0.6rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; display: inline-block; }
+.status-badge { padding: 4px 12px; border-radius: 20px; font-size: 0.65rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
 .status-pendente { background: rgba(194,139,0,0.2); color: var(--warning); }
 .status-confirmado { background: rgba(45,125,70,0.2); color: #4CAF50; }
 .status-retirado { background: rgba(33,150,243,0.2); color: #2196F3; }
 .status-devolvido { background: rgba(45,125,70,0.15); color: #81C784; }
+.status-atrasado { background: rgba(192,57,43,0.2); color: var(--danger); }
+.status-cancelado { background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.3); }
 
-.action-btns { display: flex; gap: 4px; flex-wrap: wrap; }
-.action-btn { padding: 4px 10px; font-size: 0.6rem; font-weight: 600; border: 1px solid; cursor: pointer; border-radius: 2px; transition: all 0.2s; text-transform: uppercase; letter-spacing: 1px; background: transparent; }
+.action-btns { display: flex; gap: 6px; }
+.action-btn { padding: 6px 12px; font-size: 0.65rem; font-weight: 600; border: 1px solid; cursor: pointer; border-radius: 2px; transition: all 0.2s; text-transform: uppercase; letter-spacing: 1px; background: transparent; }
 .action-btn.confirm { color: #4CAF50; border-color: #4CAF50; }
 .action-btn.confirm:hover { background: rgba(76,175,80,0.15); }
 .action-btn.entregue { color: #2196F3; border-color: #2196F3; }
-.action-btn.view { color: var(--gold); border-color: var(--gold); }
+.action-btn.entregue:hover { background: rgba(33,150,243,0.15); }
 .action-btn.cancel { color: var(--danger); border-color: var(--danger); }
+.action-btn.cancel:hover { background: rgba(192,57,43,0.15); }
+.action-btn.view { color: var(--gold); border-color: var(--gold); }
+.action-btn.view:hover { background: rgba(201,168,76,0.15); }
 
-.clientes-check-list { display: flex; flex-direction: column; gap: 8px; max-height: 300px; overflow-y: auto; }
-.cliente-check-item { display: flex; align-items: center; gap: 10px; padding: 8px 12px; background: rgba(42,32,37,0.4); border: 1px solid rgba(255,255,255,0.06); border-radius: 4px; cursor: pointer; }
+/* Mensagens */
+.clientes-check-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; max-height: 300px; overflow-y: auto; }
+.cliente-check-item { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: rgba(42,32,37,0.4); border: 1px solid rgba(255,255,255,0.06); border-radius: 4px; cursor: pointer; transition: all 0.2s; }
+.cliente-check-item:hover { border-color: rgba(201,168,76,0.3); }
 .cliente-check-item input { accent-color: var(--gold); }
 .cliente-info { flex: 1; }
-.cliente-nome { font-size: 0.8rem; font-weight: 600; }
-.cliente-contato { font-size: 0.65rem; color: rgba(255,255,255,0.4); }
+.cliente-nome { font-size: 0.85rem; font-weight: 600; }
+.cliente-contato { font-size: 0.7rem; color: rgba(255,255,255,0.4); margin-top: 2px; }
 
-.msg-textarea { width: 100%; background: rgba(42,32,37,0.4); border: 1px solid rgba(201,168,76,0.2); border-radius: 4px; color: var(--white); font-family: 'Barlow', sans-serif; font-size: 0.85rem; line-height: 1.5; resize: vertical; min-height: 120px; outline: none; padding: 12px; }
-.canal-btns { display: flex; gap: 10px; margin-top: 12px; }
-.canal-btn { flex: 1; padding: 10px; border: 2px solid; cursor: pointer; border-radius: 4px; font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; transition: all 0.2s; background: transparent; }
-.canal-btn.whatsapp { border-color: #25D366; color: #25D366; }
-.canal-btn.whatsapp.active, .canal-btn.whatsapp:hover { background: rgba(37,211,102,0.15); }
-.canal-btn.email { border-color: var(--gold); color: var(--gold); }
-.canal-btn.email.active, .canal-btn.email:hover { background: rgba(201,168,76,0.15); }
+.msg-editor { background: rgba(42,32,37,0.4); border: 1px solid rgba(201,168,76,0.2); border-radius: 4px; padding: 20px; margin-top: 20px; }
+.msg-textarea { width: 100%; background: transparent; border: none; color: var(--white); font-family: 'Barlow', sans-serif; font-size: 0.9rem; line-height: 1.6; resize: vertical; min-height: 150px; outline: none; }
+.canal-btns { display: flex; gap: 10px; margin-top: 16px; }
+.canal-btn { flex: 1; padding: 12px; border: 2px solid; cursor: pointer; border-radius: 4px; font-family: 'Barlow Condensed', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; transition: all 0.2s; }
+.canal-btn.whatsapp { border-color: #25D366; color: #25D366; background: transparent; }
+.canal-btn.whatsapp:hover, .canal-btn.whatsapp.active { background: rgba(37,211,102,0.15); }
+.canal-btn.email { border-color: var(--gold); color: var(--gold); background: transparent; }
+.canal-btn.email:hover, .canal-btn.email.active { background: rgba(201,168,76,0.15); }
 
+/* Login Admin */
 #admin-login {
   position: fixed; inset: 0; background: linear-gradient(135deg, var(--dark) 0%, var(--bordeaux-dark) 100%);
   z-index: 4000; display: none; align-items: center; justify-content: center;
 }
 #admin-login.active { display: flex; }
-.login-box { text-align: center; width: 90%; max-width: 360px; }
-.login-icon { font-size: 2.5rem; margin-bottom: 16px; }
-.login-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.3rem; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; }
-.login-form { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
-.login-form input { background: rgba(42,32,37,0.8); border: 1px solid rgba(201,168,76,0.3); color: var(--white); padding: 12px; font-family: 'Barlow', sans-serif; font-size: 0.9rem; border-radius: 4px; outline: none; text-align: center; }
+.login-box { text-align: center; width: 360px; }
+.login-icon { font-size: 3rem; margin-bottom: 20px; }
+.login-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.5rem; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 4px; }
+.login-sub { font-size: 0.75rem; color: rgba(255,255,255,0.4); letter-spacing: 2px; margin-bottom: 32px; }
+.login-form { display: flex; flex-direction: column; gap: 14px; }
+.login-form input { background: rgba(42,32,37,0.8); border: 1px solid rgba(201,168,76,0.3); color: var(--white); padding: 14px 18px; font-family: 'Barlow', sans-serif; font-size: 0.9rem; border-radius: 4px; outline: none; text-align: center; transition: border-color 0.3s; }
 .login-form input:focus { border-color: var(--gold); }
-.login-form button { background: var(--bordeaux); color: var(--white); border: 2px solid var(--gold); padding: 12px; font-family: 'Barlow Condensed', sans-serif; font-size: 0.85rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; border-radius: 4px; transition: all 0.3s; }
+.login-form button { background: var(--bordeaux); color: var(--white); border: 2px solid var(--gold); padding: 14px; font-family: 'Barlow Condensed', sans-serif; font-size: 0.9rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; border-radius: 4px; transition: all 0.3s; }
+.login-form button:hover { background: var(--gold); color: var(--dark); }
 
-.success-screen { text-align: center; padding: 40px 20px; }
-.success-icon { font-size: 4rem; animation: pulse 2s infinite; }
+/* Success screen */
+.success-screen { text-align: center; padding: 60px 20px; }
+.success-icon { font-size: 5rem; animation: pulse 2s infinite; }
 @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
-.success-code { display: inline-block; background: rgba(201,168,76,0.15); border: 1px solid var(--gold); color: var(--gold); padding: 6px 20px; border-radius: 4px; font-family: 'Barlow Condensed', sans-serif; font-size: 1.2rem; font-weight: 700; letter-spacing: 3px; margin: 16px 0; }
+.success-title { font-family: 'Barlow Condensed', sans-serif; font-size: 2rem; font-weight: 800; text-transform: uppercase; margin: 20px 0 12px; }
+.success-text { font-size: 0.9rem; color: rgba(255,255,255,0.6); line-height: 1.6; }
+.success-code { display: inline-block; background: rgba(201,168,76,0.15); border: 1px solid var(--gold); color: var(--gold); padding: 8px 24px; border-radius: 4px; font-family: 'Barlow Condensed', sans-serif; font-size: 1.5rem; font-weight: 700; letter-spacing: 4px; margin: 20px 0; }
 
+/* Footer */
 footer {
-  background: var(--bordeaux-dark); padding: 40px 20px 24px;
+  background: var(--bordeaux-dark); padding: 60px 40px 30px;
   border-top: 1px solid rgba(201,168,76,0.2);
 }
-.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; max-width: 1000px; margin: 0 auto 30px; text-align: center; }
-.footer-brand .name { font-family: 'Barlow Condensed', sans-serif; font-size: 1.2rem; font-weight: 800; letter-spacing: 2px; }
-.footer-brand .sub { font-size: 0.7rem; color: var(--gold); }
-.footer-links h4 { font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; max-width: 1000px; margin: 0 auto; margin-bottom: 40px; }
+.footer-brand .name { font-family: 'Barlow Condensed', sans-serif; font-size: 1.5rem; font-weight: 800; letter-spacing: 3px; }
+.footer-brand .sub { font-size: 0.75rem; color: var(--gold); letter-spacing: 2px; margin-top: 4px; }
+.footer-brand p { font-size: 0.8rem; color: rgba(255,255,255,0.5); line-height: 1.7; margin-top: 16px; }
+.footer-links h4 { font-size: 0.7rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
 .footer-links ul { list-style: none; }
-.footer-links li { margin-bottom: 6px; }
-.footer-links a { font-size: 0.75rem; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+.footer-links li { margin-bottom: 10px; }
+.footer-links a { font-size: 0.8rem; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
 .footer-links a:hover { color: var(--gold); }
-.footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.7rem; color: rgba(255,255,255,0.3); }
+.footer-bottom { text-align: center; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.75rem; color: rgba(255,255,255,0.3); }
 
+/* Admin hidden trigger */
 #admin-trigger { position: fixed; bottom: 10px; left: 10px; width: 10px; height: 10px; cursor: pointer; z-index: 999; opacity: 0; }
 
-.detalhe-roupa { background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.2); border-radius: 6px; padding: 12px; margin-bottom: 16px; }
-.summary-box { background: rgba(42,32,37,0.4); border: 1px solid rgba(201,168,76,0.2); border-radius: 6px; padding: 16px; margin-top: 16px; }
-.summary-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
-.contract-print { font-size: 12px; line-height: 1.5; }
-.contract-print h3, .contract-print h4 { margin: 12px 0 8px; color: var(--gold); }
-.contract-signature { margin-top: 20px; border-top: 1px solid #ccc; padding-top: 16px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+/* Hamburger */
+.hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; z-index: 1001; }
+.hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.3s; }
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Admin mobile toggle */
+.admin-mobile-toggle { display: none; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  nav { padding: 12px 16px; }
+  .nav-links {
+    display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(15,10,12,0.98); flex-direction: column; align-items: center; justify-content: center;
+    gap: 32px; z-index: 999; list-style: none;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { font-size: 1.2rem; letter-spacing: 3px; }
+  .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  section { padding: 60px 16px; }
+  .form-grid.cols-2, .form-grid.cols-3 { grid-template-columns: 1fr; }
+  .hero-stats { gap: 16px; flex-wrap: wrap; }
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .footer-grid { grid-template-columns: 1fr; }
+  #admin-overlay { flex-direction: column; }
+  .admin-sidebar {
+    width: 100%; flex-direction: row; align-items: center; flex-shrink: 0;
+    overflow-x: auto; border-right: none; border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+  .admin-logo { padding: 12px 16px; border-bottom: none; border-right: 1px solid rgba(201,168,76,0.1); white-space: nowrap; flex-shrink: 0; }
+  .admin-logo .badge { display: none; }
+  .admin-nav { display: flex; flex-direction: row; padding: 8px 0; overflow-x: auto; flex: 1; }
+  .admin-nav-item { flex-direction: column; gap: 4px; padding: 8px 14px; font-size: 0.65rem; border-left: none; border-bottom: 3px solid transparent; white-space: nowrap; }
+  .admin-nav-item:hover, .admin-nav-item.active { border-left-color: transparent; border-bottom-color: var(--gold); }
+  .admin-footer { display: none; }
+  .admin-main { flex: 1; overflow-y: auto; }
+  .admin-page { padding: 16px; }
+  .admin-header-bar { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  #page-mensagens > div { grid-template-columns: 1fr !important; }
+  .hero-title { font-size: 3rem; }
+  .catalog-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+  .form-steps { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 10px; }
+  .step-label { font-size: 0.6rem; }
+  .modal { padding: 24px 16px; }
+  .hero-actions { flex-direction: column; align-items: center; }
+  .btn-primary, .btn-outline { width: 100%; max-width: 280px; text-align: center; }
+}
 
 .card-unavailable { opacity: 0.5; pointer-events: none; }
+.card-unavailable .card-badge { background: var(--light-gray); }
+
 .select-card { border: 2px solid rgba(201,168,76,0.2) !important; }
 .select-card.selected { border-color: var(--gold) !important; background: rgba(201,168,76,0.1) !important; }
+
+.table-container { overflow-x: auto; }
+.empty-state { text-align: center; padding: 60px 20px; color: rgba(255,255,255,0.3); }
+.empty-state .icon { font-size: 3rem; margin-bottom: 16px; }
+.empty-state p { font-size: 0.9rem; }
+
+.select-all-btn { background: transparent; border: 1px solid rgba(201,168,76,0.4); color: var(--gold); padding: 6px 14px; font-size: 0.7rem; font-weight: 600; letter-spacing: 1px; cursor: pointer; border-radius: 4px; transition: all 0.2s; text-transform: uppercase; }
+.select-all-btn:hover { background: rgba(201,168,76,0.1); }
+
+.detalhe-roupa {
+  background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 6px; padding: 16px; display: flex; gap: 16px; align-items: center;
+  margin-bottom: 20px;
+}
+.detalhe-roupa .emoji { font-size: 2rem; }
+.detalhe-roupa .info { flex: 1; }
+.detalhe-roupa .nome { font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; font-weight: 700; }
+.detalhe-roupa .preco { font-size: 0.8rem; color: var(--gold); margin-top: 2px; }
+
+.summary-box { background: rgba(42,32,37,0.4); border: 1px solid rgba(201,168,76,0.2); border-radius: 6px; padding: 24px; margin-top: 20px; }
+.summary-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.85rem; }
+.summary-row:last-child { border-bottom: none; font-weight: 700; color: var(--gold); font-size: 1rem; }
+.summary-label { color: rgba(255,255,255,0.5); }
 </style>
 </head>
 <body>
 
+<!-- Loading -->
 <div id="loading-screen">
   <div class="loading-logo">
+    <img src="https://mgqvrijrxxdwqstvrtxw.supabase.co/storage/v1/object/public/imagens/AtualFestasModaMasculina.jpeg" alt="Atual Festas" style="width:90px;height:90px;object-fit:cover;border-radius:50%;border:3px solid var(--gold);margin-bottom:14px;display:block;margin-left:auto;margin-right:auto;" onerror="this.style.display='none'">
     <div class="brand">ATUAL FESTAS</div>
     <div class="sub">Moda Masculina · Locações</div>
     <div class="loading-bar"><div class="loading-fill"></div></div>
   </div>
 </div>
 
+<!-- NAVBAR -->
 <nav id="navbar">
   <a href="#" class="nav-brand">
-    <div class="nav-logo-icon"><img src="https://mgqvrijrxxdwqstvrtxw.supabase.co/storage/v1/object/public/imagens/AtualFestasModaMasculina.jpeg" alt="Logo Atual Festas" onerror="this.src='https://placehold.co/40x40/7A1530/FFFFFF?text=AF'"></div>
+    <div class="nav-logo-icon">
+      <img src="https://mgqvrijrxxdwqstvrtxw.supabase.co/storage/v1/object/public/imagens/AtualFestasModaMasculina.jpeg" alt="Atual Festas Logo" onerror="this.outerHTML='🤵'">
+    </div>
     <div class="nav-brand-text">
       <div class="top">ATUAL FESTAS</div>
       <div class="bottom">Moda Masculina · Locações</div>
     </div>
   </a>
-  <ul class="nav-links">
-    <li><a href="#catalogo">Catálogo</a></li>
-    <li><a href="#agendar">Agendar</a></li>
-    <li><a href="#como-funciona">Como Funciona</a></li>
-    <li><a href="#contato">Contato</a></li>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#catalogo" onclick="closeMobileMenu()">Catálogo</a></li>
+    <li><a href="#agendar" onclick="closeMobileMenu()">Agendar</a></li>
+    <li><a href="#como-funciona" onclick="closeMobileMenu()">Como Funciona</a></li>
+    <li><a href="#contato" onclick="closeMobileMenu()">Contato</a></li>
   </ul>
   <button class="nav-cta" onclick="scrollToAgendar()">Agendar Agora</button>
+  <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
+<!-- HERO -->
 <section id="hero">
   <div class="hero-bg-pattern"></div>
   <div class="hero-glow"></div>
@@ -484,266 +595,1428 @@ footer {
       <a href="#catalogo" class="btn-outline">Ver Catálogo</a>
     </div>
     <div class="hero-stats">
-      <div class="stat"><div class="stat-number">500+</div><div class="stat-label">Clientes Felizes</div></div>
-      <div class="stat"><div class="stat-number">50+</div><div class="stat-label">Trajes Premium</div></div>
-      <div class="stat"><div class="stat-number">8+</div><div class="stat-label">Anos no Mercado</div></div>
+      <div class="stat">
+        <div class="stat-number">500+</div>
+        <div class="stat-label">Clientes Felizes</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">50+</div>
+        <div class="stat-label">Trajes Premium</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">8+</div>
+        <div class="stat-label">Anos no Mercado</div>
+      </div>
     </div>
   </div>
-  <div class="scroll-indicator"><span>Scroll</span><div class="scroll-line"></div></div>
-</section>
-
-<section id="catalogo">
-  <div class="section-header"><span class="section-tag">✦ Nossa Coleção</span><h2 class="section-title">CATÁLOGO<br>DE TRAJES</h2><div class="section-line"></div></div>
-  <div class="catalog-grid" id="catalog-grid"><div style="text-align:center;color:rgba(255,255,255,0.3);grid-column:1/-1;padding:40px">Carregando catálogo...</div></div>
-</section>
-
-<section id="como-funciona" style="background:linear-gradient(180deg,var(--dark),rgba(86,15,34,0.15),var(--dark))">
-  <div class="section-header"><span class="section-tag">✦ Processo</span><h2 class="section-title">COMO<br>FUNCIONA</h2><div class="section-line"></div></div>
-  <div style="max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:24px">
-    <div style="text-align:center"><div style="width:50px;height:50px;border-radius:50%;background:var(--bordeaux);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin:0 auto 12px">1</div><h3 style="font-size:0.9rem">ESCOLHA O TRAJE</h3><p style="font-size:0.7rem">Navegue pelo catálogo</p></div>
-    <div style="text-align:center"><div style="width:50px;height:50px;border-radius:50%;background:var(--bordeaux);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin:0 auto 12px">2</div><h3 style="font-size:0.9rem">FAÇA O CADASTRO</h3><p style="font-size:0.7rem">Preencha seus dados</p></div>
-    <div style="text-align:center"><div style="width:50px;height:50px;border-radius:50%;background:var(--bordeaux);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin:0 auto 12px">3</div><h3 style="font-size:0.9rem">AGENDE O DIA</h3><p style="font-size:0.7rem">Escolha datas</p></div>
-    <div style="text-align:center"><div style="width:50px;height:50px;border-radius:50%;background:var(--bordeaux);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin:0 auto 12px">4</div><h3 style="font-size:0.9rem">BRILHE NO EVENTO</h3><p style="font-size:0.7rem">Retire e seja impecável</p></div>
+  <div class="scroll-indicator">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
   </div>
 </section>
 
+<!-- CATÁLOGO -->
+<section id="catalogo">
+  <div class="section-header">
+    <span class="section-tag">✦ Nossa Coleção</span>
+    <h2 class="section-title">CATÁLOGO<br>DE TRAJES</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="catalog-grid" id="catalog-grid">
+    <div style="text-align:center;color:rgba(255,255,255,0.3);grid-column:1/-1;padding:40px">Carregando catálogo...</div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section id="como-funciona" style="background:linear-gradient(180deg,var(--dark),rgba(86,15,34,0.15),var(--dark))">
+  <div class="section-header">
+    <span class="section-tag">✦ Processo</span>
+    <h2 class="section-title">COMO<br>FUNCIONA</h2>
+    <div class="section-line"></div>
+  </div>
+  <div style="max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px">
+    <div style="text-align:center">
+      <div style="width:60px;height:60px;border-radius:50%;background:var(--bordeaux);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin:0 auto 16px">1</div>
+      <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:8px">ESCOLHA O TRAJE</h3>
+      <p style="font-size:0.82rem;color:rgba(255,255,255,0.5);line-height:1.7">Navegue pelo nosso catálogo e escolha o modelo perfeito para seu evento</p>
+    </div>
+    <div style="text-align:center">
+      <div style="width:60px;height:60px;border-radius:50%;background:var(--bordeaux);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin:0 auto 16px">2</div>
+      <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:8px">FAÇA O CADASTRO</h3>
+      <p style="font-size:0.82rem;color:rgba(255,255,255,0.5);line-height:1.7">Preencha seus dados e assine nosso termo de responsabilidade</p>
+    </div>
+    <div style="text-align:center">
+      <div style="width:60px;height:60px;border-radius:50%;background:var(--bordeaux);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin:0 auto 16px">3</div>
+      <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:8px">AGENDE O DIA</h3>
+      <p style="font-size:0.82rem;color:rgba(255,255,255,0.5);line-height:1.7">Escolha a data de retirada e devolução do traje</p>
+    </div>
+    <div style="text-align:center">
+      <div style="width:60px;height:60px;border-radius:50%;background:var(--bordeaux);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin:0 auto 16px">4</div>
+      <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:8px">BRILHE NO EVENTO</h3>
+      <p style="font-size:0.82rem;color:rgba(255,255,255,0.5);line-height:1.7">Retire o traje e apareça impecável na sua ocasião especial</p>
+    </div>
+  </div>
+</section>
+
+<!-- AGENDAMENTO -->
 <section id="agendar">
-  <div class="section-header"><span class="section-tag">✦ Reserva</span><h2 class="section-title">FAZER<br>AGENDAMENTO</h2><div class="section-line"></div></div>
+  <div class="section-header">
+    <span class="section-tag">✦ Reserva</span>
+    <h2 class="section-title">FAZER<br>AGENDAMENTO</h2>
+    <div class="section-line"></div>
+  </div>
   <div class="form-container">
     <div class="form-steps">
-      <div class="step active" id="step-1"><div class="step-num">1</div><div class="step-label">Traje</div></div>
-      <div class="step" id="step-2"><div class="step-num">2</div><div class="step-label">Dados</div></div>
-      <div class="step" id="step-3"><div class="step-num">3</div><div class="step-label">Agendamento</div></div>
-      <div class="step" id="step-4"><div class="step-num">4</div><div class="step-label">Termo</div></div>
-      <div class="step" id="step-5"><div class="step-num">5</div><div class="step-label">Confirmação</div></div>
-    </div>
-
-    <div class="form-panel active" id="panel-1">
-      <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1.2rem">Escolha seu Traje</h3>
-      <div class="roupa-selector" id="roupa-selector"><div>Carregando...</div></div>
-      <div class="form-nav" style="justify-content:flex-end"><button class="btn-form btn-next" onclick="nextStep(1)">Próximo →</button></div>
-    </div>
-
-    <div class="form-panel" id="panel-2">
-      <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1.2rem">Seus Dados</h3>
-      <div class="form-grid cols-2">
-        <div class="form-group" style="grid-column:1/-1"><label>Nome Completo *</label><input type="text" id="f-nome" placeholder="Seu nome completo"></div>
-        <div class="form-group"><label>CPF *</label><input type="text" id="f-cpf" maxlength="14" placeholder="000.000.000-00"></div>
-        <div class="form-group"><label>Telefone / WhatsApp *</label><input type="text" id="f-tel" placeholder="(00) 90000-0000"></div>
-        <div class="form-group" style="grid-column:1/-1"><label>Email *</label><input type="email" id="f-email" placeholder="seu@email.com"></div>
-        <div class="form-group" style="grid-column:1/-1"><label>Endereço Completo *</label><input type="text" id="f-endereco" placeholder="Rua, número, bairro"></div>
-        <div class="form-group"><label>Cidade</label><input type="text" id="f-cidade" placeholder="Cidade"></div>
-        <div class="form-group"><label>CEP</label><input type="text" id="f-cep" maxlength="9" placeholder="00000-000"></div>
+      <div class="step active" id="step-1">
+        <div class="step-num">1</div>
+        <div class="step-label">Traje</div>
       </div>
-      <div class="form-nav"><button class="btn-form btn-prev" onclick="prevStep(2)">← Voltar</button><button class="btn-form btn-next" onclick="nextStep(2)">Próximo →</button></div>
+      <div class="step" id="step-2">
+        <div class="step-num">2</div>
+        <div class="step-label">Dados</div>
+      </div>
+      <div class="step" id="step-3">
+        <div class="step-num">3</div>
+        <div class="step-label">Agendamento</div>
+      </div>
+      <div class="step" id="step-4">
+        <div class="step-num">4</div>
+        <div class="step-label">Termo</div>
+      </div>
+      <div class="step" id="step-5">
+        <div class="step-num">5</div>
+        <div class="step-label">Confirmação</div>
+      </div>
     </div>
 
+    <!-- Painel 1: Escolha do traje -->
+    <div class="form-panel active" id="panel-1">
+      <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;font-weight:700;margin-bottom:8px;text-transform:uppercase">Escolha seu Traje</h3>
+      <p style="font-size:0.82rem;color:rgba(255,255,255,0.5);margin-bottom:24px">Selecione o traje ideal para o seu evento especial</p>
+      <div class="roupa-selector" id="roupa-selector">
+        <div style="color:rgba(255,255,255,0.3)">Carregando...</div>
+      </div>
+      <div class="form-nav" style="justify-content:flex-end">
+        <button class="btn-form btn-next" onclick="nextStep(1)">Próximo →</button>
+      </div>
+    </div>
+
+    <!-- Painel 2: Dados do cliente -->
+    <div class="form-panel" id="panel-2">
+      <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;font-weight:700;margin-bottom:8px;text-transform:uppercase">Seus Dados</h3>
+      <p style="font-size:0.82rem;color:rgba(255,255,255,0.5);margin-bottom:24px">Preencha seus dados para cadastro</p>
+      <div class="form-grid cols-2">
+        <div class="form-group" style="grid-column:1/-1">
+          <label>Nome Completo *</label>
+          <input type="text" id="f-nome" placeholder="Seu nome completo" required>
+        </div>
+        <div class="form-group">
+          <label>CPF *</label>
+          <input type="text" id="f-cpf" placeholder="000.000.000-00" maxlength="14">
+        </div>
+        <div class="form-group">
+          <label>Telefone / WhatsApp *</label>
+          <input type="text" id="f-tel" placeholder="(00) 90000-0000">
+        </div>
+        <div class="form-group" style="grid-column:1/-1">
+          <label>Email *</label>
+          <input type="email" id="f-email" placeholder="seu@email.com">
+        </div>
+        <div class="form-group" style="grid-column:1/-1">
+          <label>Endereço Completo *</label>
+          <input type="text" id="f-endereco" placeholder="Rua, número, bairro">
+        </div>
+        <div class="form-group">
+          <label>Cidade</label>
+          <input type="text" id="f-cidade" placeholder="Cidade">
+        </div>
+        <div class="form-group">
+          <label>CEP</label>
+          <input type="text" id="f-cep" placeholder="00000-000" maxlength="9">
+        </div>
+      </div>
+      <div class="form-nav">
+        <button class="btn-form btn-prev" onclick="prevStep(2)">← Voltar</button>
+        <button class="btn-form btn-next" onclick="nextStep(2)">Próximo →</button>
+      </div>
+    </div>
+
+    <!-- Painel 3: Agendamento -->
     <div class="form-panel" id="panel-3">
-      <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1.2rem">Agendamento</h3>
+      <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;font-weight:700;margin-bottom:8px;text-transform:uppercase">Agendamento</h3>
+      <p style="font-size:0.82rem;color:rgba(255,255,255,0.5);margin-bottom:24px">Escolha as datas e o tipo do seu evento</p>
       <div id="roupa-selecionada-detalhe"></div>
       <div class="form-grid cols-2">
-        <div class="form-group"><label>Tipo de Evento *</label><select id="f-evento"><option value="">Selecione...</option><option value="casamento">💍 Casamento</option><option value="formatura">🎓 Formatura</option><option value="corporativo">💼 Evento Corporativo</option><option value="aniversario">🎂 Aniversário</option><option value="debutante">👑 Debutante</option><option value="batizado">⛪ Batizado</option><option value="outro">✨ Outro</option></select></div>
-        <div class="form-group"><label>Tamanho *</label><select id="f-tamanho"><option value="">Selecione...</option><option>PP</option><option>P</option><option>M</option><option>G</option><option>GG</option><option>XGG</option></select></div>
-        <div class="form-group"><label>Data de Retirada *</label><input type="date" id="f-retirada"></div>
-        <div class="form-group"><label>Data de Devolução *</label><input type="date" id="f-devolucao"></div>
-        <div class="form-group" style="grid-column:1/-1"><label>Observações</label><textarea id="f-obs" rows="2" placeholder="Alguma observação especial? Ajustes, preferências..."></textarea></div>
+        <div class="form-group">
+          <label>Tipo de Evento *</label>
+          <select id="f-evento">
+            <option value="">Selecione...</option>
+            <option value="casamento">💍 Casamento</option>
+            <option value="formatura">🎓 Formatura</option>
+            <option value="corporativo">💼 Evento Corporativo</option>
+            <option value="aniversario">🎂 Aniversário / Festa</option>
+            <option value="debutante">👑 Festa de Debutante</option>
+            <option value="batizado">⛪ Batizado / Primeira Comunhão</option>
+            <option value="outro">✨ Outro Evento</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Tamanho *</label>
+          <select id="f-tamanho">
+            <option value="">Selecione...</option>
+            <option value="PP">PP</option>
+            <option value="P">P</option>
+            <option value="M">M</option>
+            <option value="G">G</option>
+            <option value="GG">GG</option>
+            <option value="XGG">XGG</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Data de Retirada *</label>
+          <input type="date" id="f-retirada">
+        </div>
+        <div class="form-group">
+          <label>Data de Devolução *</label>
+          <input type="date" id="f-devolucao">
+        </div>
+        <div class="form-group" style="grid-column:1/-1">
+          <label>Observações</label>
+          <textarea id="f-obs" placeholder="Alguma observação especial? Ajustes, preferências..."></textarea>
+        </div>
       </div>
       <div id="summary-calc" class="summary-box" style="display:none"></div>
-      <div class="form-nav"><button class="btn-form btn-prev" onclick="prevStep(3)">← Voltar</button><button class="btn-form btn-next" onclick="nextStep(3)">Próximo →</button></div>
+      <div class="form-nav">
+        <button class="btn-form btn-prev" onclick="prevStep(3)">← Voltar</button>
+        <button class="btn-form btn-next" onclick="nextStep(3)">Próximo →</button>
+      </div>
     </div>
 
+    <!-- Painel 4: Termo -->
     <div class="form-panel" id="panel-4">
-      <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1.2rem">Termo de Responsabilidade</h3>
+      <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;font-weight:700;margin-bottom:8px;text-transform:uppercase">Termo de Responsabilidade</h3>
+      <p style="font-size:0.82rem;color:rgba(255,255,255,0.5);margin-bottom:24px">Leia e aceite os termos para concluir seu agendamento</p>
       <div class="termo-box">
         <h3>TERMO DE RESPONSABILIDADE E COMPROMISSO — ATUAL FESTAS MODA MASCULINA</h3>
-        <p><strong>1. CUIDADO E CONSERVAÇÃO:</strong> O locatário compromete-se a zelar pelo traje com máximo cuidado durante todo o período de uso.</p>
-        <p><strong>2. RESPONSABILIDADE POR DANOS:</strong> Em caso de danos materiais ao traje, o locatário responsabiliza-se integralmente pelo custo de reparo ou reposição.</p>
-        <p><strong>3. PRAZO DE DEVOLUÇÃO:</strong> Atraso gera multa de R$ 50,00 por dia de atraso.</p>
-        <p><strong>4. CONDIÇÕES DE DEVOLUÇÃO:</strong> O traje deve ser devolvido em condições equivalentes às do recebimento.</p>
-        <p><strong>5. PROIBIÇÕES DE USO:</strong> É proibido o uso em atividades de risco ou ambientes que possam comprometer a integridade da peça.</p>
-        <p><strong>6. HIGIENE E LIMPEZA:</strong> A limpeza profissional é de responsabilidade da ATUAL FESTAS após a devolução.</p>
-        <p><strong>7. TRANSFERÊNCIA PROIBIDA:</strong> O traje não pode ser emprestado, sublocado ou cedido a terceiros.</p>
-        <p><strong>8. AUTORIZAÇÃO DE COBRANÇA:</strong> Em caso de não devolução ou danos irreparáveis, medidas legais serão adotadas.</p>
-        <p><strong>9. VERIFICAÇÃO PRÉVIA:</strong> O locatário confirma que verificou o traje no ato da retirada.</p>
-        <p><strong>10. ACEITAÇÃO INTEGRAL:</strong> Este termo tem plena validade jurídica.</p>
+        <p>Ao realizar a locação de trajes e acessórios junto à <strong>ATUAL FESTAS MODA MASCULINA</strong>, o locatário declara ter lido, compreendido e concordado integralmente com as seguintes cláusulas:</p>
+        <p><strong>1. CUIDADO E CONSERVAÇÃO DA PEÇA:</strong> O locatário compromete-se a zelar pelo traje com o máximo de cuidado durante todo o período de uso, tratando a peça como bem alheio de grande valor sentimental e financeiro, evitando manchas, rasgos, danos por mau uso ou descuido.</p>
+        <p><strong>2. RESPONSABILIDADE POR DANOS:</strong> Em caso de danos materiais ao traje — incluindo manchas permanentes, rasgos, queimaduras, odores impossíveis de remover, perda de peças ou acessórios — o locatário responsabiliza-se integralmente pelo custo de reparo ou reposição, conforme avaliação técnica da loja.</p>
+        <p><strong>3. PRAZO DE DEVOLUÇÃO:</strong> O locatário compromete-se a devolver o traje impreterivelmente até a data acordada no ato da locação. Atrasos geram multa de R$ 50,00 por dia de atraso, além de eventual indenização por impedimento de nova locação.</p>
+        <p><strong>4. CONDIÇÕES DE DEVOLUÇÃO:</strong> O traje deve ser devolvido em condições equivalentes às do recebimento — limpo, passado (quando entregue assim) e acondicionado adequadamente. A loja realizará avaliação na devolução e qualquer discrepância será documentada.</p>
+        <p><strong>5. PROIBIÇÕES DE USO:</strong> É estritamente proibido o uso do traje para fins que exponham as peças a riscos desnecessários, como ambientes com fumaça excessiva, atividades físicas intensas, chuva sem proteção, ou qualquer situação que possa comprometer a integridade da peça.</p>
+        <p><strong>6. HIGIENE E LIMPEZA:</strong> O locatário não deve lavar, secar na máquina ou passar as peças sem orientação da loja. A limpeza profissional é de responsabilidade da ATUAL FESTAS MODA MASCULINA após a devolução, exceto em casos de sujeira excessiva causada por descuido do locatário.</p>
+        <p><strong>7. TRANSFERÊNCIA PROIBIDA:</strong> O traje não pode ser emprestado, sublocado ou cedido a terceiros durante o período de locação. O contrato é pessoal e intransferível.</p>
+        <p><strong>8. AUTORIZAÇÃO DE COBRANÇA:</strong> Em caso de não devolução ou danos irreparáveis, o locatário autoriza a ATUAL FESTAS MODA MASCULINA a adotar as medidas legais cabíveis para recuperação do bem ou ressarcimento dos danos, incluindo registro de boletim de ocorrência.</p>
+        <p><strong>9. VERIFICAÇÃO PRÉVIA:</strong> O locatário confirma que verificou o traje no ato da retirada e que está de acordo com seu estado de conservação, sob pena de não poder alegar, posteriormente, qualquer dano pré-existente não apontado no momento da retirada.</p>
+        <p><strong>10. ACEITAÇÃO INTEGRAL:</strong> A assinatura deste termo — mesmo em formato digital/eletrônico — tem plena validade jurídica, vinculando o locatário a todas as cláusulas acima descritas, em conformidade com o Código Civil Brasileiro e a Lei nº 12.965/2014 (Marco Civil da Internet).</p>
       </div>
-      <div class="checkbox-group"><input type="checkbox" id="termo-check1"><label>Li e concordo com todas as cláusulas do Termo de Responsabilidade e Compromisso da Atual Festas Moda Masculina.</label></div>
-      <div class="checkbox-group"><input type="checkbox" id="termo-check2"><label>Responsabilizo-me pelo cuidado e devolução pontual do traje locado, ciente das penalidades previstas.</label></div>
-      <div class="checkbox-group"><input type="checkbox" id="termo-check3"><label>Autorizo o uso dos meus dados para fins de comunicação relacionada à locação, conforme a LGPD.</label></div>
-      <div class="form-nav"><button class="btn-form btn-prev" onclick="prevStep(4)">← Voltar</button><button class="btn-form btn-next btn-submit" onclick="submitAgendamento()">✅ Confirmar Agendamento</button></div>
+      <div class="checkbox-group" style="margin-bottom:12px">
+        <input type="checkbox" id="termo-check1">
+        <label for="termo-check1">Li e concordo com todas as cláusulas do Termo de Responsabilidade e Compromisso da Atual Festas Moda Masculina.</label>
+      </div>
+      <div class="checkbox-group" style="margin-bottom:12px">
+        <input type="checkbox" id="termo-check2">
+        <label for="termo-check2">Responsabilizo-me pelo cuidado e devolução pontual do traje locado, ciente das penalidades previstas.</label>
+      </div>
+      <div class="checkbox-group">
+        <input type="checkbox" id="termo-check3">
+        <label for="termo-check3">Autorizo o uso dos meus dados para fins de comunicação relacionada à locação, conforme a LGPD.</label>
+      </div>
+      <div class="form-nav">
+        <button class="btn-form btn-prev" onclick="prevStep(4)">← Voltar</button>
+        <button class="btn-form btn-next btn-submit" onclick="submitAgendamento()">✅ Confirmar Agendamento</button>
+      </div>
     </div>
 
+    <!-- Painel 5: Sucesso -->
     <div class="form-panel" id="panel-5">
-      <div class="success-screen"><div class="success-icon">🎉</div><h2 class="success-title">Agendamento Realizado!</h2><p class="success-text">Seu agendamento foi recebido com sucesso!<br>Em breve entraremos em contato para confirmação.</p><div class="success-code" id="booking-code"></div><p style="font-size:0.8rem;color:rgba(255,255,255,0.4)">Guarde este código de confirmação</p><button class="btn-primary" onclick="resetForm()">Fazer Novo Agendamento</button></div>
+      <div class="success-screen">
+        <div class="success-icon">🎉</div>
+        <h2 class="success-title">Agendamento Realizado!</h2>
+        <p class="success-text">Seu agendamento foi recebido com sucesso!<br>Em breve entraremos em contato para confirmação.</p>
+        <div class="success-code" id="booking-code"></div>
+        <p style="font-size:0.8rem;color:rgba(255,255,255,0.4)">Guarde este código de confirmação</p>
+        <button class="btn-primary" style="margin-top:30px" onclick="resetForm()">Fazer Novo Agendamento</button>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="contato" style="background:var(--bordeaux-dark);padding:50px 20px">
-  <div style="max-width:900px;margin:0 auto;text-align:center"><span class="section-tag">✦ Fale Conosco</span><h2 style="font-family:'Barlow Condensed';font-size:2rem;font-weight:800;text-transform:uppercase">ENTRE EM<br>CONTATO</h2><div class="section-line"></div><p style="margin:16px 0 24px">Tire suas dúvidas ou fale diretamente conosco</p><div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap"><a href="https://wa.me/5583987483838" class="btn-primary" style="text-decoration:none">💬 WhatsApp</a><a href="mailto:atualfestasmodamasculina@gmail.com" class="btn-outline" style="text-decoration:none">📧 Enviar E-mail</a></div></div>
+<!-- CONTATO / FOOTER -->
+<section id="contato" style="background:var(--bordeaux-dark);padding:60px 40px">
+  <div style="max-width:900px;margin:0 auto;text-align:center">
+    <span class="section-tag">✦ Fale Conosco</span>
+    <h2 style="font-family:'Barlow Condensed',sans-serif;font-size:2.5rem;font-weight:800;text-transform:uppercase;margin-bottom:8px">ENTRE EM<br>CONTATO</h2>
+    <div class="section-line"></div>
+    <p style="margin-top:20px;color:rgba(255,255,255,0.6);margin-bottom:40px">Tire suas dúvidas ou fale diretamente conosco pelo WhatsApp</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+      <a href="https://wa.me/5583987483838" target="_blank" class="btn-primary" style="text-decoration:none">💬 WhatsApp</a>
+      <a href="mailto:atualfestasmodamasculina@gmail.com" class="btn-outline" style="text-decoration:none">📧 Enviar E-mail</a>
+    </div>
+  </div>
 </section>
 
 <footer>
   <div class="footer-grid">
-    <div class="footer-brand"><div class="name">ATUAL FESTAS</div><div class="sub">Moda Masculina · Locações</div><p>Especializados em locação de ternos e trajes masculinos de grife para todos os momentos especiais da sua vida.</p></div>
-    <div class="footer-links"><h4>Navegação</h4><ul><li><a href="#catalogo">Catálogo</a></li><li><a href="#agendar">Agendamento</a></li><li><a href="#como-funciona">Como Funciona</a></li><li><a href="#contato">Contato</a></li></ul></div>
-    <div class="footer-links"><h4>Eventos</h4><ul><li><a href="#agendar">Casamentos</a></li><li><a href="#agendar">Formaturas</a></li><li><a href="#agendar">Eventos Corporativos</a></li><li><a href="#agendar">Aniversários</a></li></ul></div>
+    <div class="footer-brand">
+      <div class="name">ATUAL FESTAS</div>
+      <div class="sub">Moda Masculina · Locações</div>
+      <p>Especializados em locação de ternos e trajes masculinos de grife para todos os momentos especiais da sua vida.</p>
+    </div>
+    <div class="footer-links">
+      <h4>Navegação</h4>
+      <ul>
+        <li><a href="#catalogo">Catálogo</a></li>
+        <li><a href="#agendar">Agendamento</a></li>
+        <li><a href="#como-funciona">Como Funciona</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Eventos</h4>
+      <ul>
+        <li><a href="#agendar">Casamentos</a></li>
+        <li><a href="#agendar">Formaturas</a></li>
+        <li><a href="#agendar">Eventos Corporativos</a></li>
+        <li><a href="#agendar">Aniversários</a></li>
+      </ul>
+    </div>
   </div>
-  <div class="footer-bottom"><p>© 2025 Atual Festas Moda Masculina · Todos os direitos reservados · Campina Grande, PB</p></div>
+  <div class="footer-bottom">
+    <p>© 2025 Atual Festas Moda Masculina · Todos os direitos reservados · Campina Grande, PB</p>
+  </div>
 </footer>
 
+<!-- Toast Container -->
 <div id="toast-container"></div>
+
+<!-- Admin Hidden Trigger -->
 <div id="admin-trigger" onclick="openAdminLogin()"></div>
 
+<!-- ADMIN LOGIN -->
 <div id="admin-login">
-  <div class="login-box"><div class="login-icon">🔐</div><div class="login-title">Acesso Restrito</div><div class="login-form"><input type="text" id="admin-user" placeholder="Usuário"><input type="password" id="admin-pass" placeholder="Senha"><button onclick="doAdminLogin()">ENTRAR NO PAINEL</button><button onclick="closeAdminLogin()" style="background:transparent;border:1px solid rgba(255,255,255,0.15)">Cancelar</button></div></div>
+  <div class="login-box">
+    <div class="login-icon">🔐</div>
+    <div class="login-title">Acesso Restrito</div>
+    <div class="login-sub">Painel Administrativo · Atual Festas</div>
+    <div class="login-form">
+      <input type="text" id="admin-user" placeholder="Usuário">
+      <input type="password" id="admin-pass" placeholder="Senha">
+      <button onclick="doAdminLogin()">ENTRAR NO PAINEL</button>
+      <button onclick="closeAdminLogin()" style="background:transparent;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.4);margin-top:4px">Cancelar</button>
+    </div>
+  </div>
 </div>
 
+<!-- ADMIN PANEL -->
 <div id="admin-overlay">
-  <div class="admin-sidebar" id="adminSidebar">
-    <div class="admin-logo"><div class="title">ATUAL FESTAS</div><div class="badge">🔐 Admin</div></div>
+  <div class="admin-sidebar">
+    <div class="admin-logo">
+      <div class="title">ATUAL FESTAS</div>
+      <div class="sub">Painel Administrativo</div>
+      <div class="badge">🔐 Admin</div>
+    </div>
     <div class="admin-nav">
-      <div class="admin-nav-item active" onclick="showAdminPage('dashboard')"><span class="icon">📊</span> Dashboard</div>
-      <div class="admin-nav-item" onclick="showAdminPage('agendamentos')"><span class="icon">📅</span> Agendamentos</div>
-      <div class="admin-nav-item" onclick="showAdminPage('clientes')"><span class="icon">👥</span> Clientes</div>
-      <div class="admin-nav-item" onclick="showAdminPage('mensagens')"><span class="icon">💬</span> Mensagens</div>
-      <div class="admin-nav-item" onclick="showAdminPage('roupas')"><span class="icon">🤵</span> Catálogo</div>
+      <div class="admin-nav-item active" onclick="showAdminPage('dashboard')">
+        <span class="icon">📊</span> Dashboard
+      </div>
+      <div class="admin-nav-item" onclick="showAdminPage('agendamentos')">
+        <span class="icon">📅</span> Agendamentos
+      </div>
+      <div class="admin-nav-item" onclick="showAdminPage('clientes')">
+        <span class="icon">👥</span> Clientes
+      </div>
+      <div class="admin-nav-item" onclick="showAdminPage('mensagens')">
+        <span class="icon">💬</span> Mensagens
+      </div>
+      <div class="admin-nav-item" onclick="showAdminPage('roupas')">
+        <span class="icon">🤵</span> Catálogo
+      </div>
     </div>
-    <div class="admin-footer"><button onclick="exitAdmin()">🚪 Sair do Painel</button></div>
+    <div class="admin-footer">
+      <button onclick="exitAdmin()">🚪 Sair do Painel</button>
+    </div>
   </div>
-  <button class="admin-sidebar-mobile-toggle" onclick="toggleAdminSidebar()">☰ Menu</button>
+
   <div class="admin-main">
+
+    <!-- DASHBOARD -->
     <div class="admin-page active" id="page-dashboard">
-      <div class="admin-header-bar"><div><div class="admin-page-title">Dashboard</div><div class="admin-page-subtitle">Visão geral do negócio</div></div><button class="btn-form" style="padding:6px 12px" onclick="loadAdminData()">↻ Atualizar</button></div>
-      <div class="kpi-grid" id="kpi-grid"></div>
-      <div class="table-container"><table class="data-table"><thead><tr><th>Cliente</th><th>Traje</th><th>Retirada</th><th>Devolução</th><th>Status</th></tr></thead><tbody id="dashboard-tbody"></tbody></table></div>
+      <div class="admin-header-bar">
+        <div>
+          <div class="admin-page-title">Dashboard</div>
+          <div class="admin-page-subtitle">Visão geral do negócio</div>
+        </div>
+        <button class="btn-form btn-next" style="padding:10px 20px;font-size:0.75rem" onclick="loadAdminData()">↻ Atualizar</button>
+      </div>
+      <div class="kpi-grid" id="kpi-grid">
+        <div class="kpi-card"><div class="kpi-icon">📅</div><div class="kpi-value" id="kpi-total">-</div><div class="kpi-label">Total de Agendamentos</div></div>
+        <div class="kpi-card"><div class="kpi-icon">⏳</div><div class="kpi-value" id="kpi-pendente">-</div><div class="kpi-label">Pendentes</div></div>
+        <div class="kpi-card"><div class="kpi-icon">✅</div><div class="kpi-value" id="kpi-confirmado">-</div><div class="kpi-label">Confirmados</div></div>
+        <div class="kpi-card"><div class="kpi-icon">👥</div><div class="kpi-value" id="kpi-clientes">-</div><div class="kpi-label">Clientes Cadastrados</div></div>
+        <div class="kpi-card"><div class="kpi-icon">👔</div><div class="kpi-value" id="kpi-retirado">-</div><div class="kpi-label">Em Uso Agora</div></div>
+        <div class="kpi-card"><div class="kpi-icon">⚠️</div><div class="kpi-value" id="kpi-atrasado">-</div><div class="kpi-label">Em Atraso</div></div>
+        <div class="kpi-card"><div class="kpi-icon">📦</div><div class="kpi-value" id="kpi-devolvido">-</div><div class="kpi-label">Devolvidos</div></div>
+        <div class="kpi-card"><div class="kpi-icon">💰</div><div class="kpi-value" id="kpi-receita">-</div><div class="kpi-label">Receita Total</div></div>
+      </div>
+
+      <div style="margin-top:30px">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;font-weight:700;text-transform:uppercase;margin-bottom:16px">Agendamentos Recentes</div>
+        <div class="table-container">
+          <table class="data-table" id="dashboard-table">
+            <thead>
+              <tr>
+                <th>Cliente</th><th>Traje</th><th>Retirada</th><th>Devolução</th><th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="dashboard-tbody"></tbody>
+          </table>
+        </div>
+      </div>
     </div>
 
+    <!-- AGENDAMENTOS -->
     <div class="admin-page" id="page-agendamentos">
-      <div class="admin-header-bar"><div><div class="admin-page-title">Agendamentos</div><div class="admin-page-subtitle">Gerencie todas as locações</div></div></div>
-      <div class="filter-bar"><button class="filter-btn active" onclick="filterAgendamentos('todos',this)">Todos</button><button class="filter-btn" onclick="filterAgendamentos('pendente',this)">Pendentes</button><button class="filter-btn" onclick="filterAgendamentos('confirmado',this)">Confirmados</button><button class="filter-btn" onclick="filterAgendamentos('retirado',this)">Em Uso</button><button class="filter-btn" onclick="filterAgendamentos('atrasado',this)">Atrasados</button><button class="filter-btn" onclick="filterAgendamentos('devolvido',this)">Devolvidos</button><select class="filter-select" onchange="filterByEvento(this.value)"><option value="">Todos Eventos</option><option value="casamento">Casamento</option><option value="formatura">Formatura</option><option value="corporativo">Corporativo</option><option value="aniversario">Aniversário</option></select></div>
-      <div class="table-container"><table class="data-table"><thead><tr><th>Cliente</th><th>Traje</th><th>Evento</th><th>Retirada</th><th>Devolução</th><th>Status</th><th>Ações</th></tr></thead><tbody id="agendamentos-tbody"></tbody></table></div>
+      <div class="admin-header-bar">
+        <div>
+          <div class="admin-page-title">Agendamentos</div>
+          <div class="admin-page-subtitle">Gerencie todas as locações</div>
+        </div>
+      </div>
+      <div class="filter-bar">
+        <button class="filter-btn active" onclick="filterAgendamentos('todos', this)">Todos</button>
+        <button class="filter-btn" onclick="filterAgendamentos('pendente', this)">Pendentes</button>
+        <button class="filter-btn" onclick="filterAgendamentos('confirmado', this)">Confirmados</button>
+        <button class="filter-btn" onclick="filterAgendamentos('retirado', this)">Em Uso</button>
+        <button class="filter-btn" onclick="filterAgendamentos('atrasado', this)">Atrasados</button>
+        <button class="filter-btn" onclick="filterAgendamentos('devolvido', this)">Devolvidos</button>
+        <select class="filter-select" onchange="filterByEvento(this.value)">
+          <option value="">Todos os Eventos</option>
+          <option value="casamento">Casamento</option>
+          <option value="formatura">Formatura</option>
+          <option value="corporativo">Corporativo</option>
+          <option value="aniversario">Aniversário</option>
+          <option value="outro">Outro</option>
+        </select>
+      </div>
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Cliente</th><th>Traje</th><th>Evento</th><th>Retirada</th><th>Devolução</th><th>Entregue</th><th>Status</th><th>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="agendamentos-tbody"></tbody>
+        </table>
+      </div>
     </div>
 
+    <!-- CLIENTES -->
     <div class="admin-page" id="page-clientes">
-      <div class="admin-header-bar"><div><div class="admin-page-title">Clientes</div><div class="admin-page-subtitle">Base de clientes cadastrados</div></div><input type="text" placeholder="🔍 Buscar cliente..." oninput="searchClientes(this.value)" style="background:rgba(42,32,37,0.6);border:1px solid rgba(201,168,76,0.2);color:white;padding:8px;border-radius:4px"></div>
-      <div class="table-container"><table class="data-table"><thead><tr><th>Nome</th><th>CPF</th><th>Telefone</th><th>Email</th><th>Cadastro</th><th>Locações</th></tr></thead><tbody id="clientes-tbody"></tbody></table></div>
+      <div class="admin-header-bar">
+        <div>
+          <div class="admin-page-title">Clientes</div>
+          <div class="admin-page-subtitle">Base de clientes cadastrados</div>
+        </div>
+        <input type="text" placeholder="🔍 Buscar cliente..." style="background:rgba(42,32,37,0.6);border:1px solid rgba(201,168,76,0.2);color:var(--white);padding:10px 16px;border-radius:4px;outline:none;font-size:0.85rem" oninput="searchClientes(this.value)">
+      </div>
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Nome</th><th>CPF</th><th>Telefone</th><th>Email</th><th>Cadastro</th><th>Locações</th>
+            </tr>
+          </thead>
+          <tbody id="clientes-tbody"></tbody>
+        </table>
+      </div>
     </div>
 
+    <!-- MENSAGENS -->
     <div class="admin-page" id="page-mensagens">
-      <div class="admin-header-bar"><div><div class="admin-page-title">Mensagens em Lote</div><div class="admin-page-subtitle">Envie mensagens para seus clientes</div></div></div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;flex-wrap:wrap"><div><div class="clientes-check-list" id="msg-clientes-list"></div><div id="selected-count">0 selecionados</div><button class="select-all-btn" onclick="toggleSelectAll()" style="margin-top:10px;background:transparent;border:1px solid var(--gold);color:var(--gold);padding:5px 10px;border-radius:4px;cursor:pointer">Selecionar Todos</button></div><div><select class="filter-select" style="width:100%;margin-bottom:12px" onchange="loadTemplate(this.value)"><option value="">Escolha um modelo...</option><option value="formatura">🎓 Formatura</option><option value="casamento">💍 Casamento</option><option value="corporativo">💼 Evento Corporativo</option><option value="aniversario">🎂 Aniversário</option><option value="divulgacao">📣 Divulgação Geral</option></select><textarea class="msg-textarea" id="msg-text" placeholder="Digite sua mensagem aqui..."></textarea><div class="canal-btns"><button class="canal-btn whatsapp active" id="btn-whatsapp" onclick="selectCanal('whatsapp')">💬 WhatsApp</button><button class="canal-btn email" id="btn-email" onclick="selectCanal('email')">📧 E-mail</button></div><button class="btn-submit" style="margin-top:12px;width:100%;padding:12px" onclick="enviarMensagens()">📤 Enviar Mensagens</button></div></div>
+      <div class="admin-header-bar">
+        <div>
+          <div class="admin-page-title">Mensagens em Lote</div>
+          <div class="admin-page-subtitle">Envie mensagens para seus clientes</div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:30px">
+        <div>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+            <div style="font-size:0.75rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold)">Selecionar Clientes</div>
+            <button class="select-all-btn" onclick="toggleSelectAll()">Selecionar Todos</button>
+          </div>
+          <div class="clientes-check-list" id="msg-clientes-list"></div>
+          <div style="font-size:0.75rem;color:rgba(255,255,255,0.4);margin-top:8px" id="selected-count">0 clientes selecionados</div>
+        </div>
+        <div>
+          <div style="font-size:0.75rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:14px">Tipo de Mensagem</div>
+          <select class="filter-select" style="width:100%;margin-bottom:16px" onchange="loadTemplate(this.value)">
+            <option value="">Escolha um modelo...</option>
+            <option value="formatura">🎓 Formatura</option>
+            <option value="casamento">💍 Casamento</option>
+            <option value="corporativo">💼 Evento Corporativo</option>
+            <option value="aniversario">🎂 Aniversário / Festa</option>
+            <option value="natal">🎄 Promoção de Natal</option>
+            <option value="ano_novo">🎆 Ano Novo</option>
+            <option value="divulgacao">📣 Divulgação Geral</option>
+          </select>
+          <div class="msg-editor">
+            <textarea class="msg-textarea" id="msg-text" placeholder="Digite sua mensagem aqui ou selecione um modelo acima..."></textarea>
+          </div>
+          <div class="canal-btns">
+            <button class="canal-btn whatsapp active" id="btn-whatsapp" onclick="selectCanal('whatsapp')">💬 WhatsApp</button>
+            <button class="canal-btn email" id="btn-email" onclick="selectCanal('email')">📧 E-mail</button>
+          </div>
+          <button class="btn-form btn-next btn-submit" style="margin-top:16px" onclick="enviarMensagens()">📤 Enviar Mensagens</button>
+        </div>
+      </div>
     </div>
 
+    <!-- ROUPAS/CATÁLOGO ADMIN -->
     <div class="admin-page" id="page-roupas">
-      <div class="admin-header-bar"><div><div class="admin-page-title">Gerenciar Catálogo</div><div class="admin-page-subtitle">Gerencie as peças disponíveis</div></div><button class="btn-primary" style="padding:8px 16px;font-size:0.7rem" onclick="openRoupaModal()">+ Nova Peça</button></div>
-      <div class="table-container"><table class="data-table"><thead><tr><th>Imagem</th><th>Nome</th><th>Tipo</th><th>Cor</th><th>Tamanho</th><th>Preço/dia</th><th>Status</th><th>Ações</th></tr></thead><tbody id="roupas-tbody"></tbody></table></div>
+      <div class="admin-header-bar">
+        <div>
+          <div class="admin-page-title">Catálogo</div>
+          <div class="admin-page-subtitle">Gerencie os trajes disponíveis</div>
+        </div>
+        <button class="btn-form btn-next" style="padding:10px 20px;font-size:0.75rem" onclick="openAddRoupa()">+ Adicionar Traje</button>
+      </div>
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Traje</th><th>Tipo</th><th>Cor</th><th>Tamanho</th><th>Diária</th><th>Status</th><th>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="roupas-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+  </div><!-- admin-main -->
+</div><!-- admin-overlay -->
+
+<!-- MODAL DETALHE AGENDAMENTO -->
+<div class="modal-overlay" id="modal-agendamento">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modal-agendamento')">✕</button>
+    <div class="modal-title">Detalhe do Agendamento</div>
+    <div class="modal-subtitle">Informações completas</div>
+    <div id="modal-agendamento-content"></div>
+  </div>
+</div>
+
+<!-- MODAL CADASTRO/EDIÇÃO DE TRAJE -->
+<div class="modal-overlay" id="modal-roupa">
+  <div class="modal" style="max-width:640px">
+    <button class="modal-close" onclick="closeModal('modal-roupa')">✕</button>
+    <div class="modal-title" id="modal-roupa-title">Adicionar Traje</div>
+    <div class="modal-subtitle">Preencha os dados do traje</div>
+    <div style="display:grid;gap:16px">
+      <div class="form-group">
+        <label>Nome do Traje *</label>
+        <input type="text" id="form-roupa-nome" placeholder="Ex: Terno Slim Preto Premium">
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+        <div class="form-group">
+          <label>Tipo *</label>
+          <select id="form-roupa-tipo">
+            <option value="terno">🤵 Terno</option>
+            <option value="smoking">🎩 Smoking</option>
+            <option value="costume">👔 Costume</option>
+            <option value="blazer">🧥 Blazer</option>
+            <option value="conjunto">👗 Conjunto</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Preço da Diária (R$) *</label>
+          <input type="number" id="form-roupa-preco" placeholder="Ex: 150.00" step="0.01" min="0">
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+        <div class="form-group">
+          <label>Cor</label>
+          <input type="text" id="form-roupa-cor" placeholder="Ex: Preto, Azul Navy">
+        </div>
+        <div class="form-group">
+          <label>Tamanhos Disponíveis</label>
+          <input type="text" id="form-roupa-tamanho" placeholder="Ex: P/M/G/GG">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Descrição</label>
+        <textarea id="form-roupa-descricao" placeholder="Breve descrição do traje..." style="min-height:80px"></textarea>
+      </div>
+      <div class="form-group">
+        <label>Imagem do Traje (Upload pelo Supabase Storage)</label>
+        <input type="file" id="form-roupa-file" accept="image/*" onchange="uploadImagemRoupa(this)"
+          style="background:rgba(42,32,37,0.6);border:1px solid rgba(201,168,76,0.2);color:var(--white);padding:10px 14px;border-radius:2px;font-size:0.85rem;cursor:pointer;width:100%">
+        <div id="upload-status" style="font-size:0.75rem;margin-top:6px;letter-spacing:1px"></div>
+        <input type="hidden" id="form-roupa-imagem-url">
+        <img id="roupa-img-preview" src="" alt="Preview" style="display:none;margin-top:10px;max-height:140px;max-width:100%;object-fit:contain;border-radius:4px;border:1px solid rgba(201,168,76,0.3)">
+      </div>
+      <div class="form-group" style="flex-direction:row;align-items:center;gap:12px">
+        <input type="checkbox" id="form-roupa-disponivel" style="width:18px;height:18px;accent-color:var(--bordeaux)">
+        <label for="form-roupa-disponivel" style="font-size:0.85rem;color:var(--white);text-transform:none;letter-spacing:0;cursor:pointer">Disponível para locação</label>
+      </div>
+      <div style="display:flex;gap:12px;justify-content:flex-end;margin-top:8px">
+        <button class="btn-form btn-prev" onclick="closeModal('modal-roupa')">Cancelar</button>
+        <button class="btn-form btn-next" onclick="saveRoupa()">💾 Salvar Traje</button>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="modal-overlay" id="modal-roupa"><div class="modal"><button class="modal-close" onclick="closeModal('modal-roupa')">✕</button><div class="modal-title" id="roupa-modal-title">Nova Peça</div><input type="hidden" id="edit-roupa-id"><div class="form-group"><label>Nome</label><input type="text" id="roupa-nome" style="width:100%"></div><div class="form-group"><label>Tipo</label><select id="roupa-tipo"><option value="terno">Terno</option><option value="smoking">Smoking</option><option value="costume">Costume</option><option value="blazer">Blazer</option></select></div><div class="form-group"><label>Cor</label><input type="text" id="roupa-cor"></div><div class="form-group"><label>Tamanhos</label><input type="text" id="roupa-tamanho" placeholder="P/M/G/GG"></div><div class="form-group"><label>Preço diária (R$)</label><input type="number" id="roupa-preco" step="0.01"></div><div class="form-group"><label>Descrição</label><textarea id="roupa-desc" rows="2"></textarea></div><div class="form-group"><label>Imagem URL (Storage Supabase)</label><input type="text" id="roupa-imagem" placeholder="https://.../imagem.jpg"></div><div class="form-group"><label>Disponível</label><input type="checkbox" id="roupa-disponivel" checked></div><div class="form-nav"><button class="btn-form btn-prev" onclick="closeModal('modal-roupa')">Cancelar</button><button class="btn-form btn-next" onclick="saveRoupa()">Salvar</button></div></div></div>
-
-<div class="modal-overlay" id="modal-contrato"><div class="modal" style="max-width:800px"><button class="modal-close" onclick="closeModal('modal-contrato')">✕</button><div class="modal-title">Contrato de Locação</div><div class="modal-subtitle">Termo de Responsabilidade - Atual Festas</div><div id="contrato-content"></div><div style="display:flex;gap:12px;margin-top:20px;flex-wrap:wrap"><button class="btn-primary" onclick="printContract()">🖨️ Imprimir Contrato</button><button class="btn-outline" onclick="closeModal('modal-contrato')">Fechar</button></div></div></div>
-
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ==================== SUPABASE INIT ====================
 const SUPABASE_URL = 'https://mgqvrijrxxdwqstvrtxw.supabase.co';
 const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1ncXZyaWpyeHhkd3FzdHZydHh3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0NjQ2ODAsImV4cCI6MjA5MDA0MDY4MH0.J1AgGUUTsf8qSdfPgDRc9-YRYv2hACnHfHx0SVBr_pM';
+
 const { createClient } = supabase;
 const db = createClient(SUPABASE_URL, SUPABASE_ANON);
 
-let allRoupas = [], selectedRoupa = null, allAgendamentos = [], allClientes = [], currentFilter = 'todos', currentEventoFilter = '', selectedCanal = 'whatsapp', currentStep = 1;
+// ==================== STATE ====================
+let allRoupas = [];
+let selectedRoupa = null;
+let currentStep = 1;
+let allAgendamentos = [];
+let allClientes = [];
+let selectedCanal = 'whatsapp';
+let selectedClientesMsg = [];
 
+// ==================== LOADING ====================
 window.addEventListener('load', async () => {
-  await new Promise(r => setTimeout(r, 1500));
-  document.getElementById('loading-screen').style.opacity = '0';
-  setTimeout(() => document.getElementById('loading-screen').remove(), 500);
+  await new Promise(r => setTimeout(r, 1800));
+  const ls = document.getElementById('loading-screen');
+  ls.style.opacity = '0';
+  setTimeout(() => ls.remove(), 800);
   setMinDates();
   await loadRoupas();
-  setupMasks();
 });
-window.addEventListener('scroll', () => document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50));
 
-function setMinDates() { let today = new Date().toISOString().split('T')[0]; document.getElementById('f-retirada').min = today; document.getElementById('f-devolucao').min = today; }
-function setupMasks() {
-  document.getElementById('f-cpf').addEventListener('input', function() { let v = this.value.replace(/\D/g,'').slice(0,11); if(v.length>9) v=v.replace(/(\d{3})(\d{3})(\d{3})(\d{0,2})/,'$1.$2.$3-$4'); else if(v.length>6) v=v.replace(/(\d{3})(\d{3})(\d{0,3})/,'$1.$2.$3'); else if(v.length>3) v=v.replace(/(\d{3})(\d{0,3})/,'$1.$2'); this.value=v; });
-  document.getElementById('f-tel').addEventListener('input', function() { let v = this.value.replace(/\D/g,'').slice(0,11); if(v.length>10) v=v.replace(/(\d{2})(\d{5})(\d{0,4})/,'($1) $2-$3'); else if(v.length>6) v=v.replace(/(\d{2})(\d{4})(\d{0,4})/,'($1) $2-$3'); else if(v.length>2) v=v.replace(/(\d{2})(\d{0,5})/,'($1) $2'); this.value=v; });
-  document.getElementById('f-cep').addEventListener('input', function() { let v = this.value.replace(/\D/g,'').slice(0,8); if(v.length>5) v=v.replace(/(\d{5})(\d{0,3})/,'$1-$2'); this.value=v; });
-  document.getElementById('f-retirada').addEventListener('change', calcSummary);
-  document.getElementById('f-devolucao').addEventListener('change', calcSummary);
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('navbar');
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+function setMinDates() {
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('f-retirada').min = today;
+  document.getElementById('f-devolucao').min = today;
 }
 
+// ==================== CPF / PHONE MASKS ====================
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('f-cpf').addEventListener('input', function() {
+    let v = this.value.replace(/\D/g, '').slice(0,11);
+    if(v.length > 9) v = v.replace(/(\d{3})(\d{3})(\d{3})(\d{0,2})/,'$1.$2.$3-$4');
+    else if(v.length > 6) v = v.replace(/(\d{3})(\d{3})(\d{0,3})/,'$1.$2.$3');
+    else if(v.length > 3) v = v.replace(/(\d{3})(\d{0,3})/,'$1.$2');
+    this.value = v;
+  });
+  document.getElementById('f-cep').addEventListener('input', function() {
+    let v = this.value.replace(/\D/g,'').slice(0,8);
+    if(v.length > 5) v = v.replace(/(\d{5})(\d{0,3})/,'$1-$2');
+    this.value = v;
+  });
+  document.getElementById('f-tel').addEventListener('input', function() {
+    let v = this.value.replace(/\D/g,'').slice(0,11);
+    if(v.length > 10) v = v.replace(/(\d{2})(\d{5})(\d{0,4})/,'($1) $2-$3');
+    else if(v.length > 6) v = v.replace(/(\d{2})(\d{4})(\d{0,4})/,'($1) $2-$3');
+    else if(v.length > 2) v = v.replace(/(\d{2})(\d{0,5})/,'($1) $2');
+    this.value = v;
+  });
+  document.getElementById('f-retirada').addEventListener('change', calcSummary);
+  document.getElementById('f-devolucao').addEventListener('change', calcSummary);
+});
+
+// ==================== ROUPAS ====================
+const roupaEmojis = { terno:'🤵', smoking:'🎩', costume:'👔', blazer:'🧥', conjunto:'👗' };
+
 async function loadRoupas() {
-  let { data } = await db.from('roupas').select('*');
-  if (data && data.length) allRoupas = data;
-  else allRoupas = [
-    {id:'1',nome:'Terno Slim Preto Premium',tipo:'terno',cor:'Preto',tamanho:'P/M/G/GG',preco_diaria:150,descricao:'Terno slim fit premium, tecido italiano',disponivel:true,imagem_url:''},
-    {id:'2',nome:'Smoking Branco Luxo',tipo:'smoking',cor:'Branco',tamanho:'P/M/G/GG',preco_diaria:200,descricao:'Smoking branco de grife, elegância máxima',disponivel:true,imagem_url:''},
-    {id:'3',nome:'Terno Cinza Chumbo',tipo:'terno',cor:'Cinza Chumbo',tamanho:'P/M/G/GG',preco_diaria:140,descricao:'Terno executivo cinza chumbo',disponivel:true,imagem_url:''},
-    {id:'4',nome:'Costume Bordô Festivo',tipo:'costume',cor:'Bordô',tamanho:'P/M/G/GG',preco_diaria:130,descricao:'Costume bordô com detalhes exclusivos',disponivel:true,imagem_url:''}
-  ];
+  const { data, error } = await db.from('roupas').select('*').order('tipo');
+  const grid = document.getElementById('catalog-grid');
+  const selector = document.getElementById('roupa-selector');
+  if(error || !data || data.length === 0) {
+    // Fallback data
+    allRoupas = [
+      {id:'1', nome:'Terno Slim Preto Premium', tipo:'terno', cor:'Preto', tamanho:'P/M/G/GG', preco_diaria:150, descricao:'Terno slim fit premium, tecido italiano', disponivel:true},
+      {id:'2', nome:'Smoking Branco Luxo', tipo:'smoking', cor:'Branco', tamanho:'P/M/G/GG', preco_diaria:200, descricao:'Smoking branco de grife, elegância máxima', disponivel:true},
+      {id:'3', nome:'Terno Cinza Chumbo', tipo:'terno', cor:'Cinza Chumbo', tamanho:'P/M/G/GG', preco_diaria:140, descricao:'Terno executivo cinza chumbo', disponivel:true},
+      {id:'4', nome:'Costume Bordô Festivo', tipo:'costume', cor:'Bordô', tamanho:'P/M/G/GG', preco_diaria:130, descricao:'Costume bordô com detalhes exclusivos', disponivel:true},
+      {id:'5', nome:'Blazer Navy com Calça Bege', tipo:'blazer', cor:'Azul Navy', tamanho:'P/M/G/GG', preco_diaria:110, descricao:'Look casual chic perfeito', disponivel:true},
+      {id:'6', nome:'Terno Azul Royal', tipo:'terno', cor:'Azul Royal', tamanho:'P/M/G/GG', preco_diaria:155, descricao:'Terno azul royal moderno', disponivel:true},
+    ];
+  } else {
+    allRoupas = data;
+  }
   renderCatalog();
   renderRoupaSelector();
 }
-function renderCatalog() {
-  document.getElementById('catalog-grid').innerHTML = allRoupas.map(r => `<div class="roupa-card ${!r.disponivel ? 'card-unavailable' : ''}" onclick="openAgendarComRoupa('${r.id}')"><div class="card-image">${r.imagem_url ? `<img src="${r.imagem_url}" alt="${r.nome}">` : `<span>${r.tipo === 'terno' ? '🤵' : r.tipo === 'smoking' ? '🎩' : r.tipo === 'costume' ? '👔' : '🧥'}</span>`}<span class="card-badge">${r.disponivel ? 'Disponível' : 'Indisponível'}</span></div><div class="card-body"><div class="card-tipo">${r.tipo.toUpperCase()} · ${r.cor || ''}</div><div class="card-nome">${r.nome}</div><div class="card-desc">${r.descricao || ''}</div><div class="card-footer"><div class="card-price">R$ ${Number(r.preco_diaria).toFixed(0)}<span>/dia</span></div><button class="card-btn">Agendar</button></div></div></div>`).join('');
-}
-function renderRoupaSelector() {
-  document.getElementById('roupa-selector').innerHTML = allRoupas.filter(r => r.disponivel).map(r => `<div class="roupa-option ${selectedRoupa && selectedRoupa.id === r.id ? 'selected' : ''}" onclick="selectRoupa('${r.id}')"><div class="icon">${r.tipo === 'terno' ? '🤵' : r.tipo === 'smoking' ? '🎩' : '👔'}</div><div class="name">${r.nome}</div><div class="price">R$ ${Number(r.preco_diaria).toFixed(2)}/dia</div></div>`).join('');
-}
-function selectRoupa(id) { selectedRoupa = allRoupas.find(r => r.id == id); renderRoupaSelector(); }
-function openAgendarComRoupa(id) { selectedRoupa = allRoupas.find(r => r.id == id); scrollToAgendar(); setTimeout(() => renderRoupaSelector(), 300); }
-function scrollToAgendar() { document.getElementById('agendar').scrollIntoView({ behavior: 'smooth' }); }
-function nextStep(s) { if(s===1 && !selectedRoupa) { showToast('Selecione um traje!','error'); return; } if(s===2 && !validateStep2()) return; if(s===3 && !validateStep3()) return; if(s===4) { if(!document.getElementById('termo-check1').checked || !document.getElementById('termo-check2').checked) { showToast('Aceite os termos para continuar!','error'); return; } submitAgendamento(); return; } goToStep(s+1); }
-function prevStep(s) { goToStep(s-1); }
-function goToStep(n) { for(let i=1;i<=5;i++){ document.getElementById('panel-'+i).classList.remove('active'); document.getElementById('step-'+i).classList.remove('active','done'); if(i<n) document.getElementById('step-'+i).classList.add('done'); if(i===n) document.getElementById('step-'+i).classList.add('active'); } document.getElementById('panel-'+n).classList.add('active'); currentStep = n; if(n===3 && selectedRoupa) updateRoupaDetalhe(); }
-function validateStep2() { let fields = ['f-nome','f-cpf','f-tel','f-email','f-endereco']; for(let f of fields) if(!document.getElementById(f).value.trim()){ showToast('Preencha todos os campos obrigatórios!','error'); return false; } return true; }
-function validateStep3() { if(!document.getElementById('f-evento').value || !document.getElementById('f-retirada').value || !document.getElementById('f-devolucao').value){ showToast('Preencha datas e evento','error'); return false; } let ret=new Date(document.getElementById('f-retirada').value), dev=new Date(document.getElementById('f-devolucao').value); if(dev<=ret){ showToast('A devolução deve ser após a retirada!','error'); return false; } calcSummary(); return true; }
-function updateRoupaDetalhe() { if(selectedRoupa) document.getElementById('roupa-selecionada-detalhe').innerHTML = `<div class="detalhe-roupa"><div class="info"><div class="nome">${selectedRoupa.nome}</div><div class="preco">R$ ${Number(selectedRoupa.preco_diaria).toFixed(2)}/dia</div></div></div>`; }
-function calcSummary() { let ret=document.getElementById('f-retirada').value, dev=document.getElementById('f-devolucao').value; if(!ret||!dev||!selectedRoupa) return; let dias=Math.max(1,Math.ceil((new Date(dev)-new Date(ret))/86400000)); let total=dias*Number(selectedRoupa.preco_diaria); let div=document.getElementById('summary-calc'); div.style.display='block'; div.innerHTML=`<div class="summary-row"><span class="summary-label">Período</span><span>${dias} dia(s)</span></div><div class="summary-row"><span class="summary-label">Valor/Dia</span><span>R$ ${Number(selectedRoupa.preco_diaria).toFixed(2)}</span></div><div class="summary-row"><span class="summary-label">Total Estimado</span><span>R$ ${total.toFixed(2)}</span></div>`; }
-async function submitAgendamento() { let btn=document.querySelector('#panel-4 .btn-submit'); btn.textContent='⏳ Enviando...'; btn.disabled=true; let nome=document.getElementById('f-nome').value, cpf=document.getElementById('f-cpf').value, email=document.getElementById('f-email').value, tel=document.getElementById('f-tel').value, end=document.getElementById('f-endereco').value, cidade=document.getElementById('f-cidade').value, cep=document.getElementById('f-cep').value; try{ let {data:exist}=await db.from('clientes').select('id').eq('cpf',cpf).single(); let clienteId; if(exist) clienteId=exist.id; else{ let {data:novo}=await db.from('clientes').insert({nome_completo:nome,cpf,email,telefone:tel,endereco:end,cidade,cep,aceite_termo:true}).select().single(); clienteId=novo.id; } let ret=document.getElementById('f-retirada').value, dev=document.getElementById('f-devolucao').value; let dias=Math.max(1,Math.ceil((new Date(dev)-new Date(ret))/86400000)); let total=dias*Number(selectedRoupa.preco_diaria); let {data:ag}=await db.from('agendamentos').insert({cliente_id:clienteId,roupa_id:selectedRoupa.id,data_retirada:ret,data_devolucao_prevista:dev,status:'pendente',tipo_evento:document.getElementById('f-evento').value,observacoes:document.getElementById('f-obs').value,valor_total:total}).select().single(); let code='AF-'+ag.id.slice(-6).toUpperCase(); document.getElementById('booking-code').textContent=code; goToStep(5); showToast('Agendamento realizado com sucesso!','success'); }catch(e){ showToast('Erro ao salvar. Tente novamente.','error'); console.error(e); } finally{ btn.textContent='✅ Confirmar Agendamento'; btn.disabled=false; } }
-function resetForm() { selectedRoupa=null; document.querySelectorAll('#panel-2 input, #panel-3 input, #panel-3 select, #panel-3 textarea').forEach(e=>e.value=''); document.getElementById('termo-check1').checked=false; document.getElementById('termo-check2').checked=false; document.getElementById('termo-check3').checked=false; document.getElementById('summary-calc').style.display='none'; goToStep(1); renderRoupaSelector(); scrollToAgendar(); }
 
-async function loadAdminData() { let {data:ags}=await db.from('agendamentos').select('*, clientes(nome_completo,cpf,telefone,email,endereco), roupas(nome,tipo,preco_diaria)').order('created_at',{ascending:false}); let {data:clis}=await db.from('clientes').select('*').order('data_cadastro',{ascending:false}); let {data:rops}=await db.from('roupas').select('*'); allAgendamentos=ags||[]; allClientes=clis||[]; if(rops && rops.length) allRoupas=rops; let total=allAgendamentos.length, pend=allAgendamentos.filter(a=>a.status==='pendente').length, conf=allAgendamentos.filter(a=>a.status==='confirmado').length, retirados=allAgendamentos.filter(a=>a.status==='retirado').length, atrasados=allAgendamentos.filter(a=>a.status==='atrasado').length, devolvidos=allAgendamentos.filter(a=>a.status==='devolvido').length, receita=allAgendamentos.reduce((s,a)=>s+(Number(a.valor_total)||0),0); document.getElementById('kpi-grid').innerHTML=`<div class="kpi-card"><div class="kpi-value">${total}</div><div class="kpi-label">Total Agendamentos</div></div><div class="kpi-card"><div class="kpi-value">${pend}</div><div class="kpi-label">Pendentes</div></div><div class="kpi-card"><div class="kpi-value">${conf}</div><div class="kpi-label">Confirmados</div></div><div class="kpi-card"><div class="kpi-value">${retirados}</div><div class="kpi-label">Em Uso</div></div><div class="kpi-card"><div class="kpi-value">${atrasados}</div><div class="kpi-label">Atrasados</div></div><div class="kpi-card"><div class="kpi-value">${devolvidos}</div><div class="kpi-label">Devolvidos</div></div><div class="kpi-card"><div class="kpi-value">${allClientes.length}</div><div class="kpi-label">Clientes</div></div><div class="kpi-card"><div class="kpi-value">R$ ${receita.toFixed(0)}</div><div class="kpi-label">Receita Total</div></div>`; renderDashboardTable(allAgendamentos.slice(0,5)); renderAgendamentosTable(allAgendamentos); renderClientesTable(allClientes); renderRoupasAdmin(); }
-function renderDashboardTable(data) { document.getElementById('dashboard-tbody').innerHTML=data.map(a=>`<tr><td>${a.clientes?.nome_completo||'-'}</td><td>${a.roupas?.nome||'-'}</td><td>${formatDate(a.data_retirada)}</td><td>${formatDate(a.data_devolucao_prevista)}</td><td><span class="status-badge status-${a.status}">${a.status}</span></td></tr>`).join('')||'<tr><td colspan="5" style="text-align:center;padding:30px">Nenhum agendamento</td></tr>'; }
-function renderAgendamentosTable(data) { document.getElementById('agendamentos-tbody').innerHTML=data.map(a=>`<tr><td>${a.clientes?.nome_completo||'-'}</td><td>${a.roupas?.nome||'-'}</td><td>${eventoLabel(a.tipo_evento)}</td><td>${formatDate(a.data_retirada)}</td><td>${formatDate(a.data_devolucao_prevista)}</td><td><span class="status-badge status-${a.status}">${a.status}</span></td><td><div class="action-btns">${a.status==='pendente'?`<button class="action-btn confirm" onclick="updateStatus('${a.id}','confirmado')">Confirmar</button>`:''}${a.status==='confirmado'?`<button class="action-btn entregue" onclick="updateStatus('${a.id}','retirado')">Retirou</button>`:''}${a.status==='retirado'?`<button class="action-btn confirm" onclick="updateStatus('${a.id}','devolvido')">Devolveu</button>`:''}<button class="action-btn view" onclick="openContract('${a.id}')">📄 Contrato</button></div></td></tr>`).join(''); }
-function renderClientesTable(data) { document.getElementById('clientes-tbody').innerHTML=data.map(c=>`<tr><td>${c.nome_completo}</td><td>${c.cpf}</td><td>${c.telefone}</td><td>${c.email}</td><td>${formatDate(c.data_cadastro)}</td><td>${allAgendamentos.filter(a=>a.cliente_id===c.id).length}</td></tr>`).join('')||'<tr><td colspan="6">Nenhum cliente</td></tr>'; }
-function searchClientes(q) { let f=allClientes.filter(c=>c.nome_completo.toLowerCase().includes(q.toLowerCase())||c.cpf.includes(q)||c.email.toLowerCase().includes(q.toLowerCase())); renderClientesTable(f); }
-async function updateStatus(id,status) { await db.from('agendamentos').update({status,updated_at:new Date().toISOString()}).eq('id',id); showToast('Status atualizado: '+status,'success'); await loadAdminData(); }
-function renderRoupasAdmin() { document.getElementById('roupas-tbody').innerHTML=allRoupas.map(r=>`<tr><td><img src="${r.imagem_url||'https://placehold.co/40x40/7A1530/white?text=👔'}" style="width:40px;height:40px;object-fit:cover;border-radius:4px"></td><td>${r.nome}</td><td>${r.tipo}</td><td>${r.cor||'-'}</td><td>${r.tamanho||'-'}</td><td>R$ ${Number(r.preco_diaria).toFixed(2)}</td><td><span class="status-badge ${r.disponivel?'status-confirmado':'status-cancelado'}">${r.disponivel?'Disponível':'Indisponível'}</span></td><td><button class="action-btn confirm" onclick="editRoupa('${r.id}')">✏️ Editar</button><button class="action-btn cancel" onclick="deleteRoupa('${r.id}')">🗑️ Excluir</button></td></tr>`).join(''); }
-function editRoupa(id) { let r=allRoupas.find(x=>x.id==id); document.getElementById('edit-roupa-id').value=r.id; document.getElementById('roupa-nome').value=r.nome; document.getElementById('roupa-tipo').value=r.tipo; document.getElementById('roupa-cor').value=r.cor||''; document.getElementById('roupa-tamanho').value=r.tamanho||''; document.getElementById('roupa-preco').value=r.preco_diaria; document.getElementById('roupa-desc').value=r.descricao||''; document.getElementById('roupa-imagem').value=r.imagem_url||''; document.getElementById('roupa-disponivel').checked=r.disponivel; document.getElementById('roupa-modal-title').innerText='Editar Peça'; openModal('modal-roupa'); }
-function openRoupaModal() { document.getElementById('edit-roupa-id').value=''; document.getElementById('roupa-nome').value=''; document.getElementById('roupa-tipo').value='terno'; document.getElementById('roupa-cor').value=''; document.getElementById('roupa-tamanho').value=''; document.getElementById('roupa-preco').value=''; document.getElementById('roupa-desc').value=''; document.getElementById('roupa-imagem').value=''; document.getElementById('roupa-disponivel').checked=true; document.getElementById('roupa-modal-title').innerText='Nova Peça'; openModal('modal-roupa'); }
-async function saveRoupa() { let id=document.getElementById('edit-roupa-id').value; let data={ nome:document.getElementById('roupa-nome').value, tipo:document.getElementById('roupa-tipo').value, cor:document.getElementById('roupa-cor').value, tamanho:document.getElementById('roupa-tamanho').value, preco_diaria:parseFloat(document.getElementById('roupa-preco').value), descricao:document.getElementById('roupa-desc').value, imagem_url:document.getElementById('roupa-imagem').value, disponivel:document.getElementById('roupa-disponivel').checked }; if(id) await db.from('roupas').update(data).eq('id',id); else await db.from('roupas').insert(data); closeModal('modal-roupa'); await loadRoupas(); renderRoupasAdmin(); }
-async function deleteRoupa(id) { if(confirm('Excluir esta peça permanentemente?')){ await db.from('roupas').delete().eq('id',id); await loadRoupas(); renderRoupasAdmin(); } }
-function openContract(agendamentoId) { let ag=allAgendamentos.find(a=>a.id==agendamentoId); if(!ag) return; let cliente=allClientes.find(c=>c.id==ag.cliente_id); let roupa=allRoupas.find(r=>r.id==ag.roupa_id); let total=Number(ag.valor_total).toFixed(2); let html=`<div class="contract-print"><h3>CONTRATO DE LOCAÇÃO - ATUAL FESTAS MODA MASCULINA</h3><p><strong>Locatário:</strong> ${cliente?.nome_completo} | CPF: ${cliente?.cpf}<br><strong>Telefone:</strong> ${cliente?.telefone} | Email: ${cliente?.email}<br><strong>Endereço:</strong> ${cliente?.endereco}</p><p><strong>Traje Locado:</strong> ${roupa?.nome} (${roupa?.tipo})<br><strong>Data Retirada:</strong> ${formatDate(ag.data_retirada)}<br><strong>Data Devolução Prevista:</strong> ${formatDate(ag.data_devolucao_prevista)}<br><strong>Valor Total da Locação:</strong> R$ ${total}</p><h4>TERMO DE RESPONSABILIDADE E COMPROMISSO</h4><p>O locatário declara ter recebido o traje em perfeitas condições e se responsabiliza integralmente por danos, extravios ou atrasos, sujeitando-se às multas previstas no regulamento da loja (R$ 50,00/dia de atraso, reposição integral em caso de danos irreparáveis).</p><p>O não cumprimento das cláusulas deste contrato acarretará nas penalidades legais cabíveis, incluindo cobrança judicial e inclusão em cadastros de inadimplentes.</p><div class="contract-signature"><div>_______________________________<br>Assinatura do Locatário</div><div>_______________________________<br>Atual Festas Moda Masculina</div><div>Data: ${new Date().toLocaleDateString('pt-BR')}</div></div></div>`; document.getElementById('contrato-content').innerHTML=html; window._currentContractHtml=html; openModal('modal-contrato'); }
-function printContract() { let w=window.open('','_blank'); w.document.write('<html><head><title>Contrato Locação - Atual Festas</title><style>body{font-family:Arial,sans-serif;padding:30px;max-width:800px;margin:0 auto} h3{color:#7A1530} .contract-signature{margin-top:30px;display:flex;justify-content:space-between}</style></head><body>'+window._currentContractHtml+'</body></html>'); w.document.close(); w.print(); }
-function filterAgendamentos(status,el) { currentFilter=status; document.querySelectorAll('#page-agendamentos .filter-btn').forEach(b=>b.classList.remove('active')); el.classList.add('active'); applyAgendamentosFilter(); }
-function filterByEvento(val) { currentEventoFilter=val; applyAgendamentosFilter(); }
-function applyAgendamentosFilter() { let data=allAgendamentos; if(currentFilter!=='todos') data=data.filter(a=>a.status===currentFilter); if(currentEventoFilter) data=data.filter(a=>a.tipo_evento===currentEventoFilter); renderAgendamentosTable(data); }
-function renderMsgClienteList() { document.getElementById('msg-clientes-list').innerHTML=allClientes.map(c=>`<div class="cliente-check-item"><input type="checkbox" id="chk-${c.id}" value="${c.id}" onchange="updateSelectedCount()"><div class="cliente-info"><div class="cliente-nome">${c.nome_completo}</div><div class="cliente-contato">${c.telefone} · ${c.email}</div></div></div>`).join('')||'<div style="color:rgba(255,255,255,0.3);text-align:center;padding:20px">Nenhum cliente cadastrado</div>'; updateSelectedCount(); }
-function updateSelectedCount() { let c=document.querySelectorAll('#msg-clientes-list input:checked').length; document.getElementById('selected-count').innerText=c+' cliente(s) selecionado(s)'; }
-function toggleSelectAll() { let checks=document.querySelectorAll('#msg-clientes-list input'); let all=Array.from(checks).every(c=>c.checked); checks.forEach(c=>c.checked=!all); updateSelectedCount(); }
-const templates = { formatura:"🎓 *Parabéns pela sua FORMATURA!* 🎓\n\nEste momento especial merece um visual à altura da sua conquista!\n\nNa *Atual Festas Moda Masculina*, temos os melhores ternos e trajes para você brilhar na sua colação de grau.\n\n✨ Ternos Premium | Smoking | Conjuntos Exclusivos\n📅 Agende agora mesmo e garanta seu traje!\n\nEntre em contato e vamos deixar você impecável neste dia histórico! 🙌", casamento:"💍 *Seu grande dia está chegando!* 💍\n\nPara uma ocasião tão especial quanto o seu casamento, apenas o melhor é suficiente!\n\nA *Atual Festas Moda Masculina* oferece ternos e smokings de alto padrão para você e seus padrinhos ficarem perfeitos no altar.\n\n🤵 Trajes para Noivos e Padrinhos\n✨ Consultoria de Moda Gratuita\n📅 Reserve com antecedência!\n\nFale conosco e garanta o look dos sonhos! 💫", corporativo:"💼 *Seu evento corporativo merece elegância!*\n\nImpressione clientes, parceiros e colegas com um visual profissional e impecável!\n\nA *Atual Festas Moda Masculina* veste executivos com estilo e sofisticação.\n\n👔 Trajes sob medida para cada ocasião\n📅 Agende com antecedência!\n\nFale conosco agora! 🤝", aniversario:"🎂 *Vai comemorar em grande estilo!* 🎂\n\nFesta de aniversário, debutante ou qualquer celebração especial — você merece o melhor visual!\n\nA *Atual Festas Moda Masculina* tem os trajes perfeitos para você ser o destaque da noite! 🌟\n\n✨ Ternos | Costumes | Blazers\n💫 Visual arrasador garantido!\n\nFale com a gente e monte o look ideal! 🎉", divulgacao:"✨ *ATUAL FESTAS MODA MASCULINA* ✨\n🤵 *Locação de Ternos e Trajes de Grife*\n\nOlá! Temos um catálogo incrível de trajes masculinos premium disponíveis para locação!\n\n💼 Ternos Slim | Smokings | Blazers | Costumes\n🎯 Para todas as ocasiões especiais\n💰 Os melhores preços da região\n\n📅 Agende sua visita ou faça seu pedido online!\n\nWe dress success! 🌟" };
-function loadTemplate(type) { if(type && templates[type]) document.getElementById('msg-text').value = templates[type]; }
-function selectCanal(canal) { selectedCanal=canal; document.getElementById('btn-whatsapp').classList.toggle('active',canal==='whatsapp'); document.getElementById('btn-email').classList.toggle('active',canal==='email'); }
-async function enviarMensagens() { let selected=Array.from(document.querySelectorAll('#msg-clientes-list input:checked')).map(c=>c.value); let msg=document.getElementById('msg-text').value; if(!selected.length||!msg){ showToast('Selecione clientes e mensagem','error'); return; } let clientes=allClientes.filter(c=>selected.includes(c.id)); if(selectedCanal==='whatsapp') clientes.forEach((c,i)=>{ setTimeout(()=>{ let phone='55'+c.telefone.replace(/\D/g,''); window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg.replace('[NOME]',c.nome_completo))}`,'_blank'); },i*500); }); else clientes.forEach(c=>window.open(`mailto:${c.email}?subject=Atual Festas Moda Masculina&body=${encodeURIComponent(msg.replace('[NOME]',c.nome_completo))}`,'_blank')); showToast(`Mensagens enviadas via ${selectedCanal} para ${selected.length} cliente(s)!`,'success'); await db.from('mensagens_enviadas').insert({ cliente_ids:selected, canal:selectedCanal, mensagem:msg }); }
-function formatDate(d) { if(!d) return '-'; let dt=new Date(d+'T00:00:00'); return dt.toLocaleDateString('pt-BR'); }
-const eventoLabels = { casamento:'💍 Casamento', formatura:'🎓 Formatura', corporativo:'💼 Corporativo', aniversario:'🎂 Aniversário', debutante:'👑 Debutante', batizado:'⛪ Batizado', outro:'✨ Outro' }; function eventoLabel(v) { return eventoLabels[v] || v || '-'; }
-function showToast(msg,t) { let div=document.createElement('div'); div.className='toast '+t; div.innerHTML='<span>'+(t==='success'?'✅':t==='error'?'❌':'ℹ️')+'</span><span>'+msg+'</span>'; document.getElementById('toast-container').appendChild(div); setTimeout(()=>div.remove(),4000); }
+function renderCatalog() {
+  const grid = document.getElementById('catalog-grid');
+  grid.innerHTML = allRoupas.map(r => `
+    <div class="roupa-card ${!r.disponivel ? 'card-unavailable' : ''}" onclick="openAgendarComRoupa('${r.id}')">
+      <div class="card-image" style="${r.imagem_url ? 'padding:0;background:none;' : ''}">
+        ${r.imagem_url
+          ? `<img src="${r.imagem_url}" alt="${r.nome}" style="width:100%;height:100%;object-fit:cover;">`
+          : `<span>${roupaEmojis[r.tipo] || '👔'}</span>`}
+        <span class="card-badge">${r.disponivel ? 'Disponível' : 'Indisponível'}</span>
+      </div>
+      <div class="card-body">
+        <div class="card-tipo">${r.tipo.toUpperCase()} · ${r.cor || ''}</div>
+        <div class="card-nome">${r.nome}</div>
+        <div class="card-desc">${r.descricao || ''}</div>
+        <div class="card-footer">
+          <div class="card-price">R$ ${Number(r.preco_diaria).toFixed(0)}<span>/dia</span></div>
+          <button class="card-btn">Agendar</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderRoupaSelector() {
+  const sel = document.getElementById('roupa-selector');
+  sel.innerHTML = allRoupas.filter(r => r.disponivel).map(r => `
+    <div class="roupa-option select-card ${selectedRoupa && selectedRoupa.id === r.id ? 'selected' : ''}" onclick="selectRoupa('${r.id}')">
+      <div class="icon">${roupaEmojis[r.tipo] || '👔'}</div>
+      <div class="name">${r.nome}</div>
+      <div class="price">R$ ${Number(r.preco_diaria).toFixed(2)}/dia</div>
+    </div>
+  `).join('');
+}
+
+function selectRoupa(id) {
+  selectedRoupa = allRoupas.find(r => r.id === id);
+  document.querySelectorAll('.roupa-option').forEach(el => el.classList.remove('selected'));
+  event.currentTarget.classList.add('selected');
+}
+
+function openAgendarComRoupa(id) {
+  selectedRoupa = allRoupas.find(r => r.id === id);
+  scrollToAgendar();
+  setTimeout(() => renderRoupaSelector(), 400);
+}
+
+function scrollToAgendar() {
+  document.getElementById('agendar').scrollIntoView({ behavior: 'smooth' });
+}
+
+// ==================== FORM STEPS ====================
+function nextStep(current) {
+  if(current === 1) {
+    if(!selectedRoupa) { showToast('Selecione um traje!', 'error'); return; }
+    updateRoupaDetalhe();
+  }
+  if(current === 2) {
+    if(!validateStep2()) return;
+  }
+  if(current === 3) {
+    if(!validateStep3()) return;
+  }
+  if(current === 4) {
+    if(!document.getElementById('termo-check1').checked || !document.getElementById('termo-check2').checked) {
+      showToast('Aceite os termos para continuar!', 'error'); return;
+    }
+    submitAgendamento(); return;
+  }
+  goToStep(current + 1);
+}
+
+function prevStep(current) { goToStep(current - 1); }
+
+function goToStep(n) {
+  document.querySelectorAll('.form-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('panel-' + n).classList.add('active');
+  for(let i = 1; i <= 5; i++) {
+    const s = document.getElementById('step-' + i);
+    s.classList.remove('active', 'done');
+    if(i < n) s.classList.add('done');
+    if(i === n) s.classList.add('active');
+  }
+  currentStep = n;
+}
+
+function validateStep2() {
+  const fields = ['f-nome','f-cpf','f-tel','f-email','f-endereco'];
+  for(const f of fields) {
+    if(!document.getElementById(f).value.trim()) {
+      showToast('Preencha todos os campos obrigatórios!', 'error'); return false;
+    }
+  }
+  const email = document.getElementById('f-email').value;
+  if(!/\S+@\S+\.\S+/.test(email)) { showToast('Email inválido!', 'error'); return false; }
+  return true;
+}
+
+function validateStep3() {
+  if(!document.getElementById('f-evento').value) { showToast('Selecione o tipo de evento!', 'error'); return false; }
+  if(!document.getElementById('f-retirada').value) { showToast('Selecione a data de retirada!', 'error'); return false; }
+  if(!document.getElementById('f-devolucao').value) { showToast('Selecione a data de devolução!', 'error'); return false; }
+  const ret = new Date(document.getElementById('f-retirada').value);
+  const dev = new Date(document.getElementById('f-devolucao').value);
+  if(dev <= ret) { showToast('A devolução deve ser após a retirada!', 'error'); return false; }
+  return true;
+}
+
+function updateRoupaDetalhe() {
+  if(!selectedRoupa) return;
+  document.getElementById('roupa-selecionada-detalhe').innerHTML = `
+    <div class="detalhe-roupa">
+      <div class="emoji">${roupaEmojis[selectedRoupa.tipo] || '👔'}</div>
+      <div class="info">
+        <div class="nome">${selectedRoupa.nome}</div>
+        <div class="preco">R$ ${Number(selectedRoupa.preco_diaria).toFixed(2)} por dia</div>
+      </div>
+    </div>
+  `;
+}
+
+function calcSummary() {
+  const ret = document.getElementById('f-retirada').value;
+  const dev = document.getElementById('f-devolucao').value;
+  if(!ret || !dev || !selectedRoupa) return;
+  const dias = Math.max(1, Math.ceil((new Date(dev) - new Date(ret)) / 86400000));
+  const total = dias * Number(selectedRoupa.preco_diaria);
+  document.getElementById('summary-calc').style.display = 'block';
+  document.getElementById('summary-calc').innerHTML = `
+    <div class="summary-row"><span class="summary-label">Traje</span><span>${selectedRoupa.nome}</span></div>
+    <div class="summary-row"><span class="summary-label">Período</span><span>${dias} dia(s)</span></div>
+    <div class="summary-row"><span class="summary-label">Valor/Dia</span><span>R$ ${Number(selectedRoupa.preco_diaria).toFixed(2)}</span></div>
+    <div class="summary-row"><span class="summary-label">Total Estimado</span><span>R$ ${total.toFixed(2)}</span></div>
+  `;
+}
+
+// ==================== SUBMIT ====================
+async function submitAgendamento() {
+  const loadBtn = document.querySelector('#panel-4 .btn-submit');
+  loadBtn.textContent = '⏳ Enviando...'; loadBtn.disabled = true;
+
+  const nome = document.getElementById('f-nome').value.trim();
+  const cpf = document.getElementById('f-cpf').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  const telefone = document.getElementById('f-tel').value.trim();
+  const endereco = document.getElementById('f-endereco').value.trim();
+  const cidade = document.getElementById('f-cidade').value.trim();
+  const cep = document.getElementById('f-cep').value.trim();
+
+  try {
+    // Upsert cliente
+    let clienteId;
+    const { data: existente } = await db.from('clientes').select('id').eq('cpf', cpf).single();
+    if(existente) {
+      clienteId = existente.id;
+    } else {
+      const { data: novoCliente, error: errCli } = await db.from('clientes').insert({
+        nome_completo: nome, cpf, email, telefone, endereco, cidade, cep, aceite_termo: true
+      }).select().single();
+      if(errCli) throw errCli;
+      clienteId = novoCliente.id;
+    }
+
+    const ret = document.getElementById('f-retirada').value;
+    const dev = document.getElementById('f-devolucao').value;
+    const dias = Math.max(1, Math.ceil((new Date(dev) - new Date(ret)) / 86400000));
+    const total = dias * Number(selectedRoupa.preco_diaria);
+
+    const { data: agend, error: errAg } = await db.from('agendamentos').insert({
+      cliente_id: clienteId,
+      roupa_id: selectedRoupa.id,
+      data_retirada: ret,
+      data_devolucao_prevista: dev,
+      status: 'pendente',
+      tipo_evento: document.getElementById('f-evento').value,
+      observacoes: document.getElementById('f-obs').value,
+      valor_total: total
+    }).select().single();
+    if(errAg) throw errAg;
+
+    const code = 'AF-' + agend.id.toString().slice(-6).toUpperCase();
+    document.getElementById('booking-code').textContent = code;
+    goToStep(5);
+    showToast('Agendamento realizado com sucesso!', 'success');
+  } catch(err) {
+    console.error(err);
+    showToast('Erro ao salvar. Tente novamente.', 'error');
+    loadBtn.textContent = '✅ Confirmar Agendamento'; loadBtn.disabled = false;
+  }
+}
+
+function resetForm() {
+  selectedRoupa = null;
+  currentStep = 1;
+  document.querySelectorAll('#panel-2 input, #panel-3 input, #panel-3 select, #panel-3 textarea').forEach(el => el.value = '');
+  document.getElementById('termo-check1').checked = false;
+  document.getElementById('termo-check2').checked = false;
+  document.getElementById('termo-check3').checked = false;
+  document.getElementById('summary-calc').style.display = 'none';
+  renderRoupaSelector();
+  goToStep(1);
+  scrollToAgendar();
+}
+
+// ==================== ADMIN ====================
+let adminClickCount = 0, adminTimer;
+document.getElementById('admin-trigger').addEventListener('click', () => {
+  adminClickCount++;
+  clearTimeout(adminTimer);
+  adminTimer = setTimeout(() => adminClickCount = 0, 3000);
+  if(adminClickCount >= 3) openAdminLogin();
+});
+
+// Also: triple-click on footer
+document.querySelector('.footer-bottom').addEventListener('dblclick', openAdminLogin);
+
+function openAdminLogin() {
+  document.getElementById('admin-login').classList.add('active');
+}
+function closeAdminLogin() {
+  document.getElementById('admin-login').classList.remove('active');
+}
+
+async function doAdminLogin() {
+  const user = document.getElementById('admin-user').value;
+  const pass = document.getElementById('admin-pass').value;
+  if(user === 'atualfestasadmin' && pass === 'Atualfestas#1711') {
+    closeAdminLogin();
+    document.getElementById('admin-overlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+    await loadAdminData();
+  } else {
+    showToast('Credenciais inválidas!', 'error');
+  }
+}
+
+function exitAdmin() {
+  document.getElementById('admin-overlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function showAdminPage(page) {
+  document.querySelectorAll('.admin-page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.admin-nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  event.currentTarget.classList.add('active');
+  if(page === 'mensagens') renderMsgClienteList();
+}
+
+// ==================== ADMIN DATA ====================
+async function loadAdminData() {
+  const [{ data: ags }, { data: clis }, { data: roupas }] = await Promise.all([
+    db.from('agendamentos').select('*, clientes(nome_completo, telefone, email), roupas(nome, tipo)').order('created_at', { ascending: false }),
+    db.from('clientes').select('*').order('data_cadastro', { ascending: false }),
+    db.from('roupas').select('*').order('tipo')
+  ]);
+
+  allAgendamentos = ags || [];
+  allClientes = clis || [];
+
+  // KPIs
+  const totalAgs = allAgendamentos.length;
+  const pendentes = allAgendamentos.filter(a => a.status === 'pendente').length;
+  const confirmados = allAgendamentos.filter(a => a.status === 'confirmado').length;
+  const retirados = allAgendamentos.filter(a => a.status === 'retirado').length;
+  const atrasados = allAgendamentos.filter(a => a.status === 'atrasado').length;
+  const devolvidos = allAgendamentos.filter(a => a.status === 'devolvido').length;
+  const receita = allAgendamentos.reduce((s, a) => s + (Number(a.valor_total) || 0), 0);
+
+  document.getElementById('kpi-total').textContent = totalAgs;
+  document.getElementById('kpi-pendente').textContent = pendentes;
+  document.getElementById('kpi-confirmado').textContent = confirmados;
+  document.getElementById('kpi-clientes').textContent = allClientes.length;
+  document.getElementById('kpi-retirado').textContent = retirados;
+  document.getElementById('kpi-atrasado').textContent = atrasados;
+  document.getElementById('kpi-devolvido').textContent = devolvidos;
+  document.getElementById('kpi-receita').textContent = 'R$' + receita.toFixed(0);
+
+  renderDashboardTable(allAgendamentos.slice(0,8));
+  renderAgendamentosTable(allAgendamentos);
+  renderClientesTable(allClientes);
+  if(roupas) renderRoupasAdmin(roupas);
+}
+
+function renderDashboardTable(data) {
+  document.getElementById('dashboard-tbody').innerHTML = data.map(a => `
+    <tr>
+      <td>${a.clientes?.nome_completo || '-'}</td>
+      <td>${a.roupas?.nome || '-'}</td>
+      <td>${formatDate(a.data_retirada)}</td>
+      <td>${formatDate(a.data_devolucao_prevista)}</td>
+      <td><span class="status-badge status-${a.status}">${a.status}</span></td>
+    </tr>
+  `).join('') || '<tr><td colspan="5" style="text-align:center;color:rgba(255,255,255,0.3);padding:30px">Nenhum agendamento</td></tr>';
+}
+
+let currentFilter = 'todos';
+let currentEventoFilter = '';
+
+function filterAgendamentos(status, el) {
+  currentFilter = status;
+  document.querySelectorAll('#page-agendamentos .filter-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  applyAgendamentosFilter();
+}
+
+function filterByEvento(val) {
+  currentEventoFilter = val;
+  applyAgendamentosFilter();
+}
+
+function applyAgendamentosFilter() {
+  let data = allAgendamentos;
+  if(currentFilter !== 'todos') data = data.filter(a => a.status === currentFilter);
+  if(currentEventoFilter) data = data.filter(a => a.tipo_evento === currentEventoFilter);
+  renderAgendamentosTable(data);
+}
+
+function renderAgendamentosTable(data) {
+  const tbody = document.getElementById('agendamentos-tbody');
+  if(!data.length) { tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;padding:40px;color:rgba(255,255,255,0.3)">Nenhum agendamento encontrado</td></tr>'; return; }
+  tbody.innerHTML = data.map(a => `
+    <tr>
+      <td>${a.clientes?.nome_completo || '-'}</td>
+      <td>${a.roupas?.nome || '-'}</td>
+      <td>${eventoLabel(a.tipo_evento)}</td>
+      <td>${formatDate(a.data_retirada)}</td>
+      <td>${formatDate(a.data_devolucao_prevista)}</td>
+      <td style="text-align:center">${a.entregue ? '✅' : '❌'}</td>
+      <td><span class="status-badge status-${a.status}">${a.status}</span></td>
+      <td>
+        <div class="action-btns">
+          ${a.status === 'pendente' ? `<button class="action-btn confirm" onclick="updateStatus('${a.id}','confirmado')">Confirmar</button>` : ''}
+          ${a.status === 'confirmado' ? `<button class="action-btn entregue" onclick="updateStatus('${a.id}','retirado')">Retirou</button>` : ''}
+          ${a.status === 'confirmado' ? `<button class="action-btn view" onclick="printContrato('${a.id}')">🖨️ Contrato</button>` : ''}
+          ${a.status === 'retirado' ? `<button class="action-btn confirm" onclick="markDevolvido('${a.id}')">Devolveu</button>` : ''}
+          ${['pendente','confirmado'].includes(a.status) ? `<button class="action-btn cancel" onclick="updateStatus('${a.id}','cancelado')">Cancelar</button>` : ''}
+        </div>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function renderClientesTable(data) {
+  const tbody = document.getElementById('clientes-tbody');
+  if(!data.length) { tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:40px;color:rgba(255,255,255,0.3)">Nenhum cliente</td></tr>'; return; }
+  tbody.innerHTML = data.map(c => `
+    <tr>
+      <td>${c.nome_completo}</td>
+      <td>${c.cpf}</td>
+      <td><a href="https://wa.me/55${c.telefone.replace(/\D/g,'')}" target="_blank" style="color:var(--gold);text-decoration:none">${c.telefone}</a></td>
+      <td>${c.email}</td>
+      <td>${formatDate(c.data_cadastro)}</td>
+      <td>${allAgendamentos.filter(a => a.cliente_id === c.id).length}</td>
+    </tr>
+  `).join('');
+}
+
+function searchClientes(q) {
+  const filtered = allClientes.filter(c =>
+    c.nome_completo.toLowerCase().includes(q.toLowerCase()) ||
+    c.cpf.includes(q) || c.email.toLowerCase().includes(q.toLowerCase())
+  );
+  renderClientesTable(filtered);
+}
+
+// renderRoupasAdmin is defined below with full CRUD support
+
+async function updateStatus(id, status) {
+  const { error } = await db.from('agendamentos').update({ status, updated_at: new Date().toISOString() }).eq('id', id);
+  if(error) { showToast('Erro ao atualizar!', 'error'); return; }
+  showToast('Status atualizado: ' + status, 'success');
+  await loadAdminData();
+}
+
+async function markDevolvido(id) {
+  const { error } = await db.from('agendamentos').update({ status: 'devolvido', entregue: true, data_devolucao_real: new Date().toISOString().split('T')[0], updated_at: new Date().toISOString() }).eq('id', id);
+  if(error) { showToast('Erro ao atualizar!', 'error'); return; }
+  showToast('Traje marcado como devolvido!', 'success');
+  await loadAdminData();
+}
+
+// ==================== MENSAGENS ====================
+function renderMsgClienteList() {
+  const list = document.getElementById('msg-clientes-list');
+  list.innerHTML = allClientes.map(c => `
+    <div class="cliente-check-item">
+      <input type="checkbox" id="chk-${c.id}" value="${c.id}" onchange="updateSelectedCount()">
+      <div class="cliente-info">
+        <div class="cliente-nome">${c.nome_completo}</div>
+        <div class="cliente-contato">${c.telefone} · ${c.email}</div>
+      </div>
+    </div>
+  `).join('') || '<div style="color:rgba(255,255,255,0.3);text-align:center;padding:20px">Nenhum cliente cadastrado</div>';
+}
+
+function updateSelectedCount() {
+  const count = document.querySelectorAll('#msg-clientes-list input:checked').length;
+  document.getElementById('selected-count').textContent = count + ' cliente(s) selecionado(s)';
+}
+
+function toggleSelectAll() {
+  const checks = document.querySelectorAll('#msg-clientes-list input[type=checkbox]');
+  const allChecked = [...checks].every(c => c.checked);
+  checks.forEach(c => c.checked = !allChecked);
+  updateSelectedCount();
+}
+
+const templates = {
+  formatura: `🎓 *Parabéns pela sua FORMATURA!*\n\nEste momento especial merece um visual à altura da sua conquista!\n\nNa *Atual Festas Moda Masculina*, temos os melhores ternos e trajes para você brilhar na sua colação de grau.\n\n✨ Ternos Premium | Smoking | Conjuntos Exclusivos\n📅 Agende agora mesmo e garanta seu traje!\n\nEntre em contato e vamos deixar você impecável neste dia histórico! 🙌`,
+  casamento: `💍 *Seu grande dia está chegando!*\n\nPara uma ocasião tão especial quanto o seu casamento, apenas o melhor é suficiente!\n\nA *Atual Festas Moda Masculina* oferece ternos e smokings de alto padrão para você e seus padrinhos ficarem perfeitos no altar.\n\n🤵 Trajes para Noivos e Padrinhos\n✨ Consultoria de Moda Gratuita\n📅 Reserve com antecedência!\n\nFale conosco e garanta o look dos sonhos! 💫`,
+  corporativo: `💼 *Seu evento corporativo merece elegância!*\n\nImpressione clientes, parceiros e colegas com um visual profissional e impecável!\n\nA *Atual Festas Moda Masculina* veste executivos com estilo e sofisticação para:\n• Reuniões de alto nível\n• Confraternizações empresariais\n• Eventos e premiações\n\n👔 Trajes sob medida para cada ocasião\n📅 Agende com antecedência!\n\nFale conosco agora! 🤝`,
+  aniversario: `🎂 *Vai comemorar em grande estilo!*\n\nFesta de aniversário, debutante ou qualquer celebração especial — você merece o melhor visual!\n\nA *Atual Festas Moda Masculina* tem os trajes perfeitos para você ser o destaque da noite! 🌟\n\n✨ Ternos | Costumes | Blazers\n💫 Visual arrasador garantido!\n\nFale com a gente e monte o look ideal! 🎉`,
+  natal: `🎄 *O Natal está chegando!*\n\nNada como entrar nas festas de fim de ano com muito estilo e elegância!\n\nA *Atual Festas Moda Masculina* preparou opções incríveis de trajes para a temporada festiva. Reserve o seu com antecedência!\n\n🎅 Confraternizações | Ceias | Festas\n✨ Trajes Premium com preços especiais!\n\n📅 Disponibilidade limitada — Agende já! 🙏`,
+  ano_novo: `🎆 *Virada de Ano com muito estilo!*\n\nEntre no Novo Ano impecável e elegante!\n\nA *Atual Festas Moda Masculina* tem o traje perfeito para sua festa de Réveillon. ✨\n\n🥂 Apareça elegante na virada!\n👔 Ternos | Smokings | Conjuntos Luxo\n\nAgende agora antes que esgote! 🎉`,
+  divulgacao: `✨ *ATUAL FESTAS MODA MASCULINA*\n🤵 *Locação de Ternos e Trajes de Grife*\n\nOlá! Temos um catálogo incrível de trajes masculinos premium disponíveis para locação!\n\n💼 Ternos Slim | Smokings | Blazers | Costumes\n🎯 Para todas as ocasiões especiais\n💰 Os melhores preços da região\n\n📅 Agende sua visita ou faça seu pedido online!\n\nWe dress success! 🌟`
+};
+
+function loadTemplate(type) {
+  if(type && templates[type]) {
+    document.getElementById('msg-text').value = templates[type];
+  }
+}
+
+function selectCanal(canal) {
+  selectedCanal = canal;
+  document.getElementById('btn-whatsapp').classList.toggle('active', canal === 'whatsapp');
+  document.getElementById('btn-email').classList.toggle('active', canal === 'email');
+}
+
+async function enviarMensagens() {
+  const selected = [...document.querySelectorAll('#msg-clientes-list input:checked')].map(c => c.value);
+  const msg = document.getElementById('msg-text').value.trim();
+  if(!selected.length) { showToast('Selecione ao menos um cliente!', 'error'); return; }
+  if(!msg) { showToast('Digite a mensagem!', 'error'); return; }
+
+  const clientes = allClientes.filter(c => selected.includes(c.id));
+
+  if(selectedCanal === 'whatsapp') {
+    clientes.forEach((c, i) => {
+      setTimeout(() => {
+        const phone = '55' + c.telefone.replace(/\D/g, '');
+        const encoded = encodeURIComponent(msg.replace('[NOME]', c.nome_completo));
+        window.open(`https://wa.me/${phone}?text=${encoded}`, '_blank');
+      }, i * 800);
+    });
+  } else {
+    clientes.forEach(c => {
+      const subject = encodeURIComponent('Atual Festas Moda Masculina');
+      const body = encodeURIComponent(msg.replace('[NOME]', c.nome_completo));
+      window.open(`mailto:${c.email}?subject=${subject}&body=${body}`, '_blank');
+    });
+  }
+
+  await db.from('mensagens_enviadas').insert({ cliente_ids: selected, canal: selectedCanal, mensagem: msg });
+  showToast(`Mensagens enviadas via ${selectedCanal} para ${selected.length} cliente(s)!`, 'success');
+}
+
+// ==================== UTILS ====================
+function formatDate(d) {
+  if(!d) return '-';
+  const dt = new Date(d + 'T00:00:00');
+  return dt.toLocaleDateString('pt-BR');
+}
+
+const eventoLabels = { casamento:'💍 Casamento', formatura:'🎓 Formatura', corporativo:'💼 Corporativo', aniversario:'🎂 Aniversário', debutante:'👑 Debutante', batizado:'⛪ Batizado', outro:'✨ Outro' };
+function eventoLabel(v) { return eventoLabels[v] || v || '-'; }
+
+function showToast(msg, type = 'info') {
+  const tc = document.getElementById('toast-container');
+  const t = document.createElement('div');
+  t.className = 'toast ' + type;
+  const icons = { success: '✅', error: '❌', info: 'ℹ️' };
+  t.innerHTML = `<span>${icons[type]||'ℹ️'}</span><span>${msg}</span>`;
+  tc.appendChild(t);
+  setTimeout(() => t.remove(), 4000);
+}
+
 function openModal(id) { document.getElementById(id).classList.add('open'); }
 function closeModal(id) { document.getElementById(id).classList.remove('open'); }
-function openAdminLogin() { document.getElementById('admin-login').classList.add('active'); }
-function closeAdminLogin() { document.getElementById('admin-login').classList.remove('active'); }
-function doAdminLogin() { let u=document.getElementById('admin-user').value, p=document.getElementById('admin-pass').value; if(u==='atualfestasadmin' && p==='Atualfestas#1711'){ closeAdminLogin(); document.getElementById('admin-overlay').classList.add('active'); document.body.style.overflow='hidden'; loadAdminData(); renderMsgClienteList(); } else showToast('Credenciais inválidas!','error'); }
-function exitAdmin() { document.getElementById('admin-overlay').classList.remove('active'); document.body.style.overflow=''; }
-function showAdminPage(page) { document.querySelectorAll('.admin-page').forEach(p=>p.classList.remove('active')); document.querySelectorAll('.admin-nav-item').forEach(n=>n.classList.remove('active')); document.getElementById('page-'+page).classList.add('active'); event.currentTarget.classList.add('active'); if(page==='mensagens') renderMsgClienteList(); if(page==='roupas') renderRoupasAdmin(); if(page==='dashboard') loadAdminData(); }
-function toggleAdminSidebar() { document.getElementById('adminSidebar').classList.toggle('open'); }
-document.querySelectorAll('.modal-overlay').forEach(mo=>{ mo.addEventListener('click',e=>{ if(e.target===mo) mo.classList.remove('open'); }); });
-let adminClickCount=0, adminTimer; document.getElementById('admin-trigger').addEventListener('click',()=>{ adminClickCount++; clearTimeout(adminTimer); adminTimer=setTimeout(()=>adminClickCount=0,3000); if(adminClickCount>=3) openAdminLogin(); });
-document.querySelector('.footer-bottom')?.addEventListener('dblclick',openAdminLogin);
-document.addEventListener('keydown',e=>{ if(e.key==='Enter' && document.getElementById('admin-login').classList.contains('active')) doAdminLogin(); });
-window.scrollToAgendar=scrollToAgendar;
+
+// Close modals on overlay click
+document.querySelectorAll('.modal-overlay').forEach(mo => {
+  mo.addEventListener('click', e => { if(e.target === mo) mo.classList.remove('open'); });
+});
+
+// Admin login on Enter
+document.addEventListener('keydown', e => {
+  if(e.key === 'Enter' && document.getElementById('admin-login').classList.contains('active')) doAdminLogin();
+});
+
+// ==================== MOBILE MENU ====================
+function toggleMobileMenu() {
+  const links = document.getElementById('nav-links');
+  const burger = document.getElementById('hamburger');
+  links.classList.toggle('open');
+  burger.classList.toggle('open');
+}
+function closeMobileMenu() {
+  document.getElementById('nav-links').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+}
+
+// ==================== PRINT CONTRACT ====================
+function printContrato(id) {
+  const ag = allAgendamentos.find(a => a.id === id);
+  if(!ag) { showToast('Agendamento não encontrado!', 'error'); return; }
+
+  const cliente = ag.clientes || {};
+  const roupa = ag.roupas || {};
+  const hoje = new Date().toLocaleDateString('pt-BR');
+  const dataRetirada = formatDate(ag.data_retirada);
+  const dataDevolucao = formatDate(ag.data_devolucao_prevista);
+  const valor = Number(ag.valor_total || 0).toFixed(2);
+
+  const html = `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Contrato de Aluguel - Atual Festas</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&family=Barlow+Condensed:wght@700;800&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: 'Barlow', Arial, sans-serif; color: #1a1a1a; background: #fff; padding: 40px; font-size: 13px; line-height: 1.6; }
+  .header { text-align:center; border-bottom: 3px solid #7A1530; padding-bottom: 20px; margin-bottom: 28px; }
+  .header img { width:80px; height:80px; object-fit:cover; border-radius:50%; border:3px solid #7A1530; margin-bottom:10px; }
+  .header h1 { font-family:'Barlow Condensed',sans-serif; font-size:26px; font-weight:800; letter-spacing:3px; color:#7A1530; text-transform:uppercase; }
+  .header p { font-size:11px; color:#666; letter-spacing:2px; text-transform:uppercase; margin-top:4px; }
+  .contrato-titulo { text-align:center; font-family:'Barlow Condensed',sans-serif; font-size:18px; font-weight:800; letter-spacing:3px; text-transform:uppercase; color:#560F22; background:#fdf0f3; border:2px solid #7A1530; padding:12px; margin-bottom:24px; border-radius:4px; }
+  .secao { margin-bottom:20px; }
+  .secao-titulo { font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:#7A1530; border-bottom:1px solid #C9A84C; padding-bottom:5px; margin-bottom:12px; }
+  .dados-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .dado { background:#f9f9f9; border:1px solid #e0e0e0; border-radius:3px; padding:8px 12px; }
+  .dado label { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#7A1530; display:block; margin-bottom:3px; }
+  .dado span { font-size:13px; font-weight:600; color:#1a1a1a; }
+  .dado.full { grid-column:1/-1; }
+  .clausulas { font-size:12px; color:#333; }
+  .clausulas p { margin-bottom:9px; padding-left:14px; text-indent:-14px; }
+  .clausulas strong { color:#7A1530; }
+  .assinaturas { display:grid; grid-template-columns:1fr 1fr; gap:40px; margin-top:30px; }
+  .assinatura { text-align:center; }
+  .linha-assinatura { border-top:1px solid #333; padding-top:8px; margin-top:50px; }
+  .linha-assinatura p { font-size:12px; color:#333; }
+  .linha-assinatura small { font-size:10px; color:#666; }
+  .rodape { text-align:center; font-size:10px; color:#999; margin-top:28px; padding-top:14px; border-top:1px solid #eee; }
+  .valor-destaque { background:#7A1530; color:#fff; text-align:center; padding:12px; border-radius:4px; font-family:'Barlow Condensed',sans-serif; font-size:20px; font-weight:800; letter-spacing:2px; margin:16px 0; }
+  @media print {
+    body { padding: 20px; }
+    @page { margin: 15mm; }
+  }
+</style>
+</head>
+<body>
+<div class="header">
+  <img src="https://mgqvrijrxxdwqstvrtxw.supabase.co/storage/v1/object/public/imagens/AtualFestasModaMasculina.jpeg" alt="Logo" onerror="this.style.display='none'">
+  <h1>Atual Festas</h1>
+  <p>Moda Masculina · Locações · Campina Grande, PB</p>
+</div>
+
+<div class="contrato-titulo">📋 Contrato de Aluguel de Traje</div>
+
+<div class="secao">
+  <div class="secao-titulo">Dados do Contratante (Locatário)</div>
+  <div class="dados-grid">
+    <div class="dado full"><label>Nome Completo</label><span>${cliente.nome_completo || '-'}</span></div>
+    <div class="dado"><label>CPF</label><span>${cliente.cpf || '-'}</span></div>
+    <div class="dado"><label>Telefone / WhatsApp</label><span>${cliente.telefone || '-'}</span></div>
+    <div class="dado full"><label>E-mail</label><span>${cliente.email || '-'}</span></div>
+    <div class="dado full"><label>Endereço</label><span>${cliente.endereco || '-'}</span></div>
+  </div>
+</div>
+
+<div class="secao">
+  <div class="secao-titulo">Dados do Traje Locado</div>
+  <div class="dados-grid">
+    <div class="dado full"><label>Traje</label><span>${roupa.nome || ag.roupa_id || '-'}</span></div>
+    <div class="dado"><label>Tipo</label><span>${roupa.tipo || '-'}</span></div>
+    <div class="dado"><label>Tamanho</label><span>${ag.tamanho || '-'}</span></div>
+    <div class="dado"><label>Tipo de Evento</label><span>${ag.tipo_evento || '-'}</span></div>
+    <div class="dado"><label>Data de Retirada</label><span>${dataRetirada}</span></div>
+    <div class="dado"><label>Data de Devolução</label><span>${dataDevolucao}</span></div>
+    <div class="dado"><label>Código do Agendamento</label><span>${ag.codigo || ag.id || '-'}</span></div>
+    <div class="dado"><label>Data do Contrato</label><span>${hoje}</span></div>
+  </div>
+  <div class="valor-destaque">💰 Valor Total: R$ ${valor}</div>
+</div>
+
+<div class="secao">
+  <div class="secao-titulo">Termo de Responsabilidade e Compromisso</div>
+  <div class="clausulas">
+    <p><strong>1. CUIDADO E CONSERVAÇÃO:</strong> O locatário compromete-se a zelar pelo traje com o máximo de cuidado durante todo o período de uso, evitando manchas, rasgos, danos por mau uso ou descuido.</p>
+    <p><strong>2. RESPONSABILIDADE POR DANOS:</strong> Em caso de danos materiais — manchas permanentes, rasgos, queimaduras, perda de peças — o locatário responsabiliza-se integralmente pelo custo de reparo ou reposição, conforme avaliação técnica da loja.</p>
+    <p><strong>3. PRAZO DE DEVOLUÇÃO:</strong> O traje deverá ser devolvido impreterivelmente até a data acordada. Atrasos geram multa de R$ 50,00 por dia, além de indenização por impedimento de nova locação.</p>
+    <p><strong>4. CONDIÇÕES DE DEVOLUÇÃO:</strong> O traje deve ser devolvido em condições equivalentes às do recebimento — limpo, passado e acondicionado adequadamente.</p>
+    <p><strong>5. PROIBIÇÕES DE USO:</strong> É proibido o uso em situações que exponham as peças a risco: ambientes com fumaça excessiva, atividades físicas intensas, chuva sem proteção.</p>
+    <p><strong>6. HIGIENE E LIMPEZA:</strong> Não lavar, secar na máquina ou passar sem orientação da loja. A limpeza profissional pós-devolução é responsabilidade da Atual Festas, exceto sujeira por descuido.</p>
+    <p><strong>7. TRANSFERÊNCIA PROIBIDA:</strong> O traje não pode ser emprestado, sublocado ou cedido a terceiros. O contrato é pessoal e intransferível.</p>
+    <p><strong>8. AUTORIZAÇÃO DE COBRANÇA:</strong> Em caso de não devolução ou danos irreparáveis, o locatário autoriza a adoção de medidas legais, incluindo registro de boletim de ocorrência.</p>
+    <p><strong>9. VERIFICAÇÃO PRÉVIA:</strong> O locatário confirma que verificou o traje no ato da retirada e está de acordo com seu estado de conservação.</p>
+    <p><strong>10. VALIDADE JURÍDICA:</strong> A assinatura deste contrato tem plena validade jurídica, vinculando o locatário a todas as cláusulas, conforme o Código Civil Brasileiro e a Lei nº 12.965/2014.</p>
+  </div>
+</div>
+
+<div class="assinaturas">
+  <div class="assinatura">
+    <div class="linha-assinatura">
+      <p><strong>${cliente.nome_completo || 'Locatário'}</strong></p>
+      <small>CPF: ${cliente.cpf || '-'}</small><br>
+      <small>Locatário</small>
+    </div>
+  </div>
+  <div class="assinatura">
+    <div class="linha-assinatura">
+      <p><strong>Atual Festas Moda Masculina</strong></p>
+      <small>CNPJ / Responsável</small><br>
+      <small>Locadora</small>
+    </div>
+  </div>
+</div>
+
+<div class="rodape">
+  <p>Atual Festas Moda Masculina · Campina Grande, PB · (83) 98748-3838 · atualfestasmodamasculina@gmail.com</p>
+  <p>Contrato gerado em ${hoje} · Código: ${ag.codigo || ag.id || 'N/A'}</p>
+</div>
+</body>
+</html>`;
+
+  const win = window.open('', '_blank', 'width=800,height=900');
+  win.document.write(html);
+  win.document.close();
+  win.focus();
+  setTimeout(() => win.print(), 600);
+}
+
+// ==================== CATALOG ADMIN CRUD ====================
+let editingRoupaId = null;
+
+function renderRoupasAdmin(data) {
+  const tbody = document.getElementById('roupas-tbody');
+  if(!data || !data.length) {
+    tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;padding:40px;color:rgba(255,255,255,0.3)">Nenhum traje cadastrado</td></tr>';
+    return;
+  }
+  tbody.innerHTML = data.map(r => `
+    <tr>
+      <td>
+        ${r.imagem_url ? `<img src="${r.imagem_url}" alt="${r.nome}" style="width:44px;height:44px;object-fit:cover;border-radius:4px;border:1px solid rgba(201,168,76,0.3);vertical-align:middle;margin-right:8px;">` : `<span style="font-size:1.5rem;vertical-align:middle;margin-right:8px;">${roupaEmojis[r.tipo]||'👔'}</span>`}
+        ${r.nome}
+      </td>
+      <td>${r.tipo}</td>
+      <td>${r.cor||'-'}</td>
+      <td>${r.tamanho||'-'}</td>
+      <td>R$ ${Number(r.preco_diaria).toFixed(2)}</td>
+      <td><span class="status-badge ${r.disponivel ? 'status-confirmado' : 'status-cancelado'}">${r.disponivel ? 'Disponível' : 'Indisponível'}</span></td>
+      <td>
+        <div class="action-btns">
+          <button class="action-btn view" onclick="openEditRoupa('${r.id}')">✏️ Editar</button>
+          <button class="action-btn cancel" onclick="deleteRoupa('${r.id}', '${r.nome.replace(/'/g,"\'")}')">🗑️ Excluir</button>
+        </div>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function openAddRoupa() {
+  editingRoupaId = null;
+  document.getElementById('modal-roupa-title').textContent = 'Adicionar Traje';
+  document.getElementById('form-roupa-nome').value = '';
+  document.getElementById('form-roupa-tipo').value = 'terno';
+  document.getElementById('form-roupa-cor').value = '';
+  document.getElementById('form-roupa-tamanho').value = '';
+  document.getElementById('form-roupa-preco').value = '';
+  document.getElementById('form-roupa-descricao').value = '';
+  document.getElementById('form-roupa-disponivel').checked = true;
+  document.getElementById('form-roupa-imagem-url').value = '';
+  document.getElementById('roupa-img-preview').style.display = 'none';
+  document.getElementById('upload-status').textContent = '';
+  openModal('modal-roupa');
+}
+
+function openEditRoupa(id) {
+  const r = allRoupas.find(x => x.id == id);
+  if(!r) return;
+  editingRoupaId = id;
+  document.getElementById('modal-roupa-title').textContent = 'Editar Traje';
+  document.getElementById('form-roupa-nome').value = r.nome || '';
+  document.getElementById('form-roupa-tipo').value = r.tipo || 'terno';
+  document.getElementById('form-roupa-cor').value = r.cor || '';
+  document.getElementById('form-roupa-tamanho').value = r.tamanho || '';
+  document.getElementById('form-roupa-preco').value = r.preco_diaria || '';
+  document.getElementById('form-roupa-descricao').value = r.descricao || '';
+  document.getElementById('form-roupa-disponivel').checked = r.disponivel !== false;
+  document.getElementById('form-roupa-imagem-url').value = r.imagem_url || '';
+  document.getElementById('upload-status').textContent = '';
+  const preview = document.getElementById('roupa-img-preview');
+  if(r.imagem_url) { preview.src = r.imagem_url; preview.style.display = 'block'; }
+  else preview.style.display = 'none';
+  openModal('modal-roupa');
+}
+
+async function uploadImagemRoupa(input) {
+  const file = input.files[0];
+  if(!file) return;
+  const statusEl = document.getElementById('upload-status');
+  statusEl.textContent = '⏳ Enviando imagem...';
+  statusEl.style.color = 'var(--gold)';
+
+  const ext = file.name.split('.').pop();
+  const fileName = `traje_${Date.now()}.${ext}`;
+  const { data, error } = await db.storage.from('imagens').upload(fileName, file, { upsert: true });
+  if(error) {
+    statusEl.textContent = '❌ Erro no upload: ' + error.message;
+    statusEl.style.color = 'var(--danger)';
+    return;
+  }
+  const { data: urlData } = db.storage.from('imagens').getPublicUrl(fileName);
+  const url = urlData.publicUrl;
+  document.getElementById('form-roupa-imagem-url').value = url;
+  const preview = document.getElementById('roupa-img-preview');
+  preview.src = url; preview.style.display = 'block';
+  statusEl.textContent = '✅ Imagem enviada com sucesso!';
+  statusEl.style.color = '#4CAF50';
+}
+
+async function saveRoupa() {
+  const nome = document.getElementById('form-roupa-nome').value.trim();
+  const tipo = document.getElementById('form-roupa-tipo').value;
+  const cor = document.getElementById('form-roupa-cor').value.trim();
+  const tamanho = document.getElementById('form-roupa-tamanho').value.trim();
+  const preco = parseFloat(document.getElementById('form-roupa-preco').value);
+  const descricao = document.getElementById('form-roupa-descricao').value.trim();
+  const disponivel = document.getElementById('form-roupa-disponivel').checked;
+  const imagem_url = document.getElementById('form-roupa-imagem-url').value.trim();
+
+  if(!nome || !tipo || isNaN(preco)) { showToast('Preencha os campos obrigatórios!', 'error'); return; }
+
+  const payload = { nome, tipo, cor, tamanho, preco_diaria: preco, descricao, disponivel, imagem_url: imagem_url || null };
+
+  let error;
+  if(editingRoupaId) {
+    ({ error } = await db.from('roupas').update(payload).eq('id', editingRoupaId));
+  } else {
+    ({ error } = await db.from('roupas').insert(payload));
+  }
+
+  if(error) { showToast('Erro ao salvar: ' + error.message, 'error'); return; }
+  showToast(editingRoupaId ? 'Traje atualizado!' : 'Traje adicionado!', 'success');
+  closeModal('modal-roupa');
+  await loadRoupas();
+  const { data: roupasUpd } = await db.from('roupas').select('*').order('tipo');
+  if(roupasUpd) renderRoupasAdmin(roupasUpd);
+}
+
+async function deleteRoupa(id, nome) {
+  if(!confirm(`Tem certeza que deseja excluir "${nome}"?`)) return;
+  const { error } = await db.from('roupas').delete().eq('id', id);
+  if(error) { showToast('Erro ao excluir: ' + error.message, 'error'); return; }
+  showToast('Traje excluído com sucesso!', 'success');
+  await loadRoupas();
+  const { data: roupasUpd } = await db.from('roupas').select('*').order('tipo');
+  if(roupasUpd) renderRoupasAdmin(roupasUpd);
+}
+
 </script>
 </body>
 </html>
-```
