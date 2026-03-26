@@ -1819,7 +1819,7 @@ async function salvarRoupa() {
   };
   let error;
   if(id) {
-    ({ error } = await db.from('roupas').update({ ...payload, updated_at: new Date().toISOString() }).eq('id', id));
+    ({ error } = await db.from('roupas').update(payload).eq('id', id));
   } else {
     ({ error } = await db.from('roupas').insert(payload));
   }
