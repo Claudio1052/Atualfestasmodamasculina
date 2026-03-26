@@ -202,7 +202,7 @@ section { padding: 100px 40px; }
   background: linear-gradient(145deg, var(--bordeaux-dark) 0%, var(--gray) 100%);
 }
 
-/* Multi-layer gradient overlay */
+/* Multi-layer gradient overlay */ 
 .roupa-option .ro-overlay {
   position: absolute;
   inset: 0;
@@ -1164,7 +1164,7 @@ footer { background: var(--bordeaux-dark); padding: 60px 40px 30px; border-top: 
             <option value="smoking">🎩 Smoking</option>
             <option value="costume">👔 Costume</option>
             <option value="blazer">🧥 Blazer</option>
-            <option value="conjunto">👗 Conjunto</option>
+            <option value="conjunto">🧥 Conjunto</option>
           </select>
         </div>
         <div class="form-group">
@@ -1301,7 +1301,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ==================== ROUPAS ====================
-const roupaEmojis = { terno:'🤵', smoking:'🎩', costume:'👔', blazer:'🧥', conjunto:'👗' };
+const roupaEmojis = { terno:'🤵', smoking:'🎩', costume:'👔', blazer:'🧥', conjunto:'🧥' };
 
 async function loadRoupas() {
   const { data, error } = await db.from('roupas').select('*').order('tipo');
